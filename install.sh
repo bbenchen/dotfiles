@@ -86,6 +86,9 @@ else
     ln -snf "$DOTFILES"/gitconfig_macos "$HOME"/.gitconfig
     mkdir -p "$HOME"/.config/alacritty
     ln -snf "$DOTFILES"/config/alacritty/alacritty_macos.yml "$HOME"/.config/alacritty/alacritty.yml
+    ln -snf "$DOTFILES"/config/yabai "$HOME"/.config/yabai
+    ln -snf "$DOTFILES"/config/skhd "$HOME"/.config/skhd
+    ln -snf "$DOTFILES"/config/spacebar "$HOME"/.config/spacebar
 fi
 ln -snf "$DOTFILES"/config/ranger "$HOME"/.config/ranger
 
