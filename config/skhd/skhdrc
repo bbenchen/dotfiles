@@ -90,5 +90,5 @@ ctrl + cmd - 7 : yabai -m window --space 7 && yabai -m space --focus 7
 # shift + cmd - n : yabai -m space --create
 # shift + cmd - m : yabai -m space --destroy
 
-shift + cmd - f : yabai -m space --layout float
-shift + cmd - b : yabai -m space --layout bsp
+shift + alt - f : yabai -m space --layout float
+shift + alt - b : yabai -m space --layout bsp
