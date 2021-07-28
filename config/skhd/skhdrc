@@ -10,7 +10,7 @@
 cmd - return : "$HOME"/.config/skhd/kitty.sh
 
 # Open Emacs
-cmd - e : open -a /Applications/Emacs.app
+cmd - e : "$HOME"/.config/skhd/emacs.sh
 
 # Open Google Chrome
 cmd - b : open -na /Applications/Google\ Chrome.app
