@@ -52,16 +52,16 @@ yabai -m config mouse_drop_action            swap
 yabai -m config external_bar all:26:0
 
 # Float preferences
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^系统偏好设置$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^访达$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^磁盘工具$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^系统信息$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
-yabai -m rule --add app="^活动监视器$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Preferences$" sticky=on manage=off
+yabai -m rule --add app="^系统偏好设置$" sticky=on manage=off
+yabai -m rule --add app="^Finder$" sticky=on manage=off
+yabai -m rule --add app="^访达$" sticky=on manage=off
+yabai -m rule --add app="^Disk Utility$" sticky=on manage=off
+yabai -m rule --add app="^磁盘工具$" sticky=on manage=off
+yabai -m rule --add app="^System Information$" sticky=on manage=off
+yabai -m rule --add app="^系统信息$" sticky=on manage=off
+yabai -m rule --add app="^Activity Monitor$" sticky=on manage=off
+yabai -m rule --add app="^活动监视器$" sticky=on manage=off
 yabai -m rule --add app="^Messages$" manage=off
 yabai -m rule --add app="^信息$" manage=off
 yabai -m rule --add app="^FaceTime" manage=off
@@ -74,7 +74,7 @@ yabai -m rule --add app="^预览$" manage=off
 yabai -m rule --add app="^DeepL$" manage=off
 yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
-yabai -m rule --add app="^HHKB Keymap Tool$" manage=off
+yabai -m rule --add app="^Happy Hacking Keyboard Keymap Tool$" manage=off
 yabai -m rule --add app="微信" sticky=on layer=above manage=off
 yabai -m rule --add app="Telegram" sticky=on layer=above manage=off
 yabai -m rule --add app="QQ" sticky=on layer=above manage=off
