@@ -27,7 +27,7 @@ packages=(
     github.com/google/gops
     github.com/haya14busa/goplay/cmd/goplay
     github.com/go-delve/delve/cmd/dlv
-    github.com/motemen/gore/cmd/gore
+    github.com/x-motemen/gore/cmd/gore
 
     google.golang.org/protobuf/cmd/protoc-gen-go
     google.golang.org/grpc/cmd/protoc-gen-go-grpc
