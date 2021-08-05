@@ -26,3 +26,6 @@ hs.hotkey.bind({"alt", "cmd"}, "Right", hs.fnutils.partial(moveWindowOneSpace, "
 -- Move between screens
 hs.hotkey.bind({"ctrl", "alt"}, "Left", hs.fnutils.partial(winMoveScreen, "left"))
 hs.hotkey.bind({"ctrl", "alt"}, "Right", hs.fnutils.partial(winMoveScreen, "right"))
+
+-- Launch app
+hs.hotkey.bind({"ctrl", "cmd"}, "e", hs.fnutils.partial(launchApp, "Emacs"))
