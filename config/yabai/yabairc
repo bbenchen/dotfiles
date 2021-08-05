@@ -75,32 +75,37 @@ yabai -m rule --add app="^DeepL$" manage=off
 yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
 yabai -m rule --add app="^Happy Hacking Keyboard Keymap Tool$" manage=off
-yabai -m rule --add app="微信" sticky=on layer=above manage=off
-yabai -m rule --add app="Telegram" sticky=on layer=above manage=off
-yabai -m rule --add app="QQ" sticky=on layer=above manage=off
-yabai -m rule --add app="钉钉" sticky=on layer=above manage=off
+yabai -m rule --add title="^Opening .*$" manage=off
+yabai -m rule --add title="^打开 .*$" manage=off
 
 # Space rule
 yabai -m rule --add label="Terminal" app="kitty" space=1
 yabai -m rule --add label="Terminal" app="Alacritty" space=1
 
-yabai -m rule --add label="Code" app="Emacs" space=2
+yabai -m rule --add label="Code" app="^Emacs$" space=2
 
-yabai -m rule --add label="Browser" app="^Safari$" space=3
-yabai -m rule --add label="Browser" app="^Google Chrome$" space=3
+yabai -m rule --add label="Browser" app="^Safari浏览器$" space=3
+yabai -m rule --add label="Browser" app="Chrome" space=3
 
-yabai -m rule --add label="Tools" app="MySQL" space=4
-yabai -m rule --add label="Tools" app="DBeaver" space=4
-yabai -m rule --add label="Tools" app="^Another Redis DeskTop Manager$" space=4
+yabai -m rule --add label="Tools" app="^MySQLWorkbench$" space=4
+yabai -m rule --add label="Tools" app="^DBeaver$" space=4
+yabai -m rule --add label="Tools" app="^Another Redis Desktop Manager$" space=4
 
 yabai -m rule --add label="Writer" app="WPS" space=5
 yabai -m rule --add label="Writer" app="StarUML" space=5
 
 yabai -m rule --add label="Media" app="^Music$" space=6
 yabai -m rule --add label="Media" app="^音乐$" space=6
-yabai -m rule --add label="Media" app="网易云音乐" space=6
+yabai -m rule --add label="Media" app="^NeteaseMusic$" space=6
+yabai -m rule --add label="Media" app="^网易云音乐$" space=6
 yabai -m rule --add label="Media" app="mpv" space=6
 yabai -m rule --add label="Media" app="QuickTime Player" space=6
 yabai -m rule --add label="Media" app="爱奇艺" space=6
+
+# yabai -m rule --add label="Float" app="微信" space=7
+# yabai -m rule --add label="Float" app="^Telegram Desktop$" space=7
+# yabai -m rule --add label="Float" app="QQ" space=7
+# yabai -m rule --add label="Float" app="DingTalk" space=7
+# yabai -m rule --add label="Float" app="钉钉" space=7
 
 echo "yabai configuration loaded.."
