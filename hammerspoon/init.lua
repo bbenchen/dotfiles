@@ -5,7 +5,7 @@ require "hotkey"
 
 function reload(paths)
   local doReload = false
-    for _,file in pairs(paths) do
+    for _, file in pairs(paths) do
         if file:sub(-4) == ".lua" then
             print("A lua config file changed, reload")
             doReload = true

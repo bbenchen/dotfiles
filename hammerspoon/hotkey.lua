@@ -18,10 +18,13 @@ hs.hotkey.bind({"ctrl", "cmd"}, "f", hs.fnutils.partial(winResize, "max"))
 hs.hotkey.bind({"ctrl", "cmd"}, "t", hs.fnutils.partial(winToggleMaximized))
 
 -- Move between spaces
-hs.hotkey.bind({"ctrl", "cmd"}, "Left", hs.fnutils.partial(moveWindowOneSpace, "left", true))
-hs.hotkey.bind({"ctrl", "cmd"}, "Right", hs.fnutils.partial(moveWindowOneSpace, "right", true))
-hs.hotkey.bind({"alt", "cmd"}, "Left", hs.fnutils.partial(moveWindowOneSpace, "left", false))
-hs.hotkey.bind({"alt", "cmd"}, "Right", hs.fnutils.partial(moveWindowOneSpace, "right", false))
+hs.hotkey.bind({"ctrl", "cmd"}, "1", hs.fnutils.partial(moveWinToSpace, 1, true))
+hs.hotkey.bind({"ctrl", "cmd"}, "2", hs.fnutils.partial(moveWinToSpace, 2, true))
+hs.hotkey.bind({"ctrl", "cmd"}, "3", hs.fnutils.partial(moveWinToSpace, 3, true))
+
+hs.hotkey.bind({"ctrl", "alt"}, "1", hs.fnutils.partial(moveWinToSpace, 1, false))
+hs.hotkey.bind({"ctrl", "alt"}, "2", hs.fnutils.partial(moveWinToSpace, 2, false))
+hs.hotkey.bind({"ctrl", "alt"}, "3", hs.fnutils.partial(moveWinToSpace, 3, false))
 
 -- Move between screens
 hs.hotkey.bind({"ctrl", "alt"}, "Left", hs.fnutils.partial(winMoveScreen, "left"))
