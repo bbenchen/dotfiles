@@ -156,6 +156,10 @@ if cmd_exists "neofetch" && is_gui ; then
     neofetch
 fi
 
+if [[ "$(get_os)" == "macos" ]]; then
+  alias aria2c="aria2c --file-allocation=none"
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 if [[ -z $INSIDE_EMACS ]] && is_gui ; then
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
