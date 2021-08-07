@@ -52,5 +52,8 @@ moveWinToSpace = function(spaceIdx, switch)
   if switch then
     hs.eventtap.keyStroke({'ctrl'}, tostring(spaceIdx))
     win:focus()
+  else
+    -- focus other win
+    spaces.allWindowsForSpace(spaceId)
   end
 end
