@@ -36,11 +36,7 @@ local getSpaceIdsTable = function()
   return spacesIds
 end
 
-local lastSpaceIdx = 0
 moveWinToSpace = function(spaceIdx, switch)
-  if lastSpaceIdx == spaceIdx then return end
-
-  lastSpaceIdx = spaceIdx
   local win = getGoodFocusedWindow(true)
   if not win then return end
 
@@ -48,6 +44,8 @@ moveWinToSpace = function(spaceIdx, switch)
   local spaceNum = tableLength(spaceIds)
   if spaceNum < spaceIdx then return end
   local spaceId = spaceIds[spaceIdx]
+
+  if spaces.activeSpace() == spaceId then return end
 
   spaces.moveWindowToSpace(win:id(), spaceId)
 
