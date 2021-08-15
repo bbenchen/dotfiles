@@ -32,6 +32,7 @@ fi
 print_info "installing dotfiles..."
 # common
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
+ln -snf "$DOTFILES"/password-store "$HOME"/.password-store
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/markdownlint.json "$HOME"/.markdownlint.json
 ln -snf "$DOTFILES"/npmrc "$HOME"/.npmrc
