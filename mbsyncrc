@@ -1,0 +1,73 @@
+########################################
+# fa-saftware.com
+########################################
+IMAPAccount fa
+Host imap.qiye.aliyun.com
+User xianbin.chen@fa-software.com
+PassCmd "emacsclient -e '(+lookup/password :host \"imap.qiye.aliyun.com\" :user \"xianbin.chen@fa-software.com\")' | cut -d '\"' -f2"
+Port 993
+AuthMechs LOGIN
+SSLType IMAPS
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile /usr/local/etc/openssl@1.1/cert.pem  # MacOS
+
+##
+# Remote
+IMAPStore fa-remote
+Account fa
+
+# Local
+MaildirStore fa-local
+Path ~/.mail/fa-software.com/
+Inbox ~/.mail/fa-software.com/INBOX
+
+# Connections
+# Channel fa
+# Far :fa-remote:
+# Near :fa-local:
+# Patterns *
+# Create Both
+# SyncState *
+
+Channel fa-inbox
+Far :fa-remote:"INBOX"
+Near :fa-local:"INBOX"
+Create Near
+Expunge Both
+SyncState *
+
+Channel fa-drafts
+Far :fa-remote:"&g0l6Pw-"
+Near :fa-local:"草稿"
+Create Near
+Expunge Both
+SyncState *
+
+Channel fa-spam
+Far :fa-remote:"&V4NXPpCuTvY-"
+Near :fa-local:"垃圾"
+Create Near
+Expunge Both
+SyncState *
+
+Channel fa-sent
+Far :fa-remote:"&XfJT0ZAB-"
+Near :fa-local:"已发送"
+Create Near
+Expunge Both
+SyncState *
+
+Channel fa-trash
+Far :fa-remote:"&XfJSIJZkkK5O9g-"
+Near :fa-local:"已删除"
+Create Near
+Expunge Both
+SyncState *
+
+## Groups
+Group fa
+Channel fa-inbox
+Channel fa-drafts
+Channel fa-spam
+Channel fa-sent
+Channel fa-trash
