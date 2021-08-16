@@ -4,7 +4,7 @@
 IMAPAccount fa
 Host imap.qiye.aliyun.com
 User xianbin.chen@fa-software.com
-PassCmd "pass email/fa-software.com"
+PassCmd "emacsclient -e '(+lookup/password :host \"imap.qiye.aliyun.com\" :user \"xianbin.chen@fa-software.com\")' | cut -d '\"' -f2"
 Port 993
 AuthMechs LOGIN
 SSLType IMAPS
