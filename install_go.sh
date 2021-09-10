@@ -73,7 +73,7 @@ function clean() {
 function install() {
     for p in "${packages[@]}"; do
         print_info "installing ${p}..."
-        go get "${p}"
+        go install "${p}"@latest
     done
 }
 
