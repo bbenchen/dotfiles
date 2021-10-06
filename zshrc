@@ -104,7 +104,8 @@ alias upgrade_dotfiles='cd $DOTFILES && git pull; cd - >/dev/null'
 alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
 if cmd_exists "emacsclient"; then
-  export EDITOR='emacsclient -a "emacs"'
+  local _emacsclient=($(command -v "emacsclient"))
+  export EDITOR="${_emacsclient} -a \"emacs\""
   alias e="$EDITOR -n"
   alias ec="$EDITOR -n -c"
   alias ef="$EDITOR -c"
