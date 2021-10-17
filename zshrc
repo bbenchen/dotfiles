@@ -13,13 +13,11 @@ zinit light-mode for \
   is-snippet OMZ::lib/key-bindings.zsh \
   MichaelAquilina/zsh-you-should-use
 
-if [[ -z $INSIDE_EMACS ]] ; then
-  zinit ice wait lucid atinit"
-    zstyle :history-search-multi-word page-size 5
-    zstyle :history-search-multi-word highlight-color fg=red,bold
-    zstyle :plugin:history-search-multi-word reset-prompt-protect 1"
-  zinit light zdharma/history-search-multi-word
-fi
+zinit ice wait lucid atinit"
+  zstyle :history-search-multi-word page-size 5
+  zstyle :history-search-multi-word highlight-color fg=red,bold
+  zstyle :plugin:history-search-multi-word reset-prompt-protect 1"
+zinit light zdharma/history-search-multi-word
 
 zinit wait lucid for \
  atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
