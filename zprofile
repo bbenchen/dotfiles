@@ -1,5 +1,9 @@
 # -*- mode: sh -*-
 
+if [[ $OSTYPE == darwin* && -d "/usr/local/sbin" ]]; then
+  export PATH="/usr/local/sbin:$PATH"
+fi
+
 if [[ -d "$HOME/.bin" ]]; then
   export PATH="$HOME/.bin:$PATH"
 fi
