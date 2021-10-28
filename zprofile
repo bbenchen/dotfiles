@@ -49,6 +49,14 @@ fi
 
 # other's path for macos
 if [[ $OSTYPE == darwin* ]]; then
+  if [[ -d "/usr/local/opt/e2fsprogs/bin" ]]; then
+    export PATH="/usr/local/opt/e2fsprogs/bin:$PATH"
+  fi
+
+  if [[ -d "/usr/local/opt/e2fsprogs/sbin" ]]; then
+    export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
+  fi
+
   if [[ -d "/usr/local/opt/openssl/bin" ]]; then
     export PATH="/usr/local/opt/openssl/bin:$PATH"
   fi
