@@ -145,7 +145,7 @@ if [ ! -d "$ZINIT" ]; then
 fi
 if [ ! -f "$ZINIT/bin/zinit.zsh" ]; then
     rm -rf "$ZINITBIN"
-    sync_git_repo github zdharma/zinit "$ZINITBIN"
+    sync_git_repo github zdharma-continuum/zinit "$ZINITBIN"
 fi
 ln -snf "$DOTFILES"/zprofile "$HOME"/.zprofile
 ln -snf "$DOTFILES"/zshenv "$HOME"/.zshenv

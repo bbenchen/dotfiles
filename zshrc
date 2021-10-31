@@ -15,7 +15,7 @@ zinit light-mode for \
 
 zinit wait lucid for \
  atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
+    zdharma-continuum/fast-syntax-highlighting \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
  blockf \
