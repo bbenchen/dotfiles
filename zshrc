@@ -13,9 +13,6 @@ zinit light-mode for \
   is-snippet OMZ::lib/key-bindings.zsh \
   MichaelAquilina/zsh-you-should-use
 
-zinit ice lucid wait'0'
-zinit light joshskidmore/zsh-fzf-history-search
-
 zinit wait lucid for \
  atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma/fast-syntax-highlighting \
@@ -33,6 +30,8 @@ zinit light-mode lucid for \
   ajeetdsouza/zoxide \
   load"command -v fzf &> /dev/null" \
   Aloxaf/fzf-tab \
+  load"command -v fzf &> /dev/null" \
+  joshskidmore/zsh-fzf-history-search \
   mdumitru/git-aliases
 
 # snippet
