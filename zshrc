@@ -41,6 +41,8 @@ if brew_exists ; then
    zinit snippet OMZ::plugins/brew/brew.plugin.zsh
 fi
 zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
+zinit ice atload"alias x=extract"
+zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
 if [[ -z $INSIDE_EMACS ]] && is_gui ; then
   zinit ice from"gh" depth=1
