@@ -32,7 +32,10 @@ zinit light-mode lucid for \
   Aloxaf/fzf-tab \
   load"command -v fzf &> /dev/null" \
   joshskidmore/zsh-fzf-history-search \
-  mdumitru/git-aliases
+  mdumitru/git-aliases \
+  load"command -v git-lfs &> /dev/null" \
+  nekofar/zsh-git-lfs \
+  arzzen/calc.plugin.zsh
 
 # snippet
 zinit ice atinit"ZSH_TMUX_FIXTERM=false"
