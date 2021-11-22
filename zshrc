@@ -143,7 +143,7 @@ if [[ "$INSIDE_EMACS" = "vterm" ]]; then
 fi
 
 if cmd_exists "most"; then
-  alias man='PAGER=most man'
+  export PAGER='most'
 fi
 
 if cmd_exists "nvim"; then
