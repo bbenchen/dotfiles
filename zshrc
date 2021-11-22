@@ -27,7 +27,8 @@ zinit wait lucid for \
 zinit ice wait lucid from"gh" depth=1
 zinit light-mode lucid for \
   hlissner/zsh-autopair \
-  ajeetdsouza/zoxide \
+  load"command -v lua &> /dev/null" \
+  skywind3000/z.lua \
   load"command -v fzf &> /dev/null" \
   Aloxaf/fzf-tab \
   load"command -v fzf &> /dev/null" \
