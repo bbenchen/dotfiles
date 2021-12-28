@@ -325,7 +325,7 @@ tmux_conf_copy_to_os_clipboard=true
 # this is the place to override or undo settings
 
 # terminal
-set -g default-terminal "xterm-256color" # colors!
+set -g default-terminal "screen-256color" # colors!
 
 # non-login shell
 set -g default-command "${SHELL}"
