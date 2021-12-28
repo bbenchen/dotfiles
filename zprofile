@@ -92,4 +92,6 @@ if [[ $OSTYPE == darwin* ]]; then
   if [[ -d "/usr/local/opt/grep/libexec/gnubin" ]]; then
     export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
   fi
+
+  export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 fi
