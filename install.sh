@@ -121,14 +121,11 @@ if [ "$(get_os)" != "macos" ]; then
     print_success "fcitx5 install successfully"
 fi
 
-# vim
-print_info "installing vim..."
-ln -snf "$DOTFILES"/vimrc "$HOME"/.vimrc
-cp -rf "$DOTFILES"/vim "$HOME"/.vim
-if cmd_exists "vim"; then
-    vim +PlugInstall +qall
-fi
-print_success "vim install successfully"
+# nvim
+print_info "installing nvim..."
+rm -rf "$HOME"/.config/nvim
+ln -snf "$DOTFILES"/config/nvim "$HOME"/.config/nvim
+print_success "nvim install successfully"
 
 # tmux
 print_info "installing oh_my_tmux..."
