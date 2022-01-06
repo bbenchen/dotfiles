@@ -142,9 +142,9 @@ local mappings = {
 
   t = {
     name = "Terminal",
+    b = { "<cmd>lua _BOTTOM_TOGGLE()<cr>", "Bottom" },
     n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
     -- u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-    -- t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
     p = { "<cmd>lua _PYTHON3_TOGGLE()<cr>", "Python3" },
     f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },

@@ -57,10 +57,10 @@ function _NCDU_TOGGLE()
   ncdu:toggle()
 end
 
-local htop = Terminal:new({ cmd = "htop", hidden = true })
+local bottom = Terminal:new({ cmd = "btm", hidden = true })
 
-function _HTOP_TOGGLE()
-  htop:toggle()
+function _BOTTOM_TOGGLE()
+  bottom:toggle()
 end
 
 local python3 = Terminal:new({ cmd = "python3", hidden = true })
