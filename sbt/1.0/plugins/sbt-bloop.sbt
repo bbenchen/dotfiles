@@ -1,2 +1,2 @@
 resolvers += Resolver.sonatypeRepo("snapshots")
-addSbtPlugin("ch.epfl.scala" % "sbt-bloop" % "1.4.11")
+addSbtPlugin("ch.epfl.scala" % "sbt-bloop" % "1.4.12")
