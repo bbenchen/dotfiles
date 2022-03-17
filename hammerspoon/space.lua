@@ -19,7 +19,7 @@ local getGoodFocusedWindow = function(nofull)
 end
 
 -- get ids of spaces in same layout as mission control has them (hopefully)
-local getSpaceIdsTable = function()
+getUserSpaceIds = function()
   local spacesIds = {}
 
   fnutils.each(spaces.allSpaces(), function(spacesForScreen)
@@ -33,14 +33,15 @@ local getSpaceIdsTable = function()
   return spacesIds
 end
 
-moveWinToSpace = function(spaceIdx, switch)
+gotoSpace = function(spaceId)
+  if spaces.focusedSpace() == spaceId then return end
+
+  spaces.gotoSpace(spaceId)
+end
+
+moveWinToSpace = function(spaceId, switch)
   local win = getGoodFocusedWindow(true)
   if not win then return end
-
-  local spaceIds = getSpaceIdsTable()
-  local spaceNum = tableLength(spaceIds)
-  if spaceNum < spaceIdx then return end
-  local spaceId = spaceIds[spaceIdx]
 
   if spaces.focusedSpace() == spaceId then return end
 

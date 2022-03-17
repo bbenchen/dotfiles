@@ -1,34 +1,36 @@
+local hotkey = require "hs.hotkey"
+local fnutils = require "hs.fnutils"
+local spaces = require "hs.spaces"
+
 -- Halves of the screen
-hs.hotkey.bind({"ctrl","cmd"}, "h", hs.fnutils.partial(winResize, "left"))
-hs.hotkey.bind({"ctrl","cmd"}, "l", hs.fnutils.partial(winResize, "right"))
-hs.hotkey.bind({"ctrl","cmd"}, "j", hs.fnutils.partial(winResize, "up"))
-hs.hotkey.bind({"ctrl","cmd"}, "k", hs.fnutils.partial(winResize, "down"))
+hotkey.bind({"ctrl","cmd"}, "h", fnutils.partial(winResize, "left"))
+hotkey.bind({"ctrl","cmd"}, "l", fnutils.partial(winResize, "right"))
+hotkey.bind({"ctrl","cmd"}, "j", fnutils.partial(winResize, "up"))
+hotkey.bind({"ctrl","cmd"}, "k", fnutils.partial(winResize, "down"))
 
 -- Center of the screen
-hs.hotkey.bind({"ctrl", "cmd"}, "c", winCenter)
+hotkey.bind({"ctrl", "cmd"}, "c", winCenter)
 
 -- Thirds of the screen
-hs.hotkey.bind({"ctrl", "alt"}, "h", winLeftThird)
-hs.hotkey.bind({"ctrl", "alt"}, "l", winRightThird)
-hs.hotkey.bind({"ctrl", "alt"}, "j", winUpThird)
-hs.hotkey.bind({"ctrl", "alt"}, "k", winDownThird)
+hotkey.bind({"ctrl", "alt"}, "h", winLeftThird)
+hotkey.bind({"ctrl", "alt"}, "l", winRightThird)
+hotkey.bind({"ctrl", "alt"}, "j", winUpThird)
+hotkey.bind({"ctrl", "alt"}, "k", winDownThird)
 
 -- Maximized
-hs.hotkey.bind({"ctrl", "cmd"}, "f", hs.fnutils.partial(winResize, "max"))
-hs.hotkey.bind({"ctrl", "cmd"}, "t", hs.fnutils.partial(winToggleMaximized))
+hotkey.bind({"ctrl", "cmd"}, "f", fnutils.partial(winResize, "max"))
+hotkey.bind({"ctrl", "cmd"}, "t", fnutils.partial(winToggleMaximized))
 
 -- Move between spaces
-hs.hotkey.bind({"ctrl", "cmd"}, "1", hs.fnutils.partial(moveWinToSpace, 1, true))
-hs.hotkey.bind({"ctrl", "cmd"}, "2", hs.fnutils.partial(moveWinToSpace, 2, true))
-hs.hotkey.bind({"ctrl", "cmd"}, "3", hs.fnutils.partial(moveWinToSpace, 3, true))
-
-hs.hotkey.bind({"ctrl", "alt"}, "1", hs.fnutils.partial(moveWinToSpace, 1, false))
-hs.hotkey.bind({"ctrl", "alt"}, "2", hs.fnutils.partial(moveWinToSpace, 2, false))
-hs.hotkey.bind({"ctrl", "alt"}, "3", hs.fnutils.partial(moveWinToSpace, 3, false))
+for k, v in ipairs(getUserSpaceIds()) do
+  hotkey.bind({"ctrl"}, tostring(k), fnutils.partial(gotoSpace, v))
+  hotkey.bind({"ctrl", "cmd"}, tostring(k), fnutils.partial(moveWinToSpace, v, true))
+  hotkey.bind({"ctrl", "alt"}, tostring(k), fnutils.partial(moveWinToSpace, v, false))
+end
 
 -- Move between screens
-hs.hotkey.bind({"ctrl", "alt"}, "Left", hs.fnutils.partial(winMoveScreen, "left"))
-hs.hotkey.bind({"ctrl", "alt"}, "Right", hs.fnutils.partial(winMoveScreen, "right"))
+hotkey.bind({"ctrl", "alt"}, "Left", fnutils.partial(winMoveScreen, "left"))
+hotkey.bind({"ctrl", "alt"}, "Right", fnutils.partial(winMoveScreen, "right"))
 
 -- Launch app
-hs.hotkey.bind({"ctrl", "cmd"}, "e", hs.fnutils.partial(launchApp, "Emacs"))
+hotkey.bind({"ctrl", "cmd"}, "e", fnutils.partial(launchApp, "Emacs"))

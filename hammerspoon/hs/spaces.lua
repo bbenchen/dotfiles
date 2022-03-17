@@ -76,7 +76,7 @@ local plist       = require("hs.plist")
 -- locale handling for buttons representing spaces in Mission Control
 
 local getDockApplication = function()
-  local names = {"Dock", "程序坞", "程序塢"}
+  local names = {"程序坞", "程序塢", "Dock"}
 
   for _, v in ipairs(names) do
     local dock = application(v)
@@ -94,7 +94,7 @@ local getDockExitTemplates = function()
     -- make a copy since preferredLanguages uses ls.makeConstantsTable for "friendly" display in console
     localesToSearch = table.move(localesToSearch, 1, #localesToSearch, 1, {})
     table.insert(localesToSearch, host.locale.current())
-    local path   = getDockApplication():path() .. "/Contents/Resources"
+    local path = getDockApplication():path() .. "/Contents/Resources"
 
     local locale = ""
     while #localesToSearch > 0 do
