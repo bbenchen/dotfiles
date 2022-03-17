@@ -1,6 +1,6 @@
 local fnutils = require "hs.fnutils"
 local window = require "hs.window"
-local spaces = require "hs._asm.undocumented.spaces"
+local spaces = require "hs.spaces"
 local screen = require "hs.screen"
 
 local tableLength = function(t)
@@ -20,14 +20,11 @@ end
 
 -- get ids of spaces in same layout as mission control has them (hopefully)
 local getSpaceIdsTable = function()
-  local spacesLayout = spaces.layout()
   local spacesIds = {}
 
-  fnutils.each(screen.allScreens(), function(screen)
-    local spaceUUID = screen:spacesUUID()
-
-    local userSpaces = fnutils.filter(spacesLayout[spaceUUID], function(spaceId)
-      return spaces.spaceType(spaceId) == spaces.types.user
+  fnutils.each(spaces.allSpaces(), function(spacesForScreen)
+    local userSpaces = fnutils.filter(spacesForScreen, function(space)
+      return spaces.spaceType(space) == "user"
     end)
 
     fnutils.concat(spacesIds, userSpaces or {})
@@ -45,15 +42,22 @@ moveWinToSpace = function(spaceIdx, switch)
   if spaceNum < spaceIdx then return end
   local spaceId = spaceIds[spaceIdx]
 
-  if spaces.activeSpace() == spaceId then return end
+  if spaces.focusedSpace() == spaceId then return end
 
   spaces.moveWindowToSpace(win:id(), spaceId)
 
   if switch then
-    hs.eventtap.keyStroke({'ctrl'}, tostring(spaceIdx))
-    win:focus()
+    spaces.gotoSpace(spaceId)
   else
     -- focus other win
-    spaces.allWindowsForSpace(spaceId)
+    local winIds = spaces.windowsForSpace(spaces.focusedSpace())
+    if tableLength(winIds) == 0 then return end
+    for _, v in ipairs(winIds) do
+      win = window.find(v)
+      if win then
+        win:focus()
+        break
+      end
+    end
   end
 end

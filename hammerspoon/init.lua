@@ -1,6 +1,6 @@
+require "application"
 require "window"
 require "space"
-require "launch"
 require "hotkey"
 
 function reload(paths)

@@ -1,3 +1,7 @@
+-- Application management
+
+hs.application.enableSpotlightForNameSearches(true)
+
 function launchApp(name)
   hs.application.launchOrFocus(name)
   if name == 'Finder' then
