@@ -12,10 +12,10 @@ hotkey.bind({"ctrl","cmd"}, "k", fnutils.partial(winResize, "down"))
 hotkey.bind({"ctrl", "cmd"}, "c", winCenter)
 
 -- Thirds of the screen
-hotkey.bind({"ctrl", "alt"}, "h", winLeftThird)
-hotkey.bind({"ctrl", "alt"}, "l", winRightThird)
-hotkey.bind({"ctrl", "alt"}, "j", winUpThird)
-hotkey.bind({"ctrl", "alt"}, "k", winDownThird)
+-- hotkey.bind({"ctrl", "alt"}, "h", winLeftThird)
+-- hotkey.bind({"ctrl", "alt"}, "l", winRightThird)
+-- hotkey.bind({"ctrl", "alt"}, "j", winUpThird)
+-- hotkey.bind({"ctrl", "alt"}, "k", winDownThird)
 
 -- Maximized
 hotkey.bind({"ctrl", "cmd"}, "f", fnutils.partial(winResize, "max"))
