@@ -139,8 +139,8 @@ function decode64() {
 alias e64=encode64
 alias d64=decode64
 
-if [[ "$INSIDE_EMACS" = "vterm" ]]; then
-  alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+if [[ "$INSIDE_EMACS" = "vterm" ]] && [[ -n ${EMACS_VTERM_PATH} ]] && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
+  source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
 fi
 
 if cmd_exists "most"; then
