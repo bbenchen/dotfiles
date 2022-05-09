@@ -33,8 +33,8 @@ hotkey.bind({"ctrl", "alt"}, "Left", fnutils.partial(winMoveScreen, "left"))
 hotkey.bind({"ctrl", "alt"}, "Right", fnutils.partial(winMoveScreen, "right"))
 
 -- Mission Control
-hotkey.bind({"ctrl"}, "m", fnutils.partial(spaces.openMissionControl))
-hotkey.bind({"ctrl", "alt"}, "m", fnutils.partial(spaces.closeMissionControl))
+-- hotkey.bind({"ctrl"}, "m", fnutils.partial(spaces.openMissionControl))
+-- hotkey.bind({"ctrl", "alt"}, "m", fnutils.partial(spaces.closeMissionControl))
 
 -- Launch app
 hotkey.bind({"ctrl", "cmd"}, "e", fnutils.partial(launchApp, "Emacs"))
