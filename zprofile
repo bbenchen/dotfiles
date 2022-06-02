@@ -20,6 +20,10 @@ if [[ -d "$HOME/.doom-emacs.d/bin" ]]; then
   export PATH="$HOME/.doom-emacs.d/bin:$PATH"
 fi
 
+if [[ -d "$HOME/.doom.d/bin" ]]; then
+  export PATH="$HOME/.doom.d/bin:$PATH"
+fi
+
 # java
 if [[ -d "$HOME/.jenv/bin" ]]; then
   export PATH="$HOME/.jenv/bin:$PATH"
