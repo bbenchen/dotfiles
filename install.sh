@@ -31,6 +31,7 @@ fi
 
 print_info "installing dotfiles..."
 # common
+cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/markdownlint.json "$HOME"/.markdownlint.json
