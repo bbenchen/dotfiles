@@ -22,13 +22,13 @@ font:
     style: Regular
   bold:
     family: Sarasa Mono SC Nerd
-    style: Bold
+    style: Regular
   italic:
     family: Sarasa Mono SC Nerd
     style: Italic
   bold_italic:
     family: Sarasa Mono SC Nerd
-    style: Bold Italic
+    style: Italic
   size: 14.0
   offset:
     x: 0
@@ -36,6 +36,7 @@ font:
   glyph_offset:
     x: 0
     y: 0
+  use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: true
 
