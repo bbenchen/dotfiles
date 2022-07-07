@@ -2,7 +2,7 @@
   local
   ivy-releases: https://scala.jfrog.io/artifactory/ivy-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext], bootOnly
   sbt-plugin-releases: https://scala.jfrog.io/artifactory/sbt-plugin-releases/, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
-  tencent: https://mirrors.cloud.tencent.com/nexus/repository/maven-public
+  aliyun: https://maven.aliyun.com/repository/public
   sonatype-oss-releases
   maven-central
   sonatype-oss-snapshots

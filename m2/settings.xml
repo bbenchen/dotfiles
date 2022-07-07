@@ -157,10 +157,10 @@ under the License.
     </mirror>
      -->
       <mirror>
-          <id>tencent</id>
+          <id>aliyun</id>
           <mirrorOf>*,!spring-snapshot,!dnvriend,!superdream-releases,!superdream-snapshots</mirrorOf>
-          <name>tencent maven</name>
-          <url>https://mirrors.cloud.tencent.com/nexus/repository/maven-public/</url>
+          <name>aliyun maven</name>
+          <url>https://maven.aliyun.com/repository/public/</url>
       </mirror>
   </mirrors>
 
