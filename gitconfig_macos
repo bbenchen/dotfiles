@@ -5,6 +5,8 @@
 	name = Mike Chen
 	email = 517926804@qq.com
   signingkey = E71C70ACBF4CA143
+[gpg]
+	program = /usr/local/bin/gpg
 [credential]
 	helper = osxkeychain
 [github]
