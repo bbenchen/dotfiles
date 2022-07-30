@@ -169,3 +169,14 @@ fi
 if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
   [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
 fi
+
+function zle-keymap-select zle-line-init zle-line-finish {
+  case $KEYMAP in
+      vicmd)      print -n '\033[1 q';; # block cursor
+      viins|main) print -n '\033[4 q';; # underline cursor
+  esac
+}
+
+zle -N zle-line-init
+zle -N zle-line-finish
+zle -N zle-keymap-select
