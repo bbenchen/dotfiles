@@ -6,7 +6,6 @@ TMUX=$HOME/.tmux
 ZINIT=$HOME/.zinit
 ZINITBIN=$HOME/.zinit/bin
 EMACSD=$HOME/.emacs.d
-EMACSDOOMD=$HOME/.doom-emacs.d
 DOOMD=$HOME/.doom.d
 
 BASE_DIR="${BASH_SOURCE%/*}"
@@ -157,25 +156,19 @@ if [ ! -d "$HOME/.jenv" ]; then
     print_success "jenv install successfully"
 fi
 
-if [ ! -d "$EMACSD" ] || [ ! -d "$EMACSDOOMD" ] || [ ! -d "$DOOMD" ]; then
+if [ ! -d "$EMACSD" ] || [ ! -d "$DOOMD" ]; then
     print_info "installing doom-emacs..."
     if [ -d "$EMACSD" ]; then
         mv "$EMACSD" "$EMACSD".bak
-    fi
-    if [ -d "$EMACSDOOMD" ]; then
-        mv "$EMACSDOOMD" "$EMACSDOOMD".bak
     fi
     if [ -d "$DOOMD" ]; then
         mv "$DOOMD" "$DOOMD".bak
     fi
 
-    ln -snf "$DOTFILES"/emacs-profiles.el "$HOME"/.emacs-profiles.el
-
-    sync_git_repo github plexus/chemacs2 "$EMACSD"
-    sync_git_repo github cxb811201/doom-emacs "$EMACSDOOMD" tree-sitter
+    sync_git_repo github cxb811201/doom-emacs "$EMACSD"
     sync_git_repo github cxb811201/.doom.d "$DOOMD"
     if cmd_exists "emacs"; then
-        "$EMACSDOOMD"/bin/doom install --no-config --no-env
+        "$EMACSD"/bin/doom install --no-config --no-env
     fi
     print_success "doom-emacs install successfully"
 fi
