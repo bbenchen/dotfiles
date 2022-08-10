@@ -4,6 +4,26 @@
 local frameCache = {}
 local logger = hs.logger.new("windows")
 
+-- Maximize window when specify application started.
+local maximizeApps = {
+    "/Applications/kitty.app",
+    "/Applications/Emacs.app",
+    "/Applications/Google Chrome.app",
+}
+
+local windowCreateFilter = hs.window.filter.new():setDefaultFilter()
+windowCreateFilter:subscribe(
+    hs.window.filter.windowCreated,
+    function (win, ttl, last)
+        for index, value in ipairs(maximizeApps) do
+            if win:application():path() == value then
+                win:maximize()
+                win:focus()
+                return true
+            end
+        end
+end)
+
 -- Resize current window
 function winResize(how)
    local win = hs.window.focusedWindow()

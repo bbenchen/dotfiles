@@ -37,4 +37,5 @@ hotkey.bind({"ctrl", "alt"}, "Right", fnutils.partial(winMoveScreen, "right"))
 -- hotkey.bind({"ctrl", "alt"}, "m", fnutils.partial(spaces.closeMissionControl))
 
 -- Launch app
-hotkey.bind({"ctrl", "cmd"}, "e", fnutils.partial(launchApp, "Emacs"))
+-- hotkey.bind({"ctrl", "cmd"}, "e", fnutils.partial(launchApp, "Emacs"))
+hotkey.bind({"ctrl", "cmd"}, "e", fnutils.partial(openEmacsClient))

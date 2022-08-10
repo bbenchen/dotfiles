@@ -1,10 +1,19 @@
 -- Application management
 
-hs.application.enableSpotlightForNameSearches(true)
+local osascript = require "hs.osascript"
+local app = require "hs.application"
+local appfinder = require "hs.appfinder"
+
+app.enableSpotlightForNameSearches(true)
 
 function launchApp(name)
-  hs.application.launchOrFocus(name)
+  app.launchOrFocus(name)
   if name == 'Finder' then
-    hs.appfinder.appFromName(name):activate()
+    appfinder.appFromName(name):activate()
   end
+end
+
+function openEmacsClient()
+  cmd = "/usr/local/bin/emacsclient -a emacs -n -r"
+  osascript.applescript(string.format('do shell script "%s"', cmd))
 end
