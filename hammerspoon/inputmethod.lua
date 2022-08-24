@@ -22,6 +22,7 @@ set_app_input_method('Terminal', English)
 set_app_input_method('kitty', English)
 set_app_input_method('Emacs', English)
 set_app_input_method('Google Chrome', English)
+set_app_input_method('Microsoft Remote Desktop', English)
 
 set_app_input_method('WeChat', Chinese)
 set_app_input_method('WPS Office', Chinese)
