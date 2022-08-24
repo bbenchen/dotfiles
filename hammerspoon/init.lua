@@ -1,4 +1,5 @@
 require "application"
+require "inputmethod"
 require "window"
 require "space"
 require "hotkey"
