@@ -21,6 +21,7 @@ set_app_input_method('Finder', English, window.filter.windowCreated)
 set_app_input_method('Terminal', English)
 set_app_input_method('kitty', English)
 set_app_input_method('Emacs', English)
+set_app_input_method('IntelliJ IDEA', English)
 set_app_input_method('Google Chrome', English)
 set_app_input_method('Microsoft Remote Desktop', English)
 
