@@ -14,6 +14,6 @@ function launchApp(name)
 end
 
 function openEmacsClient()
-  cmd = "/usr/local/bin/emacsclient -a emacs -n -r"
+  cmd = "/usr/local/bin/emacsclient -a emacs -n -c"
   osascript.applescript(string.format('do shell script "%s"', cmd))
 end
