@@ -152,6 +152,18 @@ if cmd_exists "nvim"; then
   alias vi="nvim"
 fi
 
+if cmd_exists "dust"; then
+  alias du="dust";
+fi
+
+if cmd_exists "duf"; then
+  alias df="duf";
+fi
+
+if cmd_exists "bat"; then
+  alias cat="bat";
+fi
+
 # show system info
 if cmd_exists "neofetch" && is_gui ; then
     neofetch
