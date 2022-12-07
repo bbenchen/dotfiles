@@ -16,8 +16,8 @@ if [[ $OSTYPE == linux* && -d "$DOTFILES/local/bin" ]]; then
   export PATH="$DOTFILES/local/bin:$PATH"
 fi
 
-if [[ -d "$HOME/.emacs.d//bin" ]]; then
-  export PATH="$HOME/.emacs.d//bin:$PATH"
+if [[ -d "$HOME/.emacs.d/bin" ]]; then
+  export PATH="$HOME/.emacs.d/bin:$PATH"
 fi
 
 if [[ -d "$HOME/.doom.d/bin" ]]; then
@@ -97,5 +97,7 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
   fi
 
-  export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+  if [[ -d "$HOME/Library/Python/3.10/bin" ]]; then
+    export PATH="$HOME/Library/Python/3.10/bin:$PATH"
+  fi
 fi
