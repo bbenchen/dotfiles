@@ -21,9 +21,7 @@ packages=(
     md5-cli
     typescript-formatter
     typescript-language-server
-    vscode-css-languageserver-bin
-    vscode-html-languageserver-bin
-    vscode-json-languageserver
+    vscode-langservers-extracted
     bash-language-server
     pyright
     dockerfile-language-server-nodejs
