@@ -34,3 +34,4 @@
 	process = git-lfs filter-process
 [commit]
   template = ~/.gitmessage
+  gpgsign = true
