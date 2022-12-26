@@ -1,8 +1,13 @@
 {
   "default": true,
-  "MD007": { "indent": 4 },
-  "MD013": false,
-  "MD033": false,
-  "MD036": false,
+  "ul-indent": {
+    "indent": 2
+  },
+  "line-length": {
+    "line_length": 100,
+    "code_block_line_length": 160,
+    "tables": false
+  },
+  "no-inline-html": false,
   "no-hard-tabs": false
 }
