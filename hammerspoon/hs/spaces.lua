@@ -75,26 +75,13 @@ local plist       = require("hs.plist")
 
 -- locale handling for buttons representing spaces in Mission Control
 
-local getDockApplication = function()
-  local names = {"程序坞", "程序塢", "Dock"}
-
-  for _, v in ipairs(names) do
-    local dock = application(v)
-    if dock then
-      return dock
-    end
-  end
-
-  return nil
-end
-
 local AXExitToDesktop, AXExitToFullscreenDesktop
 local getDockExitTemplates = function()
     local localesToSearch = host.locale.preferredLanguages() or {}
     -- make a copy since preferredLanguages uses ls.makeConstantsTable for "friendly" display in console
     localesToSearch = table.move(localesToSearch, 1, #localesToSearch, 1, {})
     table.insert(localesToSearch, host.locale.current())
-    local path = getDockApplication():path() .. "/Contents/Resources"
+    local path   = application.applicationsForBundleID("com.apple.dock")[1]:path() .. "/Contents/Resources"
 
     local locale = ""
     while #localesToSearch > 0 do
@@ -125,7 +112,7 @@ local _dockElement
 local getDockElement = function()
     -- if the Dock is killed for some reason, its element will be invalid
     if not (_dockElement and _dockElement:isValid()) then
-        _dockElement = axuielement.applicationElement(getDockApplication())
+        _dockElement = axuielement.applicationElement(application("Dock"))
     end
     return _dockElement
 end
@@ -372,7 +359,7 @@ module.closeMissionControl = closeMissionControl
 --- Returns a table containing the IDs of the spaces for the specified screen in their current order.
 ---
 --- Parameters:
----  * `screen` - an optional screen specification identifying the screen to return the space array for. The screen may be specified by it's ID (`hs.screen:id()`), it's UUID (`hs.screen:getUUID()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
+---  * `screen` - an optional screen specification identifying the screen to return the space array for. The screen may be specified by its ID (`hs.screen:id()`), its UUID (`hs.screen:getUUID()`), the string "Main" (a shortcut for `hs.screen.mainScreen()`), the string "Primary" (a shortcut for `hs.screen.primaryScreen()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
 ---
 --- Returns:
 ---  * a table containing space IDs for the spaces for the screen, or nil and an error message if there is an error.
@@ -381,6 +368,7 @@ module.closeMissionControl = closeMissionControl
 ---  * the table returned has its __tostring metamethod set to `hs.inspect` to simplify inspecting the results when using the Hammerspoon Console.
 module.spacesForScreen = function(...)
     local args, screenID = { ... }, nil
+
     assert(#args < 2, "expected no more than 1 argument")
     if #args > 0 then screenID = args[1] end
     if screenID == nil then
@@ -395,8 +383,26 @@ module.spacesForScreen = function(...)
             end
         end
         if math.type(screenID) == "integer" then error("not a valid screen ID") end
-    elseif not (type(screenID) == "string" and #screenID == 36) then
+    elseif type(screenID) == "string" then
+        if screenID:lower() == "main" then
+            screenID = screen.mainScreen():getUUID()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():getUUID()
+        end
+    end
+
+    if not (type(screenID) == "string" and #screenID == 36) then
         error("screen must be specified as UUID, screen ID, or hs.screen object")
+    end
+
+    local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
+    if not screensHaveSeparateSpaces then
+        for _,v in ipairs(screen.allScreens()) do
+            if screenID == v:getUUID() then
+                screenID = "Main"
+                break
+            end
+        end
     end
 
     local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
@@ -447,12 +453,13 @@ end
 --- Returns the currently visible (active) space for the specified screen.
 ---
 --- Parameters:
----  * `screen` - an optional screen specification identifying the screen to return the active space for. The screen may be specified by it's ID (`hs.screen:id()`), it's UUID (`hs.screen:getUUID()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
+---  * `screen` - an optional screen specification identifying the screen to return the active space for. The screen may be specified by its ID (`hs.screen:id()`), its UUID (`hs.screen:getUUID()`), the string "Main" (a shortcut for `hs.screen.mainScreen()`), the string "Primary" (a shortcut for `hs.screen.primaryScreen()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
 ---
 --- Returns:
 ---  * an integer specifying the ID of the space displayed, or nil and an error message if an error occurs.
 module.activeSpaceOnScreen = function(...)
     local args, screenID = { ... }, nil
+
     assert(#args < 2, "expected no more than 1 argument")
     if #args > 0 then screenID = args[1] end
     if screenID == nil then
@@ -467,8 +474,26 @@ module.activeSpaceOnScreen = function(...)
             end
         end
         if math.type(screenID) == "integer" then error("not a valid screen ID") end
-    elseif not (type(screenID) == "string" and #screenID == 36) then
+    elseif type(screenID) == "string" then
+        if screenID:lower() == "main" then
+            screenID = screen.mainScreen():getUUID()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():getUUID()
+        end
+    end
+
+    if not (type(screenID) == "string" and #screenID == 36) then
         error("screen must be specified as UUID, screen ID, or hs.screen object")
+    end
+
+    local screensHaveSeparateSpaces = module.screensHaveSeparateSpaces()
+    if not screensHaveSeparateSpaces then
+        for _,v in ipairs(screen.allScreens()) do
+            if screenID == v:getUUID() then
+                screenID = "Main"
+                break
+            end
+        end
     end
 
     local managedDisplayData, errMsg = module.data_managedDisplaySpaces()
@@ -538,7 +563,10 @@ module.spaceDisplay = function(...)
     for _, managedDisplay in ipairs(managedDisplayData) do
         for _, space in ipairs(managedDisplay.Spaces) do
             if space.ManagedSpaceID == spaceID then
-                return managedDisplay["Display Identifier"]
+                local answer = managedDisplay["Display Identifier"]
+                if answer == "Main" then answer = screen.mainScreen():getUUID() end
+
+                return answer
             end
         end
     end
@@ -648,6 +676,7 @@ end
 ---      * `hs.host.locale.current()`
 ---      * `hs.inspect(hs.host.locale.preferredLanguages())`
 ---      * `hs.inspect(hs.host.locale.details())`
+---      * `hs.spaces.screensHaveSeparateSpaces()`
 module.missionControlSpaceNames = function(...)
     local args, closeMC = { ... }, true
     assert(#args < 2, "expected no more than 1 arguments")
@@ -685,7 +714,7 @@ end
 --- Adds a new space on the specified screen
 ---
 --- Parameters:
----  * `screen` - an optional screen specification identifying the screen to create the new space on. The screen may be specified by it's ID (`hs.screen:id()`), it's UUID (`hs.screen:getUUID()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
+---  * `screen` - an optional screen specification identifying the screen to create the new space on. The screen may be specified by its ID (`hs.screen:id()`), its UUID (`hs.screen:getUUID()`), the string "Main" (a shortcut for `hs.screen.mainScreen()`), the string "Primary" (a shortcut for `hs.screen.primaryScreen()`), or as an `hs.screen` object. If no screen is specified, the screen returned by `hs.screen.mainScreen()` is used.
 ---  * `closeMC` - an optional boolean, default true, specifying whether or not the Mission Control display should be closed after adding the new space.
 ---
 --- Returns:
@@ -710,14 +739,21 @@ module.addSpaceToScreen = function(...)
         screenID = screen.mainScreen():id()
     elseif getmetatable(screenID) == hs.getObjectMetatable("hs.screen") then
         screenID = screenID:id()
-    elseif type(screenID) == "string" and #screenID == 36 then
-        for _,v in ipairs(screen.allScreens()) do
-            if v:getUUID() == screenID then
-                screenID = v:id()
-                break
+    elseif type(screenID) == "string" then
+        if #screenID == 36 then
+            for _,v in ipairs(screen.allScreens()) do
+                if v:getUUID() == screenID then
+                    screenID = v:id()
+                    break
+                end
             end
+        elseif screenID:lower() == "main" then
+            screenID = screen.mainScreen():id()
+        elseif screenID:lower() == "primary" then
+            screenID = screen.primaryScreen():id()
         end
     end
+
     assert(math.type(screenID) == "integer", "screen id must be an integer")
     assert(type(closeMC) == "boolean", "close flag must be boolean")
 
