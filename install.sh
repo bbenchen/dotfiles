@@ -86,8 +86,8 @@ else
     fi
     ln -snf "$DOTFILES"/config/coursier "$HOME"/Library/Preferences/Coursier
     ln -snf "$DOTFILES"/gitconfig_macos "$HOME"/.gitconfig
-    mkdir -p "$HOME"/.config/alacritty
-    ln -snf "$DOTFILES"/config/alacritty/alacritty_macos.yml "$HOME"/.config/alacritty/alacritty.yml
+    mkdir -p "$HOME"/.config
+    ln -snf "$DOTFILES"/config/kitty "$HOME"/.config/kitty
     if [ -d "$HOME/.hammerspoon" ]; then
         rm -rf "$HOME"/.hammerspoon
     fi
