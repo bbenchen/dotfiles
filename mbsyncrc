@@ -9,7 +9,7 @@ Port 993
 AuthMechs LOGIN
 SSLType IMAPS
 # CertificateFile /etc/ssl/certs/ca-certificates.crt
-CertificateFile /usr/local/etc/openssl@1.1/cert.pem  # MacOS
+CertificateFile /opt/homebrew/etc/openssl@1.1/cert.pem  # MacOS
 
 ##
 # Remote
