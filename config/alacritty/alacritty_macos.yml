@@ -18,16 +18,16 @@ scrolling:
 
 font:
   normal:
-    family: Sarasa Mono SC Nerd
+    family: Sarasa Fixed SC Nerd Font
     style: Regular
   bold:
-    family: Sarasa Mono SC Nerd
+    family: Sarasa Fixed SC Nerd Font
     style: Regular
   italic:
-    family: Sarasa Mono SC Nerd
+    family: Sarasa Fixed SC Nerd Font
     style: Italic
   bold_italic:
-    family: Sarasa Mono SC Nerd
+    family: Sarasa Fixed SC Nerd Font
     style: Italic
   size: 14.0
   offset:
