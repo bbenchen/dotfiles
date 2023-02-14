@@ -1,7 +1,15 @@
 # -*- mode: sh -*-
 
-if [[ $OSTYPE == darwin* && -d "/usr/local/sbin" ]]; then
-  export PATH="/usr/local/sbin:$PATH"
+if [[ $OSTYPE == darwin* ]]; then
+  if [[ -d "/usr/local/sbin" ]]; then
+    export PATH="/usr/local/sbin:$PATH"
+  fi
+  if [[ -d "/opt/homebrew/bin" ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+  fi
+  if [[ -d "/opt/homebrew/sbin" ]]; then
+    export PATH="/opt/homebrew/sbin:$PATH"
+  fi
 fi
 
 if [[ -d "$HOME/.bin" ]]; then
@@ -53,48 +61,48 @@ fi
 
 # other's path for macos
 if [[ $OSTYPE == darwin* ]]; then
-  if [[ -d "/usr/local/opt/e2fsprogs/bin" ]]; then
-    export PATH="/usr/local/opt/e2fsprogs/bin:$PATH"
+  if [[ -d "/opt/homebrew/opt/e2fsprogs/bin" ]]; then
+    export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/e2fsprogs/sbin" ]]; then
-    export PATH="/usr/local/opt/e2fsprogs/sbin:$PATH"
+  if [[ -d "/opt/homebrew/opt/e2fsprogs/sbin" ]]; then
+    export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/openssl/bin" ]]; then
-    export PATH="/usr/local/opt/openssl/bin:$PATH"
+  if [[ -d "/opt/homebrew/opt/openssl/bin" ]]; then
+    export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/ruby/bin" ]]; then
-    export PATH="/usr/local/opt/ruby/bin:$PATH"
+  if [[ -d "/opt/homebrew/opt/ruby/bin" ]]; then
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/gnu-indent/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/gnu-indent/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/gnu-indent/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/gnu-tar/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/gnu-tar/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/gnu-sed/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/gnu-sed/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/findutils/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/findutils/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/gawk/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/gawk/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/gawk/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/coreutils/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/usr/local/opt/grep/libexec/gnubin" ]]; then
-    export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+  if [[ -d "/opt/homebrew/opt/grep/libexec/gnubin" ]]; then
+    export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
   fi
 
   if [[ -d "$HOME/Library/Python/3.10/bin" ]]; then
