@@ -2,7 +2,7 @@
 
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-[[ -z "TERM" ]] && export TERM="xterm-256color"
+[[ -z "$TERM" ]] && export TERM="xterm-256color"
 export DOTFILES=$HOME/.dotfiles
 
 # editor
@@ -37,8 +37,8 @@ export GOPROXY="https://goproxy.cn,direct"
 export GOPRIVATE="git.iobox.me"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
-if [[ $OSTYPE == darwin* && -d "/usr/local/opt/go/libexec" ]]; then
-  export GOROOT="/usr/local/opt/go/libexec"
+if [[ $OSTYPE == darwin* && -d "/opt/homebrew/opt/go/libexec" ]]; then
+  export GOROOT="/opt/homebrew/opt/go/libexec"
 fi
 
 # lsp
