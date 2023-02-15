@@ -164,22 +164,12 @@ if cmd_exists "bat"; then
   alias cat="bat";
 fi
 
-# show system info
-if cmd_exists "neofetch" && is_gui ; then
-    neofetch
-fi
-
 if [[ "$(get_os)" == "macos" ]]; then
   alias aria2c="aria2c --file-allocation=none"
 fi
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ -z $INSIDE_EMACS ]] && is_gui ; then
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fi
-
-if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
-  [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
+if cmd_exists "direnv"; then
+  eval "$(direnv hook zsh)"
 fi
 
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -192,3 +182,17 @@ function zle-keymap-select zle-line-init zle-line-finish {
 zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
+
+# show system info
+if cmd_exists "neofetch" && is_gui ; then
+    neofetch
+fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ -z $INSIDE_EMACS ]] && is_gui ; then
+  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+fi
+
+if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
+  [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
+fi
