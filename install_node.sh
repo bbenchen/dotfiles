@@ -25,6 +25,7 @@ packages=(
     bash-language-server
     pyright
     dockerfile-language-server-nodejs
+    yaml-language-server
 )
 
 function check() {
