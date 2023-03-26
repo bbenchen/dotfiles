@@ -9,11 +9,3 @@
 # 	program = /opt/homebrew/bin/gpg
 [credential]
 	helper = osxkeychain
-[github]
-	user = cxb811201
-[pull]
-	rebase = false
-[magit]
-	extension = svn
-[svn]
-	rmdir = true

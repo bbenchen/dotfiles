@@ -36,3 +36,11 @@
 [commit]
   template = ~/.gitmessage
   gpgsign = true
+[github]
+	user = cxb811201
+[pull]
+	rebase = false
+[magit]
+	extension = svn
+[svn]
+	rmdir = true

@@ -10,11 +10,3 @@
 	# helper = store --file ~/.git_credentials
 	# install libsecret
 	helper = /usr/lib/git-core/git-credential-libsecret
-[github]
-	user = cxb811201
-[pull]
-	rebase = false
-[magit]
-	extension = svn
-[svn]
-	rmdir = true
