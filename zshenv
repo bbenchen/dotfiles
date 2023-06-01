@@ -33,8 +33,9 @@ export N_PREFIX="$HOME/.n"
 
 # golang
 export GO111MODULE=on
-export GOPROXY="https://goproxy.cn,direct"
+export GOPROXY="https://proxy.golang.com.cn,direct"
 export GOPRIVATE="git.iobox.me"
+export GOSUMDB="gosum.io+ce6e7565+AY5qEHUk/qmHc5btzW45JVoENfazw8LielDsaI+lEbq6"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 if [[ $OSTYPE == darwin* && -d "/opt/homebrew/opt/go/libexec" ]]; then
