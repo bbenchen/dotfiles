@@ -43,9 +43,9 @@ under the License.
  | values (values used when the setting is not specified) are provided.
  |
  |-->
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
   <!-- localRepository
    | The path to the local repository maven will use to store artifacts.
    |
@@ -82,6 +82,7 @@ under the License.
     -->
   </pluginGroups>
 
+  <!-- TODO Since when can proxies be selected as depicted? -->
   <!-- proxies
    | This is a list of proxies which can be used on this machine to connect to the network.
    | Unless otherwise specified (by system property or command-line switch), the first proxy
@@ -156,12 +157,12 @@ under the License.
       <url>http://my.repository.com/repo/path</url>
     </mirror>
      -->
-      <mirror>
-          <id>aliyun</id>
-          <mirrorOf>*,!spring-snapshot,!dnvriend,!superdream-releases,!superdream-snapshots</mirrorOf>
-          <name>aliyun maven</name>
-          <url>https://maven.aliyun.com/repository/public/</url>
-      </mirror>
+    <mirror>
+      <id>huaweicloud</id>
+      <mirrorOf>*,!spring-snapshot</mirrorOf>
+      <name>huaweicloud maven</name>
+      <url>https://repo.huaweicloud.com/repository/maven/</url>
+    </mirror>
   </mirrors>
 
   <!-- profiles
@@ -175,7 +176,7 @@ under the License.
    |
    | As noted above, profiles can be activated in a variety of ways. One way - the activeProfiles
    | section of this document (settings.xml) - will be discussed later. Another way essentially
-   | relies on the detection of a system property, either matching a particular value for the property,
+   | relies on the detection of a property, either matching a particular value for the property,
    | or merely testing its existence. Profiles can also be activated by JDK version prefix, where a
    | value of '1.4' might activate a profile when the build is executed on a JDK version of '1.4.2_07'.
    | Finally, the list of active profiles can be specified directly from the command line.
@@ -217,9 +218,9 @@ under the License.
     -->
 
     <!--
-     | Here is another profile, activated by the system property 'target-env' with a value of 'dev',
-     | which provides a specific path to the Tomcat instance. To use this, your plugin configuration
-     | might hypothetically look like:
+     | Here is another profile, activated by the property 'target-env' with a value of 'dev', which
+     | provides a specific path to the Tomcat instance. To use this, your plugin configuration might
+     | hypothetically look like:
      |
      | ...
      | <plugin>
