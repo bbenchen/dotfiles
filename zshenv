@@ -19,6 +19,8 @@ export SBT_OPTS="-Xms2048m -Xmx2048m -XX:ReservedCodeCacheSize=256m -XX:MaxMetas
 
 # brew
 if [[ $OSTYPE == darwin* ]]; then
+  # export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+  # export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
   export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
   export HOMEBREW_NO_AUTO_UPDATE=1
 fi
@@ -47,9 +49,9 @@ export LSP_USE_PLISTS=true
 
 # fix git-svn for macOS
 if [[ $OSTYPE == darwin* && -d "/usr/local/opt/subversion/lib/perl5/site_perl" ]]; then
-  local _dirs=($(ls "/usr/local/opt/subversion/lib/perl5/site_perl"))
+  _dirs=($(ls /usr/local/opt/subversion/lib/perl5/site_perl | awk '{print $1}'))
   for _dir in "${_dirs[@]}"; do
-    local _libdir="/usr/local/opt/subversion/lib/perl5/site_perl/${_dir}/darwin-thread-multi-2level"
+    _libdir="/usr/local/opt/subversion/lib/perl5/site_perl/${_dir}/darwin-thread-multi-2level"
     if [[ -d $_libdir ]]; then
       if [[ -z $PERL5LIB ]]; then
         export PERL5LIB="${_libdir}"
