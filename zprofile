@@ -48,17 +48,6 @@ export PATH="$N_PREFIX/bin:$PATH"
 # golang
 export PATH="${GOPATH//://bin:}/bin:$PATH"
 
-# gem for ruby
-if [[ -d "$HOME/.gem/ruby/2.6.0/bin" ]]; then
-  export PATH="$HOME/.gem/ruby/2.6.0/bin:$PATH"
-elif [[ -d "$HOME/.gem/ruby/2.7.0/bin" ]]; then
-  export PATH="$HOME/.gem/ruby/2.7.0/bin:$PATH"
-elif [[ -d "/usr/local/lib/ruby/gems/2.6.0/bin" ]]; then
-  export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
-elif [[ -d "/usr/local/lib/ruby/gems/2.7.0/bin" ]]; then
-  export PATH="/usr/local/lib/ruby/gems/2.7.0/bin:$PATH"
-fi
-
 # other's path for macos
 if [[ $OSTYPE == darwin* ]]; then
   if [[ -d "/opt/homebrew/opt/e2fsprogs/bin" ]]; then
