@@ -143,10 +143,6 @@ if [[ "$INSIDE_EMACS" = "vterm" ]] && [[ -n ${EMACS_VTERM_PATH} ]] && [[ -f ${EM
   source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
 fi
 
-if cmd_exists "most"; then
-  export PAGER='most'
-fi
-
 if cmd_exists "nvim"; then
   alias vim="nvim"
   alias vi="nvim"
@@ -162,6 +158,24 @@ fi
 
 if cmd_exists "bat"; then
   alias cat="bat";
+
+  if cmd_exists "fzf"; then
+    alias fzfpreview="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+  fi
+
+  function batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+  }
+
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+  function help() {
+    "$@" --help 2>&1 | bat --plain --language=help
+  }
+fi
+
+if cmd_exists "gman"; then
+  export MANPATH="$(gman --path)"
 fi
 
 if [[ "$(get_os)" == "macos" ]]; then

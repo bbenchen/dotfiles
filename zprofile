@@ -94,6 +94,10 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
   fi
 
+  if [[ -d "/opt/homebrew/opt/man-db/libexec/bin" ]]; then
+    export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
+  fi
+
   if [[ -d "$HOME/Library/Python/3.11/bin" ]]; then
     export PATH="$HOME/Library/Python/3.11/bin:$PATH"
   fi
