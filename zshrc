@@ -166,6 +166,7 @@ if cmd_exists "bat"; then
   function batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
   }
+  alias gd=batdiff
 
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
