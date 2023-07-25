@@ -6,7 +6,7 @@ export LC_ALL="en_US.UTF-8"
 export DOTFILES=$HOME/.dotfiles
 
 # editor
-export EDITOR="vim"
+[[ -z "$EDITOR" ]] && export EDITOR="vim"
 
 # java
 if [[ ! $OSTYPE == darwin* ]]; then
