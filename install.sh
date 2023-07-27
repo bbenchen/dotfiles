@@ -33,7 +33,7 @@ print_info "installing dotfiles..."
 cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
-ln -snf "$DOTFILES"/markdownlint.json "$HOME"/.markdownlint.json
+ln -snf "$DOTFILES"/markdownlintrc "$HOME"/.markdownlintrc
 ln -snf "$DOTFILES"/npmrc "$HOME"/.npmrc
 ln -snf "$DOTFILES"/vuerc "$HOME"/.vuerc
 ln -snf "$DOTFILES"/gemrc "$HOME"/.gemrc
