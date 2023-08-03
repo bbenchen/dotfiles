@@ -17,29 +17,18 @@ if [ -z "$GOPATH" ]; then
 fi
 
 packages=(
-    github.com/stamblerre/gocode
-    github.com/uudashr/gopkgs/v2/cmd/gopkgs
-    github.com/zmb3/gogetdoc
-    github.com/davidrjenni/reftools/cmd/fillstruct
-    github.com/josharian/impl
-    github.com/golangci/golangci-lint/cmd/golangci-lint
-    github.com/fatih/gomodifytags
-    github.com/cweill/gotests/gotests
-    github.com/google/gops
-    github.com/haya14busa/goplay/cmd/goplay
-    github.com/go-delve/delve/cmd/dlv
-    github.com/x-motemen/gore/cmd/gore
-
-    google.golang.org/protobuf/cmd/protoc-gen-go
-    google.golang.org/grpc/cmd/protoc-gen-go-grpc
-
-    mvdan.cc/gofumpt
-
     golang.org/x/tools/cmd/guru
     golang.org/x/tools/cmd/gorename
     golang.org/x/tools/cmd/goimports
     golang.org/x/tools/cmd/godoc
     golang.org/x/tools/gopls
+
+    mvdan.cc/gofumpt
+
+    github.com/x-motemen/gore/cmd/gore
+    github.com/fatih/gomodifytags
+    github.com/cweill/gotests/gotests
+    github.com/davidrjenni/reftools/cmd/fillstruct
 )
 
 function check() {
