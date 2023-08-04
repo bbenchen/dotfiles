@@ -29,6 +29,7 @@ packages=(
     github.com/fatih/gomodifytags
     github.com/cweill/gotests/gotests
     github.com/davidrjenni/reftools/cmd/fillstruct
+    github.com/josharian/impl
 )
 
 function check() {
