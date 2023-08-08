@@ -2,7 +2,7 @@
 
 source $DOTFILES/utils.sh
 
-if [[ -z $INSIDE_EMACS && -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && is_gui ; then
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && is_gui ; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -48,15 +48,9 @@ zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
 zinit ice atload"alias x=extract"
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
 
-if [[ -z $INSIDE_EMACS ]] && is_gui ; then
+if is_gui ; then
   zinit ice from"gh" depth=1
   zinit light romkatv/powerlevel10k
-else
-  if ! is_gui ; then
-    PURE_PROMPT_SYMBOL=">"
-  fi
-  zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-  zinit light sindresorhus/pure
 fi
 
 if cmd_exists "exa"; then
@@ -204,7 +198,7 @@ if cmd_exists "neofetch" && is_gui ; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ -z $INSIDE_EMACS ]] && is_gui ; then
+if is_gui ; then
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 fi
 
