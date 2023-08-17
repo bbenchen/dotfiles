@@ -19,7 +19,7 @@ Account fa
 # Local
 MaildirStore fa-local
 Path ~/.mail/fa-software.com/
-Inbox ~/.mail/fa-software.com/INBOX
+Inbox ~/.mail/fa-software.com/Inbox
 
 # Connections
 # Channel fa
@@ -31,35 +31,35 @@ Inbox ~/.mail/fa-software.com/INBOX
 
 Channel fa-inbox
 Far :fa-remote:"INBOX"
-Near :fa-local:"INBOX"
+Near :fa-local:"Inbox"
 Create Near
 Expunge Both
 SyncState *
 
 Channel fa-drafts
 Far :fa-remote:"&g0l6Pw-"
-Near :fa-local:"草稿"
+Near :fa-local:"Drafts"
 Create Near
 Expunge Both
 SyncState *
 
 Channel fa-spam
 Far :fa-remote:"&V4NXPpCuTvY-"
-Near :fa-local:"垃圾"
+Near :fa-local:"Spam"
 Create Near
 Expunge Both
 SyncState *
 
 Channel fa-sent
 Far :fa-remote:"&XfJT0ZAB-"
-Near :fa-local:"已发送"
+Near :fa-local:"Sent"
 Create Near
 Expunge Both
 SyncState *
 
 Channel fa-trash
 Far :fa-remote:"&XfJSIJZkkK5O9g-"
-Near :fa-local:"已删除"
+Near :fa-local:"Trash"
 Create Near
 Expunge Both
 SyncState *
@@ -71,3 +71,59 @@ Channel fa-drafts
 Channel fa-spam
 Channel fa-sent
 Channel fa-trash
+
+IMAPAccount qq
+Host imap.qq.com
+User 517926804@qq.com
+PassCmd "emacsclient -e '(+lookup/password :host \"imap.qq.com\" :user \"517926804@qq.com\")' | cut -d '\"' -f2"
+Port 993
+AuthMechs LOGIN
+SSLType IMAPS
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile /opt/homebrew/etc/openssl@1.1/cert.pem  # MacOS
+
+##
+# Remote
+IMAPStore qq-remote
+Account qq
+
+# Local
+MaildirStore qq-local
+Path ~/.mail/qq.com/
+Inbox ~/.mail/qq.com/Inbox
+
+# Connections
+Channel qq-inbox
+Far :qq-remote:"INBOX"
+Near :qq-local:"Inbox"
+Create Near
+Expunge Both
+SyncState *
+
+Channel qq-drafts
+Far :qq-remote:"Drafts"
+Near :qq-local:"Drafts"
+Create Near
+Expunge Both
+SyncState *
+
+Channel qq-sent
+Far :qq-remote:"Sent Messages"
+Near :qq-local:"Sent"
+Create Near
+Expunge Both
+SyncState *
+
+Channel qq-trash
+Far :qq-remote:"Deleted Messages"
+Near :qq-local:"Trash"
+Create Near
+Expunge Both
+SyncState *
+
+## Groups
+Group qq
+Channel qq-inbox
+Channel qq-drafts
+Channel qq-sent
+Channel qq-trash
