@@ -4,7 +4,7 @@
 IMAPAccount fa
 Host imap.qiye.aliyun.com
 User xianbin.chen@fa-software.com
-PassCmd "emacsclient -e '(+lookup/password :host \"imap.qiye.aliyun.com\" :user \"xianbin.chen@fa-software.com\")' | cut -d '\"' -f2"
+PassCmd "pass show mail/xianbin.chen@fa-software.com"
 Port 993
 AuthMechs LOGIN
 SSLType IMAPS
@@ -75,7 +75,7 @@ Channel fa-trash
 IMAPAccount qq
 Host imap.qq.com
 User 517926804@qq.com
-PassCmd "emacsclient -e '(+lookup/password :host \"imap.qq.com\" :user \"517926804@qq.com\")' | cut -d '\"' -f2"
+PassCmd "pass show mail/517926804@qq.com"
 Port 993
 AuthMechs LOGIN
 SSLType IMAPS
