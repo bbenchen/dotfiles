@@ -58,14 +58,6 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
   fi
 
-  if [[ -d "/opt/homebrew/opt/openssl/bin" ]]; then
-    export PATH="/opt/homebrew/opt/openssl/bin:$PATH"
-  fi
-
-  if [[ -d "/opt/homebrew/opt/ruby/bin" ]]; then
-    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-  fi
-
   if [[ -d "/opt/homebrew/opt/gnu-indent/libexec/gnubin" ]]; then
     export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
   fi
