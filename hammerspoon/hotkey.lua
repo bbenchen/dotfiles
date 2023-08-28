@@ -1,6 +1,6 @@
 local hotkey = require "hs.hotkey"
 local fnutils = require "hs.fnutils"
-local spaces = require "hs.spaces"
+-- local spaces = require "hs.spaces"
 
 -- Halves of the screen
 hotkey.bind({"ctrl","cmd"}, "h", fnutils.partial(winResize, "left"))
