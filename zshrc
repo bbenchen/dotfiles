@@ -21,8 +21,8 @@ zinit wait lucid for \
  blockf \
     zsh-users/zsh-completions \
  as"completion" is-snippet \
-    https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker \
-    https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose
+    https://github.com/greymd/docker-zsh-completion/tree/master/repos/docker/cli/master/contrib/completion/zsh/_docker \
+    https://github.com/greymd/docker-zsh-completion/blob/master/repos/docker/compose/master/contrib/completion/zsh/_docker-compose
 
 zinit ice wait lucid from"gh" depth=1
 zinit light-mode lucid for \
