@@ -24,9 +24,11 @@ set_app_input_method('Emacs', English)
 set_app_input_method('IntelliJ IDEA', English)
 set_app_input_method('Google Chrome', English)
 set_app_input_method('Microsoft Remote Desktop', English)
+set_app_input_method('Parallels Desktop', English)
 
 set_app_input_method('WeChat', Chinese)
 set_app_input_method('WPS Office', Chinese)
+set_app_input_method('wpsoffice', Chinese)
 
 hotkey.bind({'ctrl', 'cmd'}, ".", function()
     alert.show("App path:        "
