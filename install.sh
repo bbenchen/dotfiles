@@ -35,6 +35,7 @@ echo "$DOOMD"/bin/pinentry-emacs >> "$HOME"/.gnupg/gpg-agent.conf
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/msmtprc "$HOME"/.msmtprc
+ln -snf "$DOTFILES"/curlrc "$HOME"/.curlrc
 ln -snf "$DOTFILES"/markdownlintrc "$HOME"/.markdownlintrc
 ln -snf "$DOTFILES"/npmrc "$HOME"/.npmrc
 ln -snf "$DOTFILES"/vuerc "$HOME"/.vuerc
