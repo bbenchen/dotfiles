@@ -9,7 +9,6 @@ if [[ ! -d "$BASE_DIR" ]]; then BASE_DIR="$PWD"; fi
 packages=(
     npm-check
     @vue/cli
-    vls
     prettier
     js-beautify
     import-js
@@ -21,6 +20,7 @@ packages=(
     md5-cli
     typescript-formatter
     typescript-language-server
+    @vue/language-server
     vscode-langservers-extracted
     bash-language-server
     pyright
