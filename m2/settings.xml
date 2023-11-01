@@ -161,7 +161,7 @@ under the License.
       <id>huaweicloud</id>
       <mirrorOf>central</mirrorOf>
       <name>huaweicloud maven</name>
-      <url>https://repo.huaweicloud.com/repository/maven/</url>
+      <url>https://mirrors.huaweicloud.com/repository/maven/</url>
     </mirror>
   </mirrors>
 
