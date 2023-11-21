@@ -119,7 +119,7 @@ if [ "$(get_os)" != "macos" ]; then
     mkdir -p "$HOME"/.local/share
     cp -rf "$DOTFILES"/local/share/fcitx5 "$HOME"/.local/share
     if [ ! -d "$HOME/.local/share/fcitx5/rime" ]; then
-        sync_git_repo github cxb811201/rime-wubi86-jidian "$HOME"/.local/share/fcitx5/rime
+        sync_git_repo github bbenchan/rime-wubi86-jidian "$HOME"/.local/share/fcitx5/rime
     fi
     print_success "fcitx5 install successfully"
 fi
@@ -168,8 +168,8 @@ if [ ! -d "$EMACSD" ] || [ ! -d "$DOOMD" ]; then
         mv "$DOOMD" "$DOOMD".bak
     fi
 
-    sync_git_repo github cxb811201/doom-emacs "$EMACSD"
-    sync_git_repo github cxb811201/.doom.d "$DOOMD"
+    sync_git_repo github bbenchan/doom-emacs "$EMACSD"
+    sync_git_repo github bbenchan/.doom.d "$DOOMD"
     if cmd_exists "emacs"; then
         "$EMACSD"/bin/doom install --no-config --no-env
     fi
