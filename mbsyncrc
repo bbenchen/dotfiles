@@ -1,10 +1,10 @@
 ########################################
-# fa-saftware.com
+# tcl.com
 ########################################
-IMAPAccount fa
-Host imap.qiye.aliyun.com
-User xianbin.chen@fa-software.com
-PassCmd "pass show mail/xianbin.chen@fa-software.com"
+IMAPAccount tcl
+Host mail.tcl.com
+User ben.chen@tcl.com
+PassCmd "pass show mail/ben.chen@tcl.com"
 Port 993
 AuthMechs LOGIN
 SSLType IMAPS
@@ -13,64 +13,64 @@ CertificateFile /opt/homebrew/etc/ca-certificates/cert.pem  # MacOS
 
 ##
 # Remote
-IMAPStore fa-remote
-Account fa
+IMAPStore tcl-remote
+Account tcl
 
 # Local
-MaildirStore fa-local
-Path ~/.mail/fa-software.com/
-Inbox ~/.mail/fa-software.com/Inbox
+MaildirStore tcl-local
+Path ~/.mail/tcl.com/
+Inbox ~/.mail/tcl.com/Inbox
 
 # Connections
-# Channel fa
-# Far :fa-remote:
-# Near :fa-local:
+# Channel tcl
+# Far :tcl-remote:
+# Near :tcl-local:
 # Patterns *
 # Create Both
 # SyncState *
 
-Channel fa-inbox
-Far :fa-remote:"INBOX"
-Near :fa-local:"Inbox"
+Channel tcl-inbox
+Far :tcl-remote:"INBOX"
+Near :tcl-local:"Inbox"
 Create Near
 Expunge Both
 SyncState *
 
-Channel fa-drafts
-Far :fa-remote:"&g0l6Pw-"
-Near :fa-local:"Drafts"
+Channel tcl-drafts
+Far :tcl-remote:"&g0l6Pw-"
+Near :tcl-local:"Drafts"
 Create Near
 Expunge Both
 SyncState *
 
-Channel fa-spam
-Far :fa-remote:"&V4NXPpCuTvY-"
-Near :fa-local:"Spam"
+Channel tcl-spam
+Far :tcl-remote:"&V4NXPpCuTvY-"
+Near :tcl-local:"Spam"
 Create Near
 Expunge Both
 SyncState *
 
-Channel fa-sent
-Far :fa-remote:"&XfJT0ZAB-"
-Near :fa-local:"Sent"
+Channel tcl-sent
+Far :tcl-remote:"&XfJT0ZABkK5O9g-"
+Near :tcl-local:"Sent"
 Create Near
 Expunge Both
 SyncState *
 
-Channel fa-trash
-Far :fa-remote:"&XfJSIJZkkK5O9g-"
-Near :fa-local:"Trash"
+Channel tcl-trash
+Far :tcl-remote:"&XfJSIJZkkK5O9g-"
+Near :tcl-local:"Trash"
 Create Near
 Expunge Both
 SyncState *
 
 ## Groups
-Group fa
-Channel fa-inbox
-Channel fa-drafts
-Channel fa-spam
-Channel fa-sent
-Channel fa-trash
+Group tcl
+Channel tcl-inbox
+Channel tcl-drafts
+Channel tcl-spam
+Channel tcl-sent
+Channel tcl-trash
 
 IMAPAccount qq
 Host imap.qq.com
