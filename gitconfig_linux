@@ -2,7 +2,7 @@
 [include]
 	path = ~/.gitconfig_global
 [user]
-	name = Ben Chan
+	name = Ben Chen
   email = 517926804@qq.com
   signingkey = E71C70ACBF4CA143
 [credential]

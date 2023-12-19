@@ -37,7 +37,7 @@
   template = ~/.gitmessage
   gpgsign = true
 [github]
-	user = bbenchan
+	user = bbenchen
 [pull]
 	rebase = false
 [magit]
