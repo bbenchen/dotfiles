@@ -25,6 +25,7 @@ packages=(
 
     mvdan.cc/gofumpt
 
+    github.com/go-delve/delve/cmd/dlv
     github.com/x-motemen/gore/cmd/gore
     github.com/fatih/gomodifytags
     github.com/cweill/gotests/gotests
