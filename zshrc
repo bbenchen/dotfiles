@@ -53,18 +53,10 @@ if is_gui ; then
   zinit light romkatv/powerlevel10k
 fi
 
-if cmd_exists "exa"; then
-  alias ls='exa --group-directories-first'
-  alias l='exa --group-directories-first -laH'
-  alias ll='exa --group-directories-first -lH'
-else
-  zinit ice wait lucid as"program" from"gh-r" \
-    mv"bin/exa -> exa" pick"exa" lucid \
-    atload"
-      alias ls='exa --group-directories-first'
-      alias l='exa --group-directories-first -laH'
-      alias ll='exa --group-directories-first -lH'"
-  zinit light ogham/exa
+if cmd_exists "eza"; then
+  alias ls='eza --group-directories-first'
+  alias l='eza --group-directories-first -laH'
+  alias ll='eza --group-directories-first -lH'
 fi
 
 zinit ice as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
