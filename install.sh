@@ -37,6 +37,7 @@ ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/msmtprc "$HOME"/.msmtprc
 ln -snf "$DOTFILES"/curlrc "$HOME"/.curlrc
 ln -snf "$DOTFILES"/markdownlintrc "$HOME"/.markdownlintrc
+ln -snf "$DOTFILES"/sqlfluff "$HOME"/.sqlfluff
 ln -snf "$DOTFILES"/npmrc "$HOME"/.npmrc
 ln -snf "$DOTFILES"/vuerc "$HOME"/.vuerc
 ln -snf "$DOTFILES"/gemrc "$HOME"/.gemrc
