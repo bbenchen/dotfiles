@@ -344,7 +344,6 @@ tmux_conf_theme_clock_style="24"
 #   - true
 #   - false (default)
 #   - disabled
-# on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
 tmux_conf_copy_to_os_clipboard=true
 
@@ -445,6 +444,8 @@ set -g @continuum-restore 'on'
 # then, use #{foo} in e.g. the 'tmux_conf_theme_status_left' or the
 # 'tmux_conf_theme_status_right' variables.
 
+# ------------------------------------------------------------------------------
+
 # # /!\ do not remove the following line
 # EOF
 #
@@ -459,5 +460,16 @@ set -g @continuum-restore 'on'
 #   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
 # }
 #
+# wan_ip_v4() {
+#   curl -f -s -m 2 -4 ifconfig.me
+#   sleep 300                                         # sleep for 5 minutes, throttle network requests whatever the value of status-interval
+# }
+#
+# wan_ip_v6() {
+#   curl -f -s -m 2 -6 ifconfig.me
+#   sleep 300                                         # sleep for 5 minutes, throttle network requests whatever the value of status-interval
+# }
+#
 # "$@"
 # # /!\ do not remove the previous line
+# #     do not write below this line
