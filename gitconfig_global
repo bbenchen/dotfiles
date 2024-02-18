@@ -33,6 +33,10 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[user]
+  name = Ben Chen
+  email = 517926804@qq.com
+  signingkey = 7443FCAA39EB6FD5
 [commit]
   template = ~/.gitmessage
   gpgsign = true
