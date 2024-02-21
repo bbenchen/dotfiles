@@ -31,7 +31,7 @@ export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static"
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup"
 
 # node
-export N_NODE_MIRROR=https://npm.taobao.org/mirrors/node
+export N_NODE_MIRROR="https://npmmirror.com/mirrors/node"
 export N_PREFIX="$HOME/.n"
 
 # golang
