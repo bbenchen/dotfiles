@@ -47,18 +47,3 @@ fi
 
 # lsp
 export LSP_USE_PLISTS=true
-
-# fix git-svn for macOS
-if [[ $OSTYPE == darwin* && -d "/usr/local/opt/subversion/lib/perl5/site_perl" ]]; then
-  _dirs=($(ls /usr/local/opt/subversion/lib/perl5/site_perl | awk '{print $1}'))
-  for _dir in "${_dirs[@]}"; do
-    _libdir="/usr/local/opt/subversion/lib/perl5/site_perl/${_dir}/darwin-thread-multi-2level"
-    if [[ -d $_libdir ]]; then
-      if [[ -z $PERL5LIB ]]; then
-        export PERL5LIB="${_libdir}"
-      else
-        export PERL5LIB="${_libdir}:$PERL5LIB"
-      fi
-    fi
-  done
-fi
