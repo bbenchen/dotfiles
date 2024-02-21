@@ -93,4 +93,8 @@ if [[ $OSTYPE == darwin* ]]; then
   if [[ -d "$HOME/Library/Python/3.11/bin" ]]; then
     export PATH="$HOME/Library/Python/3.11/bin:$PATH"
   fi
+
+  if [[ -d "$HOME/Library/Python/3.12/bin" ]]; then
+    export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+  fi
 fi
