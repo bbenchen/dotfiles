@@ -8,7 +8,7 @@ if [[ ! -d "$BASE_DIR" ]]; then BASE_DIR="$PWD"; fi
 
 # GO111MODULE=on
 if [ -z "$GOPROXY" ]; then
-  GOPROXY="https://proxy.golang.com.cn,direct"
+  GOPROXY="https://goproxy.io,direct"
   GOSUMDB="gosum.io+ce6e7565+AY5qEHUk/qmHc5btzW45JVoENfazw8LielDsaI+lEbq6"
 fi
 
