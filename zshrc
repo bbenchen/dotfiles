@@ -1,198 +1,258 @@
 # -*- mode: sh -*-
 
-source $DOTFILES/utils.sh
+# shellcheck source=/dev/null
+source "$DOTFILES/utils.sh"
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] && is_gui ; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit"
+[ ! -d "$ZINIT_HOME" ] && sync_git_repo github zdharma-continuum/zinit "$ZINIT_HOME"
+# shellcheck source=/dev/null
+source "${ZINIT_HOME}/zinit.zsh"
+autoload -Uz _zinit
+# shellcheck disable=SC2154
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-source ~/.zinit/bin/zinit.zsh
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode depth"1" for \
+      zdharma-continuum/zinit-annex-bin-gem-node \
+      zdharma-continuum/zinit-annex-patch-dl
 
-zinit light-mode for \
-  is-snippet OMZ::lib/history.zsh \
-  is-snippet OMZ::lib/key-bindings.zsh \
-  MichaelAquilina/zsh-you-should-use
-
+# Oh My Zsh
 zinit wait lucid for \
- atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+  OMZL::clipboard.zsh \
+  OMZL::directories.zsh \
+  OMZL::history.zsh \
+  OMZL::key-bindings.zsh \
+  OMZP::brew \
+  OMZP::colored-man-pages \
+  OMZP::cp \
+  OMZP::extract \
+  OMZP::fancy-ctrl-z \
+  OMZP::git-lfs\
+  OMZP::git \
+  OMZP::jenv \
+  OMZP::ssh \
+  OMZP::sudo \
+  load"command -v tmux &> /dev/null" atinit"ZSH_TMUX_FIXTERM=false" \
+  OMZP::tmux \
+  OMZP::urltools
+
+# Completion enhancements
+zinit wait lucid light-mode for \
+  atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
- atload"!_zsh_autosuggest_start" \
+  atload"_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
- blockf \
-    zsh-users/zsh-completions \
- as"completion" is-snippet \
-    https://github.com/greymd/docker-zsh-completion/tree/master/repos/docker/cli/master/contrib/completion/zsh/_docker \
-    https://github.com/greymd/docker-zsh-completion/blob/master/repos/docker/compose/master/contrib/completion/zsh/_docker-compose
+  blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
 
-zinit ice wait lucid from"gh" depth=1
-zinit light-mode lucid for \
-  hlissner/zsh-autopair \
-  load"command -v lua &> /dev/null" \
-  skywind3000/z.lua \
-  load"command -v fzf &> /dev/null" \
-  Aloxaf/fzf-tab \
-  load"command -v fzf &> /dev/null" \
-  joshskidmore/zsh-fzf-history-search \
-  mdumitru/git-aliases \
-  load"command -v git-lfs &> /dev/null" \
-  nekofar/zsh-git-lfs \
-  arzzen/calc.plugin.zsh
+zinit wait lucid light-mode depth"1" for \
+  MichaelAquilina/zsh-you-should-use \
+  hlissner/zsh-autopair
 
-# snippet
-zinit ice atinit"ZSH_TMUX_FIXTERM=false"
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
-if brew_exists ; then
-   zinit snippet OMZ::plugins/brew/brew.plugin.zsh
-fi
-zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
-zinit ice atload"alias x=extract"
-zinit snippet OMZ::plugins/extract/extract.plugin.zsh
+#
+# Utilities
+#
 
-if is_gui ; then
-  zinit ice from"gh" depth=1
-  zinit light romkatv/powerlevel10k
-fi
-
-if cmd_exists "eza"; then
-  alias ls='eza --group-directories-first'
-  alias l='eza --group-directories-first -laH'
-  alias ll='eza --group-directories-first -lH'
-fi
-
+# httpstat
 zinit ice as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
 zinit light b4b4r07/httpstat
 
-# complete for ssh_host
-function _all_ssh_host() {
-  local _known_hosts=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })
-  local _conf_hosts=()
-  if [[ -f "$HOME/.ssh/config" ]]; then
-    _conf_hosts=($(egrep '^Host.*' $HOME/.ssh/config | awk '{print $2}' | grep -v '^*' | sed -e 's/\.*\*$//'))
-  fi
+# direnv
+zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
+  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+  pick"direnv" src="zhook.zsh"
+zinit light direnv/direnv
 
-  local _hosts=("$_known_hosts[@]" "$_conf_hosts[@]")
+# ripgrep
+zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
+zinit light BurntSushi/ripgrep
 
-  echo ${(u)_hosts}
-}
+# fd
+zinit ice as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
+zinit light sharkdp/fd
 
-zstyle -e ':completion:*:hosts' hosts 'reply=($(_all_ssh_host))'
+# bat
+zinit ice as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
+zinit light sharkdp/bat
 
-if [[ -n $INSIDE_EMACS || -n $TMUX ]] && cmd_exists "jenv" ; then
-  export PATH=${PATH//$HOME\/.jenv\/shims:}
-  eval "$(jenv init - zsh)"
+# delta git diff
+zinit ice as"command" from"gh-r" mv"delta* -> delta" pick"delta"
+zinit light dandavison/delta
+
+# z
+zinit ice as"command" from"gh-r" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh" nocompile'!'
+zinit light ajeetdsouza/zoxide
+export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(eza --tree --icons --level 3 --color=always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
+
+# Git extras
+zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
+zinit light tj/git-extras
+
+# Prettify ls
+if cmd_exists "eza"; then
+  alias ls='eza --group-directories-first'
+  alias tree='ls --tree'
+elif cmd_exists "gls"; then
+  alias ls='gls --color=tty --group-directories-first'
+else
+  alias ls='ls --color=tty --group-directories-first'
 fi
 
-alias tailf="tail -f"
-alias t="tail -f"
+# Homebrew completion
+if cmd_exists "brew"; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    autoload -Uz compinit
+    compinit
+fi
+
+# fzf
+zinit ice from"gh-r" as"program"
+zinit light junegunn/fzf
+
+zinit wait lucid depth"1" for \
+  wfxr/forgit \
+  joshskidmore/zsh-fzf-history-search
+
+zinit ice wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
+zinit light Aloxaf/fzf-tab
+
+zstyle ':fzf-tab:*' switch-group '[' ']'
+zstyle ':completion:*:descriptions' format '[%d]'
+zstyle ':completion:complete:*:options' sort false
+zstyle ':completion:complete:*:options' sort false
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
+       fzf-preview 'eza -1 --icons --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+     fzf-preview 'echo ${(P)word}'
+
+# Preivew `kill` and `ps` commands
+# shellcheck disable=SC2016
+zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w -w'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
+       '[[ $group == "[process ID]" ]] &&
+        if [[ $OSTYPE == darwin* ]]; then
+            ps -p $word -o comm="" -w -w
+        elif [[ $OSTYPE == linux* ]]; then
+            ps --pid=$word -o cmd --no-headers -w -w
+        fi'
+zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=down:3:wrap'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+
+# Preivew `git` commands
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+     'git diff $word | delta'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+     'git log --color=always $word'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+     'git help $word | bat -plman --color=always'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+     'case "$group" in
+     "commit tag") git show --color=always $word ;;
+     *) git show --color=always $word | delta ;;
+     esac'
+zstyle ':completion:*:git-checkout:*' sort false
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+     'case "$group" in
+     "modified file") git diff $word | delta ;;
+     "recent commit object name") git show --color=always $word | delta ;;
+     *) git log --color=always $word ;;
+     esac'
+
+# Privew help
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
+
+# export FZF_DEFAULT_OPTS='--height 60% --border --info=inline--layout=reverse'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
+export FZF_ALT_C_OPTS="--preview '(eza --tree --icons --level 3 --color=always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
+
+# theme
+zinit ice as"command" from"gh-r" \
+  atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+  atpull"%atclone" src"init.zsh"
+zinit light starship/starship
+
+# Alias
+alias h="history"
+alias q="exit"
 
 alias goto_dotfiles='cd $DOTFILES'
 alias upgrade_dotfiles='cd $DOTFILES && git pull; cd - >/dev/null'
 alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
-if cmd_exists "emacsclient"; then
-  local _emacsclient=($(command -v "emacsclient"))
-  export EDITOR="${_emacsclient} -a \"emacs\""
-  alias e="$EDITOR -n"
-  alias ec="$EDITOR -n -c"
-  alias ef="$EDITOR -c"
-  alias te="$EDITOR -a '' -nw"
-fi
-
-if cmd_exists "node"; then
-  alias urlencode='node -e "console.log(encodeURIComponent(process.argv[1]))"'
-  alias urldecode='node -e "console.log(decodeURIComponent(process.argv[1]))"'
-fi
-
-if cmd_exists "md5-cli"; then
-  alias md5="md5-cli"
-fi
-
-function encode64() {
-  if [[ $# -eq 0 ]]; then
-    cat | base64
-  else
-    printf '%s' $1 | base64
-  fi
-}
-
-function decode64() {
-  if [[ $# -eq 0 ]]; then
-    cat | base64 --decode
-  else
-    printf '%s' $1 | base64 --decode
-  fi
-}
-alias e64=encode64
-alias d64=decode64
-
-if [[ "$INSIDE_EMACS" = "vterm" ]] && [[ -n ${EMACS_VTERM_PATH} ]] && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
-  source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
-fi
-
-if cmd_exists "nvim"; then
-  alias vim="nvim"
-  alias vi="nvim"
-fi
-
-if cmd_exists "dust"; then
-  alias du="dust";
-fi
-
-if cmd_exists "duf"; then
-  alias df="duf";
-fi
-
+cmd_exists "nvim" && alias vim="nvim" && alias vi="nvim"
 if cmd_exists "bat"; then
-  alias cat="bat";
-
-  if cmd_exists "fzf"; then
-    alias fzfpreview="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-  fi
-
-  function batdiff() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
-  }
-  alias gd=batdiff
-
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-  function help() {
+  alias cat='bat -p --wrap character'
+  help() {
     "$@" --help 2>&1 | bat --plain --language=help
   }
 fi
-
-if cmd_exists "gman"; then
-  export MANPATH="$(gman --path)"
+cmd_exists "fd" && alias find="fd"
+cmd_exists "btm" && alias top="btm"
+cmd_exists "rg" && alias grep="rg"
+cmd_exists "delta" && alias diff="delta"
+cmd_exists "duf" && alias df="duf"
+cmd_exists "dust" && alias du="dust"
+cmd_exists "gping" && alias ping="gping"
+if cmd_exists "yazi"; then
+  alias ranger="yazi"
+  alias lf="yazi"
+  ya() {
+    local tmp
+    tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+    yazi "$@" --cwd-file="$tmp"
+    if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+      cd -- "$cwd" || exit
+    fi
+    rm -f -- "$tmp"
+  }
 fi
-
 if [[ "$(get_os)" == "macos" ]]; then
   alias aria2c="aria2c --file-allocation=none"
 fi
-
-if cmd_exists "direnv"; then
-  eval "$(direnv hook zsh)"
+if cmd_exists "emacsclient"; then
+  # shellcheck disable=SC2168,SC2207
+  local _emacsclient=($(command -v "emacsclient"))
+  # shellcheck disable=SC2128
+  export EDITOR="${_emacsclient} -a \"\""
+  # shellcheck disable=SC2139
+  alias e="$EDITOR -n"
+  # shellcheck disable=SC2139
+  alias ec="$EDITOR -n -c"
+  # shellcheck disable=SC2139
+  alias ef="$EDITOR -c"
+  # shellcheck disable=SC2139
+  alias te="$EDITOR -nw"
 fi
 
-function zle-keymap-select zle-line-init zle-line-finish {
-  case $KEYMAP in
-      vicmd)      print -n '\033[1 q';; # block cursor
-      viins|main) print -n '\033[4 q';; # underline cursor
-  esac
-}
+if [[ -n "$INSIDE_EMACS" ]]; then
+  # shellcheck disable=SC2034
+  DISABLE_AUTO_TITLE="true"
 
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
+  if [[ "$INSIDE_EMACS" = "vterm" ]] && [[ -n "$EMACS_VTERM_PATH" ]] && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
+    source "${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh"
+  fi
+fi
 
 # show system info
-if cmd_exists "neofetch" && is_gui ; then
-    neofetch
-fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if is_gui ; then
-  [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-fi
+cmd_exists "neofetch" && is_gui && neofetch
 
 if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
   [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx

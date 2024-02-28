@@ -24,6 +24,9 @@ if [[ $OSTYPE == darwin* ]]; then
   export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
   export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
   export HOMEBREW_NO_AUTO_UPDATE=1
+
+  # For Apple Silicon CPU
+  [[ $CPUTYPE == arm* && -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # rust

@@ -82,10 +82,6 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   fi
 
-  if [[ -d "/opt/homebrew/opt/grep/libexec/gnubin" ]]; then
-    export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-  fi
-
   if [[ -d "/opt/homebrew/opt/man-db/libexec/bin" ]]; then
     export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
   fi
