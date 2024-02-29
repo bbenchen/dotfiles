@@ -376,6 +376,11 @@ set -g default-command "${SHELL}"
 # start with mouse mode enabled
 set -g mouse on
 
+# enable Yazi's image preview
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 set -g status-keys vi
