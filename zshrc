@@ -31,6 +31,7 @@ zinit wait lucid for \
   OMZP::git-lfs\
   OMZP::git \
   OMZP::jenv \
+  OMZP::mvn \
   OMZP::ssh \
   OMZP::sudo \
   load"command -v tmux &> /dev/null" atinit"ZSH_TMUX_FIXTERM=false" \
