@@ -1,0 +1,13 @@
+[manager]
+ratio       = [ 1, 3, 4 ]
+show_hidden = true
+
+[preview]
+max_width  = 1200
+max_height = 1800
+
+[plugin]
+prepend_previewers = [
+  { mime = "text/csv", exec = "miller" },
+  { name = "*.md", exec = "glow" },
+]

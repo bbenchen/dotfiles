@@ -213,8 +213,6 @@ cmd_exists "duf" && alias df="duf"
 cmd_exists "dust" && alias du="dust"
 cmd_exists "gping" && alias ping="gping"
 if cmd_exists "yazi"; then
-  alias ranger="yazi"
-  alias lf="yazi"
   ya() {
     local tmp
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
@@ -224,6 +222,8 @@ if cmd_exists "yazi"; then
     fi
     rm -f -- "$tmp"
   }
+  alias ranger="ya"
+  alias lf="ya"
 fi
 if [[ "$(get_os)" == "macos" ]]; then
   alias aria2c="aria2c --file-allocation=none"

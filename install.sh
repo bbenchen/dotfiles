@@ -96,7 +96,11 @@ else
     fi
     ln -snf "$DOTFILES"/hammerspoon "$HOME"/.hammerspoon
 fi
-ln -snf "$DOTFILES"/config/ranger "$HOME"/.config/ranger
+mkdir -p "$HOME"/.config/yazi
+ln -snf "$DOTFILES"/config/yazi/yzai.toml "$HOME"/.config/yazi/yazi.toml
+mkdir -p "$HOME"/.config/yazi/plugins
+sync_git_repo github Reledia/glow.yazi "$HOME"/.config/yazi/plugins/glow.yazi
+sync_git_repo github Reledia/miller.yazi "$HOME"/.config/yazi/plugins/miller.yazi
 
 print_success "dotfiles install successfully"
 
