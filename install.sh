@@ -96,6 +96,7 @@ else
     fi
     ln -snf "$DOTFILES"/hammerspoon "$HOME"/.hammerspoon
 fi
+ln -snf "$DOTFILES"/config/fastfetch "$HOME"/.config/fastfetch
 mkdir -p "$HOME"/.config/yazi
 ln -snf "$DOTFILES"/config/yazi/yzai.toml "$HOME"/.config/yazi/yazi.toml
 mkdir -p "$HOME"/.config/yazi/plugins

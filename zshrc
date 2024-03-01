@@ -253,7 +253,7 @@ if [[ -n "$INSIDE_EMACS" ]]; then
 fi
 
 # show system info
-cmd_exists "neofetch" && is_gui && neofetch
+cmd_exists "fastfetch" && is_gui && fastfetch
 
 if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
   [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
