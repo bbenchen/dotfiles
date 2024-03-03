@@ -68,8 +68,6 @@ if [ "$(get_os)" != "macos" ]; then
     mkdir -p "$HOME"/.local/share
     cp -rf "$DOTFILES"/local/share/applications "$HOME"/.local/share
     ln -snf "$DOTFILES"/config/fontconfig "$HOME"/.config/fontconfig
-    mkdir -p "$HOME"/.config/alacritty
-    ln -snf "$DOTFILES"/config/alacritty/alacritty_linux.yml "$HOME"/.config/alacritty/alacritty.yml
     ln -snf "$DOTFILES"/config/bashtop "$HOME"/.config/bashtop
     ln -snf "$DOTFILES"/config/dunst "$HOME"/.config/dunst
     ln -snf "$DOTFILES"/config/dwm "$HOME"/.config/dwm
