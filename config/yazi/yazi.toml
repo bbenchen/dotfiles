@@ -40,6 +40,7 @@ reveal = [
   { exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
+  { exec = 'ouch decompress "$1"', desc = "Extract here(ouch)", for = "unix" },
   { exec = 'unar "$1"', desc = "Extract here", for = "unix" },
   { exec = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
