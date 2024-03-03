@@ -87,13 +87,12 @@ else
     fi
     ln -snf "$DOTFILES"/config/coursier "$HOME"/Library/Preferences/Coursier
     ln -snf "$DOTFILES"/gitconfig_macos "$HOME"/.gitconfig
-    mkdir -p "$HOME"/.config
-    ln -snf "$DOTFILES"/config/kitty "$HOME"/.config/kitty
     if [ -d "$HOME/.hammerspoon" ]; then
         rm -rf "$HOME"/.hammerspoon
     fi
     ln -snf "$DOTFILES"/hammerspoon "$HOME"/.hammerspoon
 fi
+ln -snf "$DOTFILES"/config/kitty "$HOME"/.config/kitty
 ln -snf "$DOTFILES"/config/fastfetch "$HOME"/.config/fastfetch
 ln -snf "$DOTFILES"/config/yazi "$HOME"/.config/yazi/yazi
 
