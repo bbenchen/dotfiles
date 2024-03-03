@@ -93,6 +93,7 @@ else
     ln -snf "$DOTFILES"/hammerspoon "$HOME"/.hammerspoon
 fi
 ln -snf "$DOTFILES"/config/kitty "$HOME"/.config/kitty
+ln -snf "$DOTFILES"/config/wezterm "$HOME"/.config/wezterm
 ln -snf "$DOTFILES"/config/fastfetch "$HOME"/.config/fastfetch
 ln -snf "$DOTFILES"/config/yazi "$HOME"/.config/yazi/yazi
 
