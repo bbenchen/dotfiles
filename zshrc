@@ -78,7 +78,7 @@ zinit ice as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
 zinit light sharkdp/bat
 
 # delta git diff
-zinit ice as"command" from"gh-r" mv"delta* -> delta" pick"delta"
+zinit ice as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
 zinit light dandavison/delta
 
 # z
