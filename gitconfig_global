@@ -19,6 +19,8 @@
 	tool = ediff
 [merge]
 	tool = ediff
+[fetch]
+  prune = true
 [difftool "ediff"]
 	cmd = emacsclient -n -a \"\" --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [mergetool "ediff"]
