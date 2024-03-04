@@ -7,6 +7,9 @@
 	editor = emacsclient -a=\\\"\\\"
 	quotepath = false
 	longpaths = true
+  pager = delta --width ${FZF_PREVIEW_COLUMNS:-$COLUMNS}
+[interactive]
+	diffFilter = delta --color-only
 [color]
 	branch = auto
 	diff = auto
@@ -15,13 +18,27 @@
 [push]
 	default = current
 	recurseSubmodules = check
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
+  true-color = always
 [diff]
 	tool = ediff
+  colorMoved = default
 [merge]
 	tool = ediff
+  conflictstyle = diff3
 [fetch]
   prune = true
   pruneTags = true
+[pull]
+	rebase = false
+[commit]
+  template = ~/.gitmessage
+  gpgsign = true
+[tag]
+  gpgSign = true
 [difftool "ediff"]
 	cmd = emacsclient -n -a \"\" --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
 [mergetool "ediff"]
@@ -40,13 +57,8 @@
   name = Ben Chen
   email = 517926804@qq.com
   signingkey = 7443FCAA39EB6FD5
-[commit]
-  template = ~/.gitmessage
-  gpgsign = true
 [github]
 	user = bbenchen
-[pull]
-	rebase = false
 [magit]
 	extension = svn
 [svn]
