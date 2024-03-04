@@ -29,7 +29,6 @@ zinit wait lucid for \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
   OMZP::brew \
-  OMZP::colored-man-pages \
   OMZP::cp \
   OMZP::extract \
   OMZP::fancy-ctrl-z \
@@ -114,6 +113,7 @@ zinit light junegunn/fzf
 zinit id-as wait lucid depth"1" for \
   wfxr/forgit \
   joshskidmore/zsh-fzf-history-search
+export FORGIT_FZF_DEFAULT_OPTS="--exact --border --cycle --reverse"
 
 zinit ice id-as wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab
@@ -202,6 +202,7 @@ alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
 cmd_exists "nvim" && alias vim="nvim" && alias vi="nvim"
 if cmd_exists "bat"; then
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
   alias cat="bat -p --wrap character"
   alias -g -- -h="-h 2>&1 | bat --language=help --style=plain"
   alias -g -- --help="--help 2>&1 | bat --language=help --style=plain"
