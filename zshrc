@@ -3,6 +3,11 @@
 # shellcheck source=/dev/null
 source "$DOTFILES/utils.sh"
 
+ZPFX="$HOME/.local"
+typeset -A ZINIT
+ZINIT[MAN_DIR]="$ZPFX/share/man"
+# shellcheck disable=SC2034
+MANPATH="${ZINIT[MAN_DIR]}:$MANPATH"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit"
 [ ! -d "$ZINIT_HOME" ] && sync_git_repo github zdharma-continuum/zinit "$ZINIT_HOME"
 # shellcheck source=/dev/null
@@ -13,7 +18,7 @@ autoload -Uz _zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
-zinit light-mode depth"1" for \
+zinit id-as light-mode depth"1" for \
       zdharma-continuum/zinit-annex-bin-gem-node \
       zdharma-continuum/zinit-annex-patch-dl
 
@@ -39,7 +44,7 @@ zinit wait lucid for \
   OMZP::urltools
 
 # Completion enhancements
-zinit wait lucid light-mode for \
+zinit id-as wait lucid light-mode for \
   atinit"ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'; ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma-continuum/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start" \
@@ -47,7 +52,7 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions
 
-zinit wait lucid light-mode depth"1" for \
+zinit id-as wait lucid light-mode depth"1" for \
   MichaelAquilina/zsh-you-should-use \
   hlissner/zsh-autopair
 
@@ -56,40 +61,40 @@ zinit wait lucid light-mode depth"1" for \
 #
 
 # httpstat
-zinit ice as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
+zinit ice id-as as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
 zinit light b4b4r07/httpstat
 
 # direnv
-zinit ice from"gh-r" as"program" mv"direnv* -> direnv" \
+zinit ice id-as from"gh-r" as"program" mv"direnv* -> direnv" \
   atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
   pick"direnv" src="zhook.zsh"
 zinit light direnv/direnv
 
 # ripgrep
-zinit ice from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
+zinit ice id-as from"gh-r" as"program" mv"ripgrep* -> ripgrep" pick"ripgrep/rg"
 zinit light BurntSushi/ripgrep
 
 # fd
-zinit ice as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
+zinit ice id-as as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
 zinit light sharkdp/fd
 
 # bat
-zinit ice as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
+zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
 zinit light sharkdp/bat
 
 # delta git diff
-zinit ice as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
+zinit ice id-as as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
 zinit light dandavison/delta
 
 # z
-zinit ice as"command" from"gh-r" \
+zinit ice id-as as"command" from"gh-r" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
 export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(eza --tree --icons --level 3 --color=always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
 
 # Git extras
-zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
+zinit ice id-as wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
 zinit light tj/git-extras
 
 # Prettify ls
@@ -102,22 +107,15 @@ else
   alias ls='ls --color=tty --group-directories-first'
 fi
 
-# Homebrew completion
-if cmd_exists "brew"; then
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-    autoload -Uz compinit
-    compinit
-fi
-
 # fzf
-zinit ice from"gh-r" as"program"
+zinit ice id-as from"gh-r" as"program"
 zinit light junegunn/fzf
 
-zinit wait lucid depth"1" for \
+zinit id-as wait lucid depth"1" for \
   wfxr/forgit \
   joshskidmore/zsh-fzf-history-search
 
-zinit ice wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
+zinit ice id-as wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab
 
 zstyle ':fzf-tab:*' switch-group '[' ']'
@@ -189,7 +187,7 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_ALT_C_OPTS="--preview '(eza --tree --icons --level 3 --color=always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
 
 # theme
-zinit ice as"command" from"gh-r" \
+zinit ice id-as as"command" from"gh-r" \
   atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
   atpull"%atclone" src"init.zsh"
 zinit light starship/starship
