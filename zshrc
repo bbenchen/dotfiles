@@ -200,10 +200,13 @@ alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
 cmd_exists "nvim" && alias vim="nvim" && alias vi="nvim"
 if cmd_exists "bat"; then
-  alias cat='bat -p --wrap character'
-  help() {
-    "$@" --help 2>&1 | bat --plain --language=help
+  alias cat="bat -p --wrap character"
+  alias -g -- -h="-h 2>&1 | bat --language=help --style=plain"
+  alias -g -- --help="--help 2>&1 | bat --language=help --style=plain"
+  tailf () {
+    tail -f "$@" | bat --paging=never -l log
   }
+  alias t="tailf"
 fi
 cmd_exists "fd" && alias find="fd"
 cmd_exists "btm" && alias top="btm"

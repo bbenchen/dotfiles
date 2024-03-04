@@ -96,6 +96,7 @@ ln -snf "$DOTFILES"/config/kitty "$HOME"/.config/kitty
 ln -snf "$DOTFILES"/config/wezterm "$HOME"/.config/wezterm
 ln -snf "$DOTFILES"/config/fastfetch "$HOME"/.config/fastfetch
 ln -snf "$DOTFILES"/config/yazi "$HOME"/.config/yazi/yazi
+ln -snf "$DOTFILES"/config/bat "$HOME"/.config/bat
 
 print_success "dotfiles install successfully"
 
