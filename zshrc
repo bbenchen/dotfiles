@@ -171,6 +171,10 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
      *) git log --color=always $word ;;
      esac'
 
+# Preview `brew` commands
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
+
 # Privew help
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
