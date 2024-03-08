@@ -4,7 +4,7 @@ local hotkey = require "hs.hotkey"
 local alert = require "hs.alert"
 
 local function Chinese()
-  keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Rime")
+  keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hans")
 end
 local function English()
   keycodes.currentSourceID("com.apple.keylayout.US")
@@ -37,6 +37,9 @@ hotkey.bind({'ctrl', 'cmd'}, ".", function()
                .."\n"
                .."App name:      "
                ..window.focusedWindow():application():name()
+               .."\n"
+               .."BundleID:    "
+               ..window.focusedWindow():application():bundleID()
                .."\n"
                .."IM source id:  "
                ..keycodes.currentSourceID())

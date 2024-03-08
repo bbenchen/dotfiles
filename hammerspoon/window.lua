@@ -3,12 +3,15 @@
 -- Defines for window maximize toggler
 local frameCache = {}
 local logger = hs.logger.new("windows")
+local homeDir = os.getenv("HOME")
 
 -- Maximize window when specify application started.
 local maximizeApps = {
     "/Applications/kitty.app",
     "/Applications/Emacs.app",
     "/Applications/Google Chrome.app",
+    string.format("%s/Applications/Emacs.app", homeDir),
+    string.format("%s/Applications/Google Chrome.app", homeDir),
 }
 
 local windowCreateFilter = hs.window.filter.new():setDefaultFilter()
