@@ -4,7 +4,7 @@ require "window"
 require "space"
 require "hotkey"
 
-function reload(paths)
+local function reload(paths)
   local doReload = false
   for _, file in pairs(paths) do
     if file:sub(-4) == ".lua" then

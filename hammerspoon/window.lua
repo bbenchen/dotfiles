@@ -7,11 +7,10 @@ local homeDir = os.getenv("HOME")
 
 -- Maximize window when specify application started.
 local maximizeApps = {
-    "/Applications/kitty.app",
     "/Applications/Emacs.app",
     "/Applications/Google Chrome.app",
-    string.format("%s/Applications/Emacs.app", homeDir),
-    string.format("%s/Applications/Google Chrome.app", homeDir),
+    homeDir.."/Applications/Emacs.app",
+    homeDir.."/Applications/Google Chrome.app",
 }
 
 local windowCreateFilter = hs.window.filter.new():setDefaultFilter()

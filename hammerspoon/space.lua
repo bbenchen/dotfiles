@@ -1,7 +1,6 @@
 local fnutils = require "hs.fnutils"
 local window = require "hs.window"
 local spaces = require "hs.spaces"
-local screen = require "hs.screen"
 
 local tableLength = function(t)
   local len = 0
