@@ -30,7 +30,7 @@ fi
 print_info "installing dotfiles..."
 # common
 cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
-echo "$DOOMD"/bin/pinentry-emacs >> "$HOME"/.gnupg/gpg-agent.conf
+# echo "$DOOMD"/bin/pinentry-emacs >> "$HOME"/.gnupg/gpg-agent.conf
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/msmtprc "$HOME"/.msmtprc
