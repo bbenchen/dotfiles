@@ -103,7 +103,7 @@ if cmd_exists "eza"; then
 elif cmd_exists "gls"; then
   alias ls='gls --color=tty --group-directories-first'
 else
-  alias ls='ls --color=tty --group-directories-first'
+  alias ls='ls --color=tty'
 fi
 
 # fzf

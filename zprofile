@@ -4,12 +4,8 @@ if [[ $OSTYPE == darwin* ]]; then
   if [[ -d "/usr/local/sbin" ]]; then
     export PATH="/usr/local/sbin:$PATH"
   fi
-  if [[ -d "/opt/homebrew/bin" ]]; then
-    export PATH="/opt/homebrew/bin:$PATH"
-  fi
-  if [[ -d "/opt/homebrew/sbin" ]]; then
-    export PATH="/opt/homebrew/sbin:$PATH"
-  fi
+  # For Apple Silicon CPU
+  [[ $CPUTYPE == arm* && -f "/opt/homebrew/bin/brew" ]] && eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 if [[ -d "$HOME/.bin" ]]; then
