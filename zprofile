@@ -32,5 +32,5 @@ if [[ $OSTYPE == darwin* ]]; then
   [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/man-db/libexec/bin" ]] && export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
   [[ -d "$HOME/Library/Python/3.12/bin" ]] && export PATH="$HOME/Library/Python/3.12/bin:$PATH"
-  [[ -d "/Library/TeX/Distributions/.DefaultTeX/Contents/Man" ]] && export MANPATH="$MANPATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Man"
+  [[ -d "/Library/TeX/texbin" ]] && export MANPATH="$MANPATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Man"
 fi
