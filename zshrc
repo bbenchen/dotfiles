@@ -34,7 +34,6 @@ zinit wait lucid for \
   OMZP::fancy-ctrl-z \
   OMZP::git-lfs\
   OMZP::git \
-  OMZP::jenv \
   OMZP::mvn \
   OMZP::ssh \
   OMZP::sudo \
@@ -219,7 +218,7 @@ cmd_exists "duf" && alias df="duf"
 cmd_exists "dust" && alias du="dust"
 cmd_exists "gping" && alias ping="gping"
 if cmd_exists "yazi"; then
-  ya() {
+  yy() {
     local tmp
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
     yazi "$@" --cwd-file="$tmp"
@@ -228,8 +227,8 @@ if cmd_exists "yazi"; then
     fi
     rm -f -- "$tmp"
   }
-  alias ranger="ya"
-  alias lf="ya"
+  alias ranger="yy"
+  alias lf="yy"
 fi
 if [[ "$(get_os)" == "macos" ]]; then
   alias aria2c="aria2c --file-allocation=none"
