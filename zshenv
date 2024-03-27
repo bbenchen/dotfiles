@@ -12,7 +12,7 @@ export DOTFILES=$HOME/.dotfiles
 if [[ ! $OSTYPE == darwin* ]]; then
   export _JAVA_AWT_WM_NONREPARENTING=1
 fi
-export JAVA_OPTS="-XX:+UseNUMA -XX:+UseG1GC"
+# export JAVA_OPTS="-XX:+UseNUMA -XX:+UseG1GC"
 
 # sbt
 export SBT_OPTS="-Xms2048m -Xmx2048m -XX:ReservedCodeCacheSize=256m -XX:MaxMetaspaceSize=512m -Dsbt.override.build.repos=true"
