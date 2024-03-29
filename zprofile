@@ -14,11 +14,8 @@ fi
 [[ -d "$HOME/.doom.d/bin" ]] && export PATH="$HOME/.doom.d/bin:$PATH"
 [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
-# java
-if [[ -d "$HOME/.jenv/bin" ]]; then
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init - zsh)"
-fi
+# jenv
+[[ -d "$HOME/.jenv/bin" ]] && export PATH="$HOME/.jenv/shims:$HOME/.jenv/bin:$PATH"
 
 # node
 export PATH="$N_PREFIX/bin:$PATH"

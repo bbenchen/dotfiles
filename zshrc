@@ -105,6 +105,9 @@ else
   alias ls='ls --color=tty'
 fi
 
+# jenv
+cmd_exists "jenv" && eval "$(jenv init -)"
+
 # fzf
 zinit ice id-as from"gh-r" as"program"
 zinit light junegunn/fzf
