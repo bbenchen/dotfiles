@@ -10,6 +10,7 @@ end )
 
 local config = {
     -- 通用
+    audible_bell = 'Disabled',
     check_for_updates = false,
     front_end = 'WebGpu',
     use_ime = true,
