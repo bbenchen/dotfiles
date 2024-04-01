@@ -15,7 +15,10 @@ fi
 [[ -d "$HOME/.cargo/bin" ]] && export PATH="$HOME/.cargo/bin:$PATH"
 
 # jenv
-[[ -d "$HOME/.jenv/bin" ]] && export PATH="$HOME/.jenv/shims:$HOME/.jenv/bin:$PATH"
+if [[ -d "$HOME/.jenv/bin" ]]; then
+  export PATH="$HOME/.jenv/shims:$HOME/.jenv/bin:$PATH"
+  export JENV_LOADED=1
+fi
 
 # node
 export PATH="$N_PREFIX/bin:$PATH"

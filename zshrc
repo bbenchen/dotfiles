@@ -106,6 +106,7 @@ else
 fi
 
 # jenv
+unset JENV_LOADED
 cmd_exists "jenv" && eval "$(jenv init -)"
 
 # fzf
