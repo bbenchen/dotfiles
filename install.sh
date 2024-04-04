@@ -51,14 +51,14 @@ cp -rf "$DOTFILES"/m2/* "$HOME"/.m2
 mkdir -p "$HOME"/.sbt
 cp -rf "$DOTFILES"/sbt/* "$HOME"/.sbt
 ln -snf "$DOTFILES"/gitignore_global "$HOME"/.gitignore_global
-ln -snf "$DOTFILES"/gitconfig_global "$HOME"/.gitconfig_global
+ln -snf "$DOTFILES"/gitconfig "$HOME"/.gitconfig
 ln -snf "$DOTFILES"/gitmessage "$HOME"/.gitmessage
 if [ "$(get_os)" != "macos" ]; then
     ln -snf "$DOTFILES"/pam_environment "$HOME"/.pam_environment
     ln -snf "$DOTFILES"/Xresources "$HOME"/.Xresources
     ln -snf "$DOTFILES"/xinitrc "$HOME"/.xinitrc
     ln -snf "$DOTFILES"/config/coursier "$HOME"/.config/coursier
-    ln -snf "$DOTFILES"/gitconfig_linux "$HOME"/.gitconfig
+    ln -snf "$DOTFILES"/gitconfig_linux "$HOME"/.gitconfig_linux
     cp -rf "$DOTFILES"/gtkrc-2.0 "$HOME"/.gtkrc-2.0
     mkdir -p "$HOME"/.config/gtk-3.0
     cp -rf "$DOTFILES"/config/gtk-3.0/* "$HOME"/.config/gtk-3.0
@@ -86,7 +86,7 @@ else
         rm -rf "$HOME"/Library/Preferences/Coursier
     fi
     ln -snf "$DOTFILES"/config/coursier "$HOME"/Library/Preferences/Coursier
-    ln -snf "$DOTFILES"/gitconfig_macos "$HOME"/.gitconfig
+    ln -snf "$DOTFILES"/gitconfig_macos "$HOME"/.gitconfig_macos
     if [ -d "$HOME/.hammerspoon" ]; then
         rm -rf "$HOME"/.hammerspoon
     fi

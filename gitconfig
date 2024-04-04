@@ -63,3 +63,7 @@
 	extension = svn
 [svn]
 	rmdir = true
+[includeIf "os:Darwin"]
+  path = ~/.gitconfig_macos
+[includeIf "os:Linux"]
+  path = ~/.gitconfig_linux

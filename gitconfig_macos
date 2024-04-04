@@ -1,6 +1,4 @@
 # -*- mode: gitconfig -*-
-[include]
-	path = ~/.gitconfig_global
 # [gpg]
 # 	program = /opt/homebrew/bin/gpg
 [credential]
