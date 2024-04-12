@@ -28,7 +28,6 @@ zinit wait lucid for \
   OMZL::directories.zsh \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
-  OMZP::brew \
   OMZP::cp \
   OMZP::extract \
   OMZP::fancy-ctrl-z \
@@ -57,6 +56,18 @@ zinit id-as wait lucid light-mode depth"1" for \
 #
 # Utilities
 #
+
+# brew
+if cmd_exists "brew"; then
+    if [[ -d "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
+        fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
+        autoload -Uz compinit
+        compinit
+    fi
+
+    alias bubo='brew update && brew outdated'
+    alias bubc='brew upgrade && brew cleanup'
+fi
 
 # httpstat
 zinit ice id-as as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
