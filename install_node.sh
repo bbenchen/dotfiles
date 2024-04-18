@@ -17,7 +17,6 @@ packages=(
     typescript
     tslint
     markdownlint-cli
-    md5-cli
     typescript-formatter
     typescript-language-server
     @vue/language-server
