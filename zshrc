@@ -23,11 +23,14 @@ zinit id-as light-mode depth"1" for \
       zdharma-continuum/zinit-annex-patch-dl
 
 # Oh My Zsh
-zinit wait lucid for \
+zinit for \
   OMZL::clipboard.zsh \
   OMZL::directories.zsh \
   OMZL::history.zsh \
   OMZL::key-bindings.zsh \
+  OMZL::theme-and-appearance.zsh
+
+zinit wait lucid for \
   OMZP::cp \
   OMZP::extract \
   OMZP::fancy-ctrl-z \
