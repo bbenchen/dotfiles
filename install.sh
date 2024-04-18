@@ -148,6 +148,7 @@ if [ ! -f "$ZINIT_HOME/zinit.zsh" ]; then
     rm -rf "$ZINIT_HOME"
     sync_git_repo github zdharma-continuum/zinit "$ZINIT_HOME"
 fi
+ln -snf "$DOTFILES"/zprofile "$HOME"/.zprofile
 ln -snf "$DOTFILES"/zshenv "$HOME"/.zshenv
 ln -snf "$DOTFILES"/zshrc "$HOME"/.zshrc
 print_success "zinit install successfully"
