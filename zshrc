@@ -62,6 +62,7 @@ zinit id-as wait lucid light-mode depth"1" for \
 
 # brew
 if cmd_exists "brew"; then
+    [[ -z "$HOMEBREW_PREFIX" ]] && HOMEBREW_PREFIX="$(brew --prefix)" && export HOMEBREW_PREFIX
     if [[ -d "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
         fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
         autoload -Uz compinit
@@ -273,11 +274,11 @@ if [[ -n "$INSIDE_EMACS" ]]; then
   # VTerm
   if [[ "$INSIDE_EMACS" = "vterm" ]]; then
     vterm_printf() {
-      if [ -n "$TMUX" ]; then
+      if [[ -n "$TMUX" ]]; then
         # tell tmux to pass the escape sequences through
         # (Source: http://permalink.gmane.org/gmane.comp.terminal-emulators.tmux.user/1324)
         printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-      elif [ "${TERM%%-*}" = "screen" ]; then
+      elif [[ "${TERM%%-*}" = "screen" ]]; then
         # GNU screen (screen, screen-256color, screen-256color-bce)
         printf "\eP\e]%s\007\e\\" "$1"
       else
@@ -288,7 +289,7 @@ if [[ -n "$INSIDE_EMACS" ]]; then
     vterm_cmd() {
       local vterm_elisp
       vterm_elisp=""
-      while [ $# -gt 0 ]; do
+      while [[ $# -gt 0 ]]; do
         vterm_elisp="$vterm_elisp""$(printf '"%s" ' "$(printf "%s" "$1" | sed -e 's|\\|\\\\|g' -e 's|"|\\"|g')")"
         shift
       done

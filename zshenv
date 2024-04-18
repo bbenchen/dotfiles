@@ -9,9 +9,7 @@ export DOTFILES=$HOME/.dotfiles
 [[ -z "$EDITOR" ]] && export EDITOR="vim"
 
 # java
-if [[ ! $OSTYPE == darwin* ]]; then
-  export _JAVA_AWT_WM_NONREPARENTING=1
-fi
+[[ ! $OSTYPE == darwin* ]] && export _JAVA_AWT_WM_NONREPARENTING=1
 # export JAVA_OPTS="-XX:+UseNUMA -XX:+UseG1GC"
 
 # sbt
@@ -42,9 +40,7 @@ export GOPROXY="https://goproxy.io,direct"
 export GOPRIVATE="git.iobox.me"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
-if [[ $OSTYPE == darwin* && -d "/opt/homebrew/opt/go/libexec" ]]; then
-  export GOROOT="/opt/homebrew/opt/go/libexec"
-fi
+[[ $OSTYPE == darwin* && -d "/opt/homebrew/opt/go/libexec" ]] && export GOROOT="/opt/homebrew/opt/go/libexec"
 
 # lsp
 export LSP_USE_PLISTS=true
