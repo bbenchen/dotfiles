@@ -5,19 +5,21 @@ require "space"
 require "hotkey"
 
 local function reload(paths)
-  local doReload = false
-  for _, file in pairs(paths) do
-    if file:sub(-4) == ".lua" then
-      print("A lua config file changed, reload")
-      doReload = true
+    print("begin config reload")
+    local doReload = false
+    for _, file in pairs(paths) do
+        if file:sub(-4) == ".lua" then
+            print("A lua config file changed, reload")
+            doReload = true
+        end
     end
-  end
-  if not doReload then
-    print("No lua file changed, skipping reload")
-    return
-  end
+    if not doReload then
+        print("No lua file changed, skipping reload")
+        return
+    end
 
-  hs.reload()
+    hs.reload()
+    print("finish config reload")
 end
 
 local config_file_watcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload)

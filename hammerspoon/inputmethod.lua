@@ -4,20 +4,25 @@ local hotkey = require "hs.hotkey"
 local alert = require "hs.alert"
 
 local function Chinese()
-  keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hans")
+    print("set chinese input method")
+    keycodes.currentSourceID("im.rime.inputmethod.Squirrel.Hans")
 end
 local function English()
-  keycodes.currentSourceID("com.apple.keylayout.US")
+    print("set english input method")
+    keycodes.currentSourceID("com.apple.keylayout.US")
 end
 local function set_app_input_method(app_name, set_input_method_function, event)
-  event = event or window.filter.windowFocused
-  window.filter.new(app_name)
-    :subscribe(event, function() set_input_method_function() end)
+    event = event or window.filter.windowFocused
+    window.filter.new(app_name)
+        :subscribe(event, function()
+                       set_input_method_function()
+                  end)
 end
 set_app_input_method('Hammerspoon', English, window.filter.windowCreated)
 set_app_input_method('Spotlight', English, window.filter.windowCreated)
 set_app_input_method('Raycast', English, window.filter.windowCreated)
 set_app_input_method('Finder', English, window.filter.windowCreated)
+set_app_input_method('System Settings', English)
 set_app_input_method('Terminal', English)
 set_app_input_method('kitty', English)
 set_app_input_method('WezTerm', English)
