@@ -268,7 +268,7 @@ if cmd_exists "emacsclient"; then
 fi
 
 # gpg
-if [ -t 0 ]; then
+if [[ -t 0 ]]; then
   GPG_TTY="$(tty)" && export GPG_TTY
   PINENTRY_USER_DATA="USE_TTY" && export PINENTRY_USER_DATA
 fi
