@@ -267,6 +267,13 @@ if cmd_exists "emacsclient"; then
   alias te="$EDITOR -nw"
 fi
 
+# gpg
+if [ -t 0 ]; then
+  GPG_TTY="$(tty)" && export GPG_TTY
+  PINENTRY_USER_DATA="USE_TTY" && export PINENTRY_USER_DATA
+fi
+
+# emacs
 if [[ -n "$INSIDE_EMACS" ]]; then
   # shellcheck disable=SC2034
   DISABLE_AUTO_TITLE="true"
@@ -306,6 +313,9 @@ if [[ -n "$INSIDE_EMACS" ]]; then
 
     alias clear='vterm_printf "51;Evterm-clear-scrollback";tput clear'
     alias reset='vterm_printf "51;Evterm-clear-scrollback";tput clear'
+
+    # gpg
+    unset PINENTRY_USER_DATA
   fi
 fi
 
