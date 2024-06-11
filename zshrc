@@ -39,8 +39,6 @@ zinit wait lucid for \
   OMZP::mvn \
   OMZP::ssh \
   OMZP::sudo \
-  load"command -v tmux &> /dev/null" atinit"ZSH_TMUX_FIXTERM=false" \
-  OMZP::tmux \
   OMZP::urltools
 
 # Completion enhancements
