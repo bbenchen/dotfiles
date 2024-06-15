@@ -123,7 +123,7 @@ unset JENV_LOADED
 cmd_exists "jenv" && eval "$(jenv init -)"
 
 # fzf
-zinit ice id-as from"gh-r" as"program"
+zinit ice id-as from"gh-r" as"program" atload"source <(fzf --zsh)"
 zinit light junegunn/fzf
 
 zinit id-as wait lucid depth"1" for \
@@ -136,7 +136,8 @@ zinit light Aloxaf/fzf-tab
 
 zstyle ':fzf-tab:*' switch-group '[' ']'
 zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':completion:complete:*:options' sort false
+# shellcheck disable=SC2016
+zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:complete:*:options' sort false
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
@@ -195,7 +196,7 @@ zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
 
-# export FZF_DEFAULT_OPTS='--height 60% --border --info=inline--layout=reverse'
+export FZF_DEFAULT_OPTS='--height 50% --border --info=inline --layout=reverse'
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
