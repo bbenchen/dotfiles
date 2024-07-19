@@ -23,6 +23,7 @@ if [[ $OSTYPE == darwin* ]]; then
   export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
   export HOMEBREW_NO_AUTO_UPDATE=1
   export HOMEBREW_BUNDLE_NO_LOCK=1
+  export HOMEBREW_NO_VERIFY_ATTESTATIONS=1
   export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
 fi
 
