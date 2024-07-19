@@ -22,7 +22,6 @@ packages=(
     @vue/language-server
     vscode-langservers-extracted
     bash-language-server
-    pyright
     dockerfile-language-server-nodejs
     yaml-language-server
 )
