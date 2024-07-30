@@ -9,7 +9,7 @@ ZINIT_HOME=${HOME}/.local/share/zinit
 
 BASE_DIR="${BASH_SOURCE%/*}"
 if [ ! -d "$BASE_DIR" ]; then
-    BASE_DIR="$PWD";
+    BASE_DIR="$PWD"
 fi
 
 # shellcheck source=./utils.sh
@@ -31,7 +31,7 @@ print_info "installing dotfiles..."
 # common
 cp -rf "$DOTFILES"/ssh "$HOME"/.ssh
 cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
-echo "$DOOMD"/bin/pinentry-auto >> "$HOME"/.gnupg/gpg-agent.conf
+echo "$DOOMD"/bin/pinentry-auto >>"$HOME"/.gnupg/gpg-agent.conf
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/msmtprc "$HOME"/.msmtprc
