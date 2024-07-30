@@ -98,6 +98,7 @@ ln -snf "$DOTFILES"/config/wezterm "$HOME"/.config/wezterm
 ln -snf "$DOTFILES"/config/fastfetch "$HOME"/.config/fastfetch
 ln -snf "$DOTFILES"/config/yazi "$HOME"/.config/yazi/yazi
 ln -snf "$DOTFILES"/config/bat "$HOME"/.config/bat
+ln -snf "$DOTFILES"/config/starship.toml "$HOME"/.config/starship.toml
 
 print_success "dotfiles install successfully"
 
