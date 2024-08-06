@@ -134,4 +134,6 @@ prepend_previewers = [
   { mime = "application/x-7z-compressed", run = "ouch" },
   { mime = "application/x-rar",           run = "ouch" },
   { mime = "application/x-xz",            run = "ouch" },
+  # Audio
+  { mime = "audio/*",                     run = "exifaudio"},
 ]
