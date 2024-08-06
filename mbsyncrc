@@ -7,7 +7,7 @@ User ben.chen@tcl.com
 PassCmd "pass show mail/ben.chen@tcl.com"
 Port 993
 AuthMechs LOGIN
-SSLType IMAPS
+TLSType IMAPS
 # CertificateFile /etc/ssl/certs/ca-certificates.crt
 CertificateFile /opt/homebrew/etc/ca-certificates/cert.pem  # MacOS
 
@@ -37,28 +37,32 @@ Expunge Both
 SyncState *
 
 Channel tcl-drafts
-Far :tcl-remote:"&g0l6Pw-"
+# Far :tcl-remote:"&g0l6Pw-"
+Far :tcl-remote:"草稿"
 Near :tcl-local:"Drafts"
 Create Near
 Expunge Both
 SyncState *
 
 Channel tcl-spam
-Far :tcl-remote:"&V4NXPpCuTvY-"
+# Far :tcl-remote:"&V4NXPpCuTvY-"
+Far :tcl-remote:"垃圾邮件"
 Near :tcl-local:"Spam"
 Create Near
 Expunge Both
 SyncState *
 
 Channel tcl-sent
-Far :tcl-remote:"&XfJT0ZABkK5O9g-"
+# Far :tcl-remote:"&XfJT0ZABkK5O9g-"
+Far :tcl-remote:"已发送邮件"
 Near :tcl-local:"Sent"
 Create Near
 Expunge Both
 SyncState *
 
 Channel tcl-trash
-Far :tcl-remote:"&XfJSIJZkkK5O9g-"
+# Far :tcl-remote:"&XfJSIJZkkK5O9g-"
+Far :tcl-remote:"已删除邮件"
 Near :tcl-local:"Trash"
 Create Near
 Expunge Both
@@ -78,7 +82,7 @@ User 517926804@qq.com
 PassCmd "pass show mail/517926804@qq.com"
 Port 993
 AuthMechs LOGIN
-SSLType IMAPS
+TLSType IMAPS
 # CertificateFile /etc/ssl/certs/ca-certificates.crt
 CertificateFile /opt/homebrew/etc/ca-certificates/cert.pem  # MacOS
 
