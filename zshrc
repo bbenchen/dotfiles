@@ -134,14 +134,19 @@ export FORGIT_FZF_DEFAULT_OPTS="--exact --border --cycle --reverse"
 zinit ice id-as wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab
 
-zstyle ':fzf-tab:*' switch-group '[' ']'
+# zstyle ':completion:*' menu no
 zstyle ':completion:*:descriptions' format '[%d]'
 # shellcheck disable=SC2016
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
 zstyle ':completion:complete:*:options' sort false
+
+zstyle ':fzf-tab:*' switch-group '[' ']'
+
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
        fzf-preview 'eza -1 --icons --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
+
+# Preview environment vareiables
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
      fzf-preview 'echo ${(P)word}'
@@ -158,8 +163,6 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
             ps --pid=$word -o cmd --no-headers -w -w
         fi'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=down:3:wrap'
-# shellcheck disable=SC2016
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
 # Preivew `git` commands
 # shellcheck disable=SC2016
@@ -186,15 +189,17 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
      *) git log --color=always $word ;;
      esac'
 
+# Privew help
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word | bat -plman --color=always'
+
 # Preview `brew` commands
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
 
-# Privew help
+# Preview systemd
 # shellcheck disable=SC2016
-zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
-# shellcheck disable=SC2016
-zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
 export FZF_DEFAULT_OPTS='--height 50% --border --info=inline --layout=reverse'
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
