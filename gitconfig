@@ -59,6 +59,8 @@
   signingkey = 7443FCAA39EB6FD5
 [github]
 	user = bbenchen
+[gitlab "gitlab.com/api"]
+  user = bbenchen
 [magit]
 	extension = svn
 [svn]
