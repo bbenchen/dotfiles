@@ -116,6 +116,7 @@ alias l='ls -lA'
 alias ll='ls -lA --header'
 alias tree='ls --tree'
 unalias la lsa
+test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOME"/.dir_colors)"
 
 # jenv
 unset JENV_LOADED
