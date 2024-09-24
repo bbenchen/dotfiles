@@ -109,13 +109,13 @@ export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:igno
 # zinit light tj/git-extras
 
 # Prettify ls
-zinit ice id-as as"command" from"gh-r" mv"lsd*/lsd -> lsd" pick"lsd"
+zinit ice id-as as"command" from"gh-r" mv"lsd*/lsd -> lsd" pick"lsd" \
+  atload"alias ls='lsd --group-directories-first'
+        alias l='ls -lA'
+        alias ll='ls -lA --header'
+        alias tree='ls --tree'
+        unalias la lsa"
 zinit light lsd-rs/lsd
-alias ls='lsd --group-directories-first'
-alias l='ls -lA'
-alias ll='ls -lA --header'
-alias tree='ls --tree'
-unalias la lsa
 test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOME"/.dir_colors)"
 
 # jenv
