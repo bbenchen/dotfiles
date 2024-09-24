@@ -277,6 +277,12 @@ if [[ -t 0 ]]; then
   PINENTRY_USER_DATA="USE_TTY" && export PINENTRY_USER_DATA
 fi
 
+# tmux
+if [ -n "$TMUX" ]; then
+    # Enable extended-keys
+    printf '\033[>4;1m'
+fi
+
 # emacs
 if [[ -n "$INSIDE_EMACS" ]]; then
   # shellcheck disable=SC2034
