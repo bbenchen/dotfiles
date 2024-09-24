@@ -102,21 +102,20 @@ zinit ice id-as as"command" from"gh-r" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
-export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(eza --tree --icons --level 3 --color=always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
+export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(lsd --tree --depth 3 --icon always --color always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
 
 # Git extras
 # zinit ice id-as wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
 # zinit light tj/git-extras
 
 # Prettify ls
-if cmd_exists "eza"; then
-  alias ls='eza --group-directories-first'
-  alias tree='ls --tree'
-elif cmd_exists "gls"; then
-  alias ls='gls --color=tty --group-directories-first'
-else
-  alias ls='ls --color=tty'
-fi
+zinit ice id-as as"command" from"gh-r" mv"lsd*/lsd -> lsd" pick"lsd"
+zinit light lsd-rs/lsd
+alias ls='lsd --group-directories-first'
+alias l='ls -lA'
+alias ll='ls -lA --header'
+alias tree='ls --tree'
+unalias la lsa
 
 # jenv
 unset JENV_LOADED
@@ -144,7 +143,7 @@ zstyle ':fzf-tab:*' switch-group '[' ']'
 
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
-       fzf-preview 'eza -1 --icons --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
+       fzf-preview 'lsd -1 --icon=always --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
 
 # Preview environment vareiables
 # shellcheck disable=SC2016
@@ -206,7 +205,7 @@ export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git 
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
-export FZF_ALT_C_OPTS="--preview '(eza --tree --icons --level 3 --color=always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
+export FZF_ALT_C_OPTS="--preview '(lsd --tree --depth 3 --icon always --color always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
 
 # theme
 zinit ice id-as as"command" from"gh-r" \
