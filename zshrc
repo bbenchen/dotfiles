@@ -143,7 +143,7 @@ zstyle ':fzf-tab:*' switch-group '[' ']'
 
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
-       fzf-preview 'lsd -1 --icon=always --color=always $realpath 2>/dev/null || ls -1 --color=always $realpath'
+       fzf-preview 'lsd -1 --icon=always --color=always --group-directories-first $realpath 2>/dev/null || ls -1 --color=always --group-directories-first $realpath'
 
 # Preview environment vareiables
 # shellcheck disable=SC2016
