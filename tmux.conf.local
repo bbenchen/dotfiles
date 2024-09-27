@@ -383,7 +383,7 @@ set -g default-command "${SHELL}"
 set -g mouse on
 
 # enable Yazi's image preview
-set -g allow-passthrough on
+set -gq allow-passthrough all
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 
