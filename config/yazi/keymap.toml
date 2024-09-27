@@ -6,6 +6,7 @@
 prepend_keymap = [
   { on = [ "c", "a" ], run = "plugin ouch --args=zip", desc = "Compress with ouch"},
   { on = [ "l" ], run = "plugin --sync smart-enter", desc = "Enter the child directory, or open the file" },
+  { on = [ "M" ], run = "plugin --sync max-preview", desc = "Maximize or restore preview"}
 ]
 
 [input]
