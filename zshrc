@@ -102,7 +102,13 @@ zinit ice id-as as"command" from"gh-r" \
   atclone"./zoxide init zsh > init.zsh" \
   atpull"%atclone" src"init.zsh" nocompile'!'
 zinit light ajeetdsouza/zoxide
-export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right --border=sharp --height=45% --info=inline --layout=reverse --tabstop=1 --exit-0 --select-1 --preview '(lsd --tree --depth 3 --icon always --color always --group-directories-first {2} || tree -NC {2} || ls --color=always --group-directories-first {2}) 2>/dev/null | head -200'"
+export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index \
+  --bind=ctrl-z:ignore,btab:up,tab:down --cycle --keep-right \
+  --border=sharp --height=45% --info=inline --layout=reverse \
+  --tabstop=1 --exit-0 --select-1 \
+  --preview '(lsd --tree --depth 3 --icon always --color always \
+  --group-directories-first {2} || tree -NC {2} || ls --color=always \
+  --group-directories-first {2}) 2>/dev/null | head -200'"
 
 # Git extras
 # zinit ice id-as wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
@@ -134,7 +140,14 @@ export FORGIT_FZF_DEFAULT_OPTS="--exact --border --cycle --reverse"
 zinit ice id-as wait lucid depth"1" atload"zicompinit; zicdreplay" blockf
 zinit light Aloxaf/fzf-tab
 
-# zstyle ':completion:*' menu no
+export FZF_DEFAULT_OPTS='--height 50% --tmux 100%,60% --border --info=inline --layout=reverse'
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
+export FZF_ALT_C_OPTS="--preview '(lsd --tree --depth 3 --icon always --color always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
+
+zstyle ':completion:*' menu no
 zstyle ':completion:*:descriptions' format '[%d]'
 # shellcheck disable=SC2016
 zstyle ':completion:*' list-colors '${(s.:.)LS_COLORS}'
@@ -143,8 +156,13 @@ zstyle ':completion:complete:*:options' sort false
 zstyle ':fzf-tab:*' switch-group '[' ']'
 
 # shellcheck disable=SC2016
-zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim):*' \
-       fzf-preview 'lsd -1 --icon=always --color=always --group-directories-first $realpath 2>/dev/null || ls -1 --color=always --group-directories-first $realpath'
+# zstyle ':fzf-tab:complete:(cd|ls|lsd|exa|eza|bat|cat|emacs|nano|vi|vim|nvim):*' \
+#        fzf-preview 'lsd -1 --icon=always --color=always --group-directories-first $realpath 2>/dev/null || ls -1 --color=always --group-directories-first $realpath'
+
+# Preview contents
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+export LESSOPEN='|~/.dotfiles/.lessfilter %s'
 
 # Preview environment vareiables
 # shellcheck disable=SC2016
@@ -192,6 +210,8 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 # Privew help
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word | bat -plman --color=always'
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
 
 # Preview `brew` commands
 # shellcheck disable=SC2016
@@ -201,12 +221,16 @@ zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' 
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
-export FZF_DEFAULT_OPTS='--height 50% --border --info=inline --layout=reverse'
-export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git || git ls-tree -r --name-only HEAD || rg --files --hidden --follow --glob '!.git' || find ."
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '(bat --style=numbers --color=always {} || cat {} || tree -NC {}) 2>/dev/null | head -200'"
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview' --exact"
-export FZF_ALT_C_OPTS="--preview '(lsd --tree --depth 3 --icon always --color always --group-directories-first {} || tree -NC {} || ls --color=always --group-directories-first {}) 2>/dev/null | head -200'"
+# Ripgrep integration
+rgv () {
+  rg --color=always --line-number --no-heading --smart-case "${*:-}" |
+        fzf --ansi --height 80% --tmux 100%,80% \
+            --color "hl:-1:underline,hl+:-1:underline:reverse" \
+            --delimiter : \
+            --preview 'bat --color=always {1} --highlight-line {2}' \
+            --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+            --bind 'enter:become(emacsclient -r -n -a "" +{2} {1} || vim {1} +{2})'
+}
 
 # theme
 zinit ice id-as as"command" from"gh-r" \
