@@ -99,7 +99,7 @@ zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat" \
         }
         alias t=\"tailf\""
 zinit light sharkdp/bat
-zinit ice id-as as"command" from"gh-r" mv"bin/batman -> batman" pick"bat-extras" \
+zinit ice id-as as"command" from"gh-r" mv"bin/batman -> batman" pick"batman" \
   atload"alias man=batman"
 zinit light eth-p/bat-extras
 
