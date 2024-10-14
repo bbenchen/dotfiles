@@ -90,8 +90,18 @@ zinit ice id-as as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
 zinit light sharkdp/fd
 
 # bat
-zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat"
+zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat" \
+  atload"alias cat=\"bat -p --wrap character\"
+        alias -g -- -h=\"-h 2>&1 | bat --language=help --style=plain\"
+        alias -g -- --help=\"--help 2>&1 | bat --language=help --style=plain\"
+        tailf () {
+          tail -f \"$*\" | bat --paging=never -l log
+        }
+        alias t=\"tailf\""
 zinit light sharkdp/bat
+zinit ice id-as as"command" from"gh-r" mv"bin/batman -> batman" pick"bat-extras" \
+  atload"alias man=batman"
+zinit light eth-p/bat-extras
 
 # delta git diff
 zinit ice id-as as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
@@ -247,16 +257,6 @@ alias upgrade_dotfiles='cd $DOTFILES && git pull; cd - >/dev/null'
 alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
 cmd_exists "nvim" && alias vim="nvim" && alias vi="nvim"
-if cmd_exists "bat"; then
-  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-  alias cat="bat -p --wrap character"
-  alias -g -- -h="-h 2>&1 | bat --language=help --style=plain"
-  alias -g -- --help="--help 2>&1 | bat --language=help --style=plain"
-  tailf () {
-    tail -f "$@" | bat --paging=never -l log
-  }
-  alias t="tailf"
-fi
 cmd_exists "fd" && alias find="fd"
 cmd_exists "btm" && alias top="btm"
 cmd_exists "rg" && alias grep="rg"
