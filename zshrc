@@ -193,6 +193,10 @@ zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview \
         fi'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags '--preview-window=down:3:wrap'
 
+# Preview systemd
+# shellcheck disable=SC2016
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+
 # Preivew `git` commands
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
@@ -227,10 +231,6 @@ zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $wor
 # Preview `brew` commands
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
-
-# Preview systemd
-# shellcheck disable=SC2016
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
 
 # Ripgrep integration
 rgv () {

@@ -10,11 +10,9 @@ elif [ "$category" = text ]; then
 elif [ "$category" = image ]; then
   if command -v chafa &> /dev/null; then
     chafa "$1"
-  elif command -v exiftool &> /dev/null; then
-    exiftool "$1"
   else
-    bat -A --style=numbers --color=always "$1"
+    exiftool "$1"
   fi
 else
-  bat -A --style=numbers --color=always "$1"
+  exiftool "$1"
 fi
