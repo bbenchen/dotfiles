@@ -132,7 +132,7 @@ zinit ice id-as as"command" from"gh-r" mv"lsd*/lsd -> lsd" pick"lsd" \
         alias tree='ls --tree'
         unalias la lsa"
 zinit light lsd-rs/lsd
-test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOME"/.dir_colors)"
+cmd_exists "dircolors" && test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOME"/.dir_colors)"
 
 # jenv
 unset JENV_LOADED
