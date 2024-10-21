@@ -20,6 +20,13 @@ if [[ -d "$HOME/.jenv/bin" ]]; then
   export JENV_LOADED=1
 fi
 
+# pyenv
+if [[ -d "$HOME/.pyenv" ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+
+  [[ -d "$PYENV_ROOT/bin" ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+fi
+
 # node
 export PATH="$N_PREFIX/bin:$PATH"
 
@@ -37,6 +44,5 @@ if [[ $OSTYPE == darwin* ]]; then
   [[ -d "/opt/homebrew/opt/gawk/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/man-db/libexec/bin" ]] && export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
-  [[ -d "$HOME/Library/Python/3.12/bin" ]] && export PATH="$HOME/Library/Python/3.12/bin:$PATH"
   [[ -d "/Library/TeX/texbin" ]] && export MANPATH="$MANPATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Man"
 fi

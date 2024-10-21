@@ -138,6 +138,9 @@ cmd_exists "dircolors" && test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOM
 unset JENV_LOADED
 cmd_exists "jenv" && eval "$(jenv init -)"
 
+# pyenv
+cmd_exists "pyenv" && eval "$(pyenv init -)"
+
 # fzf
 zinit ice id-as from"gh-r" as"program" atload"source <(fzf --zsh)"
 zinit light junegunn/fzf
