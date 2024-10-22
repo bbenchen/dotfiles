@@ -299,6 +299,14 @@ if cmd_exists "emacsclient"; then
   alias te="$EDITOR -nw"
 fi
 
+if cmd_exists "podman"; then
+  if [[ "$(get_os)" == "linux" ]]; then
+    DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}') && export DOCKER_HOST
+  else
+    DOCKER_HOST=unix://$(podman machine inspect --format '{{.ConnectionInfo.PodmanSocket.Path}}') && export DOCKER_HOST
+  fi
+fi
+
 # gpg
 if [[ -t 0 ]]; then
   GPG_TTY="$(tty)" && export GPG_TTY
