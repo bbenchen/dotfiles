@@ -103,6 +103,10 @@ zinit ice id-as as"command" from"gh-r" mv"bin/batman -> batman" pick"batman" \
   atload"alias man=batman"
 zinit light eth-p/bat-extras
 
+# bottom
+zinit ice id-as as"command" from"gh-r" mv"btm -> btm" pick"btm"
+zinit light ClementTsang/bottom
+
 # delta git diff
 zinit ice id-as as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
 zinit light dandavison/delta
