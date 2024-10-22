@@ -299,6 +299,11 @@ if cmd_exists "emacsclient"; then
   alias te="$EDITOR -nw"
 fi
 
+if cmd_exists "podman"; then
+  alias docker="podman"
+  alias docker-compose="podman-compose"
+fi
+
 # gpg
 if [[ -t 0 ]]; then
   GPG_TTY="$(tty)" && export GPG_TTY
