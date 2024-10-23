@@ -454,8 +454,6 @@ tmux_conf_uninstall_plugins_on_reload=true
 # visit https://github.com/tmux-plugins for available plugins
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-cpu'
-TMUX_FZF_LAUNCH_KEY="f"
-set -g @plugin 'sainnhe/tmux-fzf'
 set -g @plugin 'tmux-plugins/tmux-open'
 set -g @open-S 'https://www.google.com/search?q='
 set -g @plugin 'tmux-plugins/tmux-resurrect'
