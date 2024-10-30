@@ -4,6 +4,8 @@ require("full-border"):setup {
 
 require("git"):setup()
 
+require("folder-rules"):setup()
+
 function Status:name()
     local h = self._tab.current.hovered
     if not h then
