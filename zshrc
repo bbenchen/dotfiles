@@ -93,11 +93,7 @@ zinit light sharkdp/fd
 zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat" \
   atload"alias cat=\"bat -p --wrap character\"
         alias -g -- -h=\"-h 2>&1 | bat --language=help --style=plain\"
-        alias -g -- --help=\"--help 2>&1 | bat --language=help --style=plain\"
-        tailf () {
-          tail -f \"$*\" | bat --paging=never -l log
-        }
-        alias t=\"tailf\""
+        alias -g -- --help=\"--help 2>&1 | bat --language=help --style=plain\""
 zinit light sharkdp/bat
 zinit ice id-as as"command" from"gh-r" mv"bin/batman -> batman" pick"batman" \
   atload"alias man=batman"
@@ -272,6 +268,12 @@ cmd_exists "delta" && alias diff="delta"
 cmd_exists "duf" && alias df="duf"
 cmd_exists "dust" && alias du="dust"
 cmd_exists "gping" && alias ping="gping"
+if cmd_exists "bat"; then
+  tailf () {
+    tail -f "$*" | bat --paging=never -l log
+  }
+  alias t="tailf"
+fi
 if cmd_exists "yazi"; then
   yy() {
     local tmp
