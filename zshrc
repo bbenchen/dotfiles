@@ -176,7 +176,10 @@ zstyle ':fzf-tab:*' switch-group '[' ']'
 # Preview contents
 # shellcheck disable=SC2016
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-export LESSOPEN='|~/.dotfiles/.lessfilter %s'
+# https://github.com/wofr06/lesspipe.git
+export LESSQUIET='1'
+export LESSCOLORIZER='bat'
+export LESSOPEN='|~/.dotfiles/.lesspipe %s'
 
 # Preview environment vareiables
 # shellcheck disable=SC2016
