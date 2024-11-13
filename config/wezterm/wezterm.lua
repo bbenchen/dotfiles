@@ -35,7 +35,7 @@ local config = {
     },
 
     -- 字体
-    font = wezterm.font("Sarasa Fixed SC Nerd Font", { weight = 'Regular' }),
+    font = wezterm.font("Sarasa Term SC Nerd", { weight = 'Regular' }),
     font_size = 12.0,
 
     -- 主题
