@@ -1,4 +1,4 @@
--- @sync entry
+--- @sync entry
 
 local function entry(st)
     if st.old then
