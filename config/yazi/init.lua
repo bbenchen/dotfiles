@@ -18,7 +18,12 @@ function Linemode:size_and_mtime()
 	end
 
 	local size = self._file:size()
-	return string.format("%s %s", size and ya.readable_size(size) or "-", time)
+	if size then
+		return string.format("%s %s", ya.readable_size(size), time)
+	else
+		local folder = cx.active:history(self._file.url)
+	    return string.format("%s %s", folder and tostring(#folder.files) or "-", time)
+	end
 end
 
 function Status:name()
