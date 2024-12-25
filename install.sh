@@ -163,12 +163,6 @@ if [ ! -d "$HOME/.jenv" ]; then
     print_success "jenv install successfully"
 fi
 
-if [ ! -d "$HOME/.pyenv" ]; then
-    print_info "installing pyenv..."
-    sync_git_repo github pyenv/pyenv "$HOME"/.jenv
-    print_success "pyenv install successfully"
-fi
-
 if [ ! -d "$EMACSD" ] || [ ! -d "$DOOMD" ]; then
     print_info "installing doom-emacs..."
     if [ -d "$EMACSD" ]; then
