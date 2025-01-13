@@ -305,7 +305,7 @@ if cmd_exists "emacsclient"; then
   alias te="$EDITOR -nw"
 fi
 
-if cmd_exists "podman"; then
+if [[ ! -f "/var/run/docker.sock" ]] && cmd_exists "podman"; then
   if [[ "$(get_os)" == "linux" ]]; then
     DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}') && export DOCKER_HOST
   else
@@ -339,11 +339,14 @@ if [[ -n "$INSIDE_EMACS" ]]; then
 
     # gpg
     unset PINENTRY_USER_DATA
-  fi
-fi
 
-# show system info
-cmd_exists "fastfetch" && is_gui && fastfetch
+    # show system info
+    cmd_exists "fastfetch" && is_gui && fastfetch
+  fi
+else
+  # show system info
+  cmd_exists "fastfetch" && is_gui && fastfetch
+fi
 
 if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
   [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
