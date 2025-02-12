@@ -4,15 +4,15 @@
 
 [manager]
 prepend_keymap = [
-  { on = [ "c", "a" ], run = "plugin ouch --args=zip", desc = "Compress with ouch"},
+  { on = [ "c", "a" ], run = "plugin ouch zip", desc = "Compress with ouch"},
   { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod on selected files"},
   { on = [ "g", "r" ], run = '''
     shell 'ya emit cd "$(git rev-parse --show-toplevel)"'
 ''', desc = "Go to the root of the current Git repository"},
-  { on  = "j", run = "plugin arrow --args=1"},
-  { on  = "k", run = "plugin arrow --args=-1"},
-  { on  = "J", run = "plugin parent-arrow --args=1"},
-  { on  = "K", run = "plugin parent-arrow --args=-1"},
+  { on  = "j", run = "plugin arrow 1"},
+  { on  = "k", run = "plugin arrow -1"},
+  { on  = "J", run = "plugin parent-arrow 1"},
+  { on  = "K", run = "plugin parent-arrow -1"},
   { on = "l", run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
   { on = "p", run = "plugin smart-paste", desc = "Paste into the hovered directory or CWD" },
   { on = "t", run = "plugin smart-tab", desc = "Create a tab and enter the hovered directory" },
