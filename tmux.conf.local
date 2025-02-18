@@ -372,7 +372,8 @@ tmux_conf_urlscan_options="--compact --dedupe --single"
 # this is the place to override or undo settings
 
 # terminal
-set -g default-terminal "screen-256color" # colors!
+# set -g default-terminal "screen-256color" # colors!
+set -g default-terminal "tmux-256color"
 
 # non-login shell
 set -g default-command "${SHELL}"
@@ -384,7 +385,7 @@ set -g default-command "${SHELL}"
 set -g mouse on
 
 # enable Yazi's image preview
-set -gq allow-passthrough all
+set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 
