@@ -22,15 +22,15 @@ hotkey.bind({"ctrl", "cmd"}, "f", fnutils.partial(winResize, "max"))
 hotkey.bind({"ctrl", "cmd"}, "t", fnutils.partial(winToggleMaximized))
 
 -- Move between spaces
+-- hotkey.bind({"ctrl", "cmd"}, "left", fnutils.partial(moveWinToLeftSpace))
+-- hotkey.bind({"ctrl", "cmd"}, "right", fnutils.partial(moveWinToRightSpace))
 for k, v in ipairs(getUserSpaceIds()) do
     hotkey.bind({"ctrl"}, tostring(k), fnutils.partial(gotoSpace, v))
-    hotkey.bind({"ctrl", "cmd"}, tostring(k), fnutils.partial(moveWinToSpace, v, true))
-    hotkey.bind({"ctrl", "alt"}, tostring(k), fnutils.partial(moveWinToSpace, v, false))
 end
 
 -- Move between screens
-hotkey.bind({"ctrl", "alt"}, "Left", fnutils.partial(winMoveScreen, "left"))
-hotkey.bind({"ctrl", "alt"}, "Right", fnutils.partial(winMoveScreen, "right"))
+hotkey.bind({"ctrl", "alt"}, "left", fnutils.partial(winMoveScreen, "left"))
+hotkey.bind({"ctrl", "alt"}, "right", fnutils.partial(winMoveScreen, "right"))
 
 -- Mission Control
 -- hotkey.bind({"ctrl"}, "m", fnutils.partial(spaces.openMissionControl))
