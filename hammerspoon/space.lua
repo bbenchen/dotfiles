@@ -36,13 +36,11 @@ local MOUSE_OFFSET_Y = 12
 local SWITCH_DELAY = 0.2
 local RELEASE_DELAY = 0.5
 
-local function simulateKeyEvent(modifier1, modifier2, key)
+local function simulateKeyEvent(modifier1, key)
     eventtap.event.newKeyEvent(modifier1, true):post()
-    eventtap.event.newKeyEvent(modifier2, true):post()
     eventtap.event.newKeyEvent(key, true):post()
     timer.doAfter(0.1, function()
         eventtap.event.newKeyEvent(modifier1, false):post()
-        eventtap.event.newKeyEvent(modifier2, false):post()
         eventtap.event.newKeyEvent(key, false):post()
     end)
 end
@@ -76,7 +74,7 @@ function moveWinToRightSpace()
     eventtap.event.newMouseEvent(eventtap.event.types.leftMouseDown, clickPos):post()
 
     timer.doAfter(SWITCH_DELAY, function()
-        simulateKeyEvent("alt", "cmd", "right")
+        simulateKeyEvent("ctrl", "right")
     end)
 
     timer.doAfter(RELEASE_DELAY, function()
@@ -117,7 +115,7 @@ function moveWinToLeftSpace()
     eventtap.event.newMouseEvent(eventtap.event.types.leftMouseDown, clickPos):post()
 
     timer.doAfter(SWITCH_DELAY, function()
-        simulateKeyEvent("alt", "cmd", "left")
+        simulateKeyEvent("ctrl", "left")
     end)
 
     timer.doAfter(RELEASE_DELAY, function()

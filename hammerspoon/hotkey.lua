@@ -22,8 +22,8 @@ hotkey.bind({"ctrl", "cmd"}, "f", fnutils.partial(winResize, "max"))
 hotkey.bind({"ctrl", "cmd"}, "t", fnutils.partial(winToggleMaximized))
 
 -- Move between spaces
--- hotkey.bind({"ctrl", "cmd"}, "left", fnutils.partial(moveWinToLeftSpace))
--- hotkey.bind({"ctrl", "cmd"}, "right", fnutils.partial(moveWinToRightSpace))
+hotkey.bind({"ctrl", "cmd"}, "left", fnutils.partial(moveWinToLeftSpace))
+hotkey.bind({"ctrl", "cmd"}, "right", fnutils.partial(moveWinToRightSpace))
 for k, v in ipairs(getUserSpaceIds()) do
     hotkey.bind({"ctrl"}, tostring(k), fnutils.partial(gotoSpace, v))
 end
