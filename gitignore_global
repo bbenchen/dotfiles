@@ -3,6 +3,9 @@
 # os
 .DS_Store
 
+# projectile
+.projectile-cache.eld
+
 # other
 .~*
 *.bak
