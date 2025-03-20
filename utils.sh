@@ -263,7 +263,7 @@ function open_proxy() {
     export http_proxy="http://127.0.0.1:20122"
     export https_proxy="http://127.0.0.1:20122"
     # export all_proxy="socks5://127.0.0.1:1089"
-    export no_proxy="localhost,arch,127.0.0.1,10.0.0.*,172.16.*.*,192.168.*.*"
+    export no_proxy="localhost,arch,127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
     echo "HTTP Proxy on"
 }
 
