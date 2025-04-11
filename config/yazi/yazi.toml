@@ -148,8 +148,6 @@ previewers = [
   { name = "*", run = "file" },
 ]
 prepend_previewers = [
-  { mime = "text/csv",                           run = "miller" },
-  { name = "*.md",                               run = "glow" },
   # Archive previewer
   { mime = "application/{,g}zip",                run = "ouch" },
   { mime = "application/{tar,bzip*,7z*,xz,rar}", run = "ouch" },
