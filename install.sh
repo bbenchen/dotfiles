@@ -55,6 +55,7 @@ mkdir -p "$HOME"/.sbt
 cp -rf "$DOTFILES"/sbt/* "$HOME"/.sbt
 ln -snf "$DOTFILES"/gitignore_global "$HOME"/.gitignore_global
 ln -snf "$DOTFILES"/gitconfig "$HOME"/.gitconfig
+ln -snf "$DOTFILES"/gitattributes "$HOME"/.gitattributes
 ln -snf "$DOTFILES"/gitmessage "$HOME"/.gitmessage
 if [ "$(get_os)" != "macos" ]; then
     ln -snf "$DOTFILES"/pam_environment "$HOME"/.pam_environment
