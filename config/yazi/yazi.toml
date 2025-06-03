@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
 ratio          = [ 1, 3, 4 ]
 sort_by        = "alphabetical"
 sort_sensitive = false
@@ -25,7 +25,6 @@ cache_dir       = "~/.cache/yazi"
 image_delay     = 100
 image_filter    = "triangle"
 image_quality   = 75
-sixel_fraction  = 15
 ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
@@ -39,12 +38,14 @@ open = [
   { run = 'xdg-open "$1"',                desc = "Open", for = "linux" },
   { run = 'open "$@"',                    desc = "Open", for = "macos" },
   { run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
+  { run = 'termux-open "$1"',             desc = "Open", for = "android" },
 ]
 reveal = [
   { run = 'xdg-open "$(dirname "$1")"',           desc = "Reveal", for = "linux" },
   { run = 'open -R "$1"',                         desc = "Reveal", for = "macos" },
   { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
-  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+  { run = 'termux-open "$(dirname "$1")"',        desc = "Reveal", for = "android" },
+  { run = '''clear; exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 extract = [
   { run = 'ouch d -y "$@"', desc = "Extract here with ouch", for = "unix" },
@@ -69,8 +70,7 @@ rules = [
   # Media
   { mime = "{audio,video}/*", use = [ "play", "reveal" ] },
   # Archive
-  { mime = "application/{,g}zip", use = [ "extract", "reveal" ] },
-  { mime = "application/{tar,bzip*,7z*,xz,rar}", use = [ "extract", "reveal" ] },
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
   # JSON
   { mime = "application/{json,ndjson}", use = [ "edit", "reveal" ] },
   { mime = "*/javascript", use = [ "edit", "reveal" ] },
@@ -82,37 +82,39 @@ rules = [
 
 [tasks]
 micro_workers    = 10
-macro_workers    = 25
-bizarre_retry    = 5
+macro_workers    = 10
+bizarre_retry    = 3
 image_alloc      = 536870912  # 512MB
-image_bound      = [ 0, 0 ]
+image_bound      = [ 5000, 5000 ]
 suppress_preload = false
 
 [plugin]
 fetchers = [
   # Mimetype
-  { id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
+  { id = "mime", name = "*", run = "mime", prio = "high" },
+]
+prepend_fetchers = [
+  { id = "git", name = "*", run = "git" },
+  { id = "git", name = "*/", run = "git" }
 ]
 spotters = [
   { name = "*/", run = "folder" },
   # Code
   { mime = "text/*", run = "code" },
-  { mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
+  { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
   # Image
-  { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
+  { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
   { mime = "video/*", run = "video" },
   # Fallback
   { name = "*", run = "file" },
 ]
-prepend_fetchers = [
-  { id = "git", name = "*", run = "git" },
-  { id = "git", name = "*/", run = "git" }
-]
 preloaders = [
   # Image
-  { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
+  { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
   { mime = "video/*", run = "video" },
@@ -122,23 +124,34 @@ preloaders = [
   { mime = "font/*", run = "font" },
   { mime = "application/ms-opentype", run = "font" },
 ]
+prepend_preloaders = [
+  # Replace magick, image, video with mediainfo
+  { mime = "{audio,video,image}/*", run = "mediainfo" },
+  { mime = "application/subrip", run = "mediainfo" },
+]
 previewers = [
-  { name = "*/", run = "folder", sync = true },
+  { name = "*/", run = "folder" },
   # Code
   { mime = "text/*", run = "code" },
-  { mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
+  { mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
   # JSON
   { mime = "application/{json,ndjson}", run = "json" },
   # Image
-  { mime = "image/{avif,hei?,jxl,svg+xml}", run = "magick" },
+  { mime = "image/{avif,hei?,jxl}", run = "magick" },
+  { mime = "image/svg+xml", run = "svg" },
   { mime = "image/*", run = "image" },
   # Video
   { mime = "video/*", run = "video" },
   # PDF
   { mime = "application/pdf", run = "pdf" },
   # Archive
-  { mime = "application/{,g}zip", run = "archive" },
-  { mime = "application/{tar,bzip*,7z*,xz,rar,iso9660-image}", run = "archive" },
+  { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+  { mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
+  { name = "*.{AppImage,appimage}", run = "archive" },
+  # Virtual Disk / Disk Image
+  { mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+  { mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+  { name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
   # Font
   { mime = "font/*", run = "font" },
   { mime = "application/ms-opentype", run = "font" },
@@ -148,11 +161,23 @@ previewers = [
   { name = "*", run = "file" },
 ]
 prepend_previewers = [
+  # Replace magick, image, video with mediainfo
+  { mime = "{audio,video,image}/*", run = "mediainfo"},
+  { mime = "application/subrip", run = "mediainfo" },
   # Archive previewer
-  { mime = "application/{,g}zip",                run = "ouch" },
-  { mime = "application/{tar,bzip*,7z*,xz,rar}", run = "ouch" },
-  # Audio
-  { mime = "audio/*",                            run = "exifaudio"},
+  { mime = "application/*zip",            run = "ouch" },
+  { mime = "application/x-tar",           run = "ouch" },
+  { mime = "application/x-bzip2",         run = "ouch" },
+  { mime = "application/x-7z-compressed", run = "ouch" },
+  { mime = "application/x-rar",           run = "ouch" },
+  { mime = "application/x-xz",            run = "ouch" },
+  { mime = "application/xz",              run = "ouch" },
+  # Csv
+  { name = "*.csv", run = 'piper -- bat -p --color=always "$1"'},
+  # Markdown
+  { name = "*.md", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'},
+  # Directory
+  { name = "*/", run = 'piper -- lsd --tree --depth 3 --icon always --color always --group-directories-first "$1"' }
 ]
 
 [input]
@@ -195,9 +220,9 @@ shell_offset = [ 0, 2, 50, 3 ]
 
 [confirm]
 # trash
-trash_title     = "Trash {n} selected file{s}?"
-trash_origin    = "center"
-trash_offset    = [ 0, 0, 70, 20 ]
+trash_title   = "Trash {n} selected file{s}?"
+trash_origin  = "center"
+trash_offset  = [ 0, 0, 70, 20 ]
 
 # delete
 delete_title    = "Permanently delete {n} selected file{s}?"
@@ -212,7 +237,7 @@ overwrite_offset  = [ 0, 0, 50, 15 ]
 
 # quit
 quit_title   = "Quit?"
-quit_content = "The following task is still running, are you sure you want to quit?"
+quit_content = "The following tasks are still running, are you sure you want to quit?"
 quit_origin  = "center"
 quit_offset  = [ 0, 0, 50, 15 ]
 

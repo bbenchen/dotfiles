@@ -1,0 +1,67 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "63f9650"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "63f9650"
+hash = "a7ab702e1ef0c097defbc976ed34c186"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-paste"
+rev = "63f9650"
+hash = "6fe47945aff6571d76f3beb65099ad7a"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "63f9650"
+hash = "d5d4f3527592da5fbe77fd6f51815f80"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "63f9650"
+hash = "bf6f074cd41ee33c3360341d168f9733"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "63f9650"
+hash = "4d82cd9e7534d976f000edf9c0f68d8f"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:vcs-files"
+rev = "63f9650"
+hash = "70898957e9e4c1ca291ff26e8fdc434"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "63f9650"
+hash = "d0ad0c1946b46a30c8489735fe8de41c"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "63f9650"
+hash = "2bdc137505b8d9a0cc867a57d0e99b01"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "c6d0de7"
+hash = "7b024fc14b462235068400207cbe7bf0"
+
+[[plugin.deps]]
+use = "ndtoan96/ouch"
+rev = "10b4627"
+hash = "3ec6a973d506665f1570a9fe08343fd8"
+
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "4872af0"
+hash = "d32742ded0e73146a8ca590fdc4fb404"
+
+[[plugin.deps]]
+use = "AnirudhG07/plugins-yazi:copy-file-contents"
+rev = "907e292"
+hash = "a61930b827d8f1ef8fa016409de458ed"
+
+[flavor]
+deps = []

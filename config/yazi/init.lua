@@ -3,9 +3,111 @@ require("full-border"):setup {
     type = ui.Border.ROUNDED,
 }
 
+require("smart-enter"):setup {
+    open_multi = true,
+}
+
 require("folder-rules"):setup()
 
 require("git"):setup()
+
+require("copy-file-contents"):setup({
+    append_char = "\n",
+    notification = true,
+})
+
+require("yatline"):setup({
+    --theme = my_theme,
+    section_separator = { open = "", close = "" },
+    part_separator = { open = "", close = "" },
+    inverse_separator = { open = "", close = "" },
+
+    style_a = {
+        fg = "black",
+        bg_mode = {
+            normal = "white",
+            select = "brightyellow",
+            un_set = "brightred"
+        }
+    },
+    style_b = { bg = "brightblack", fg = "brightwhite" },
+    style_c = { bg = "black", fg = "brightwhite" },
+
+    permissions_t_fg = "green",
+    permissions_r_fg = "yellow",
+    permissions_w_fg = "red",
+    permissions_x_fg = "cyan",
+    permissions_s_fg = "white",
+
+    tab_width = 20,
+    tab_use_inverse = false,
+
+    selected = { icon = "󰻭", fg = "yellow" },
+    copied = { icon = "", fg = "green" },
+    cut = { icon = "", fg = "red" },
+
+    total = { icon = "󰮍", fg = "yellow" },
+    succ = { icon = "", fg = "green" },
+    fail = { icon = "", fg = "red" },
+    found = { icon = "󰮕", fg = "blue" },
+    processed = { icon = "󰐍", fg = "green" },
+
+    show_background = true,
+
+    display_header_line = true,
+    display_status_line = true,
+
+    component_positions = { "header", "tab", "status" },
+
+    header_line = {
+        left = {
+            section_a = {
+                    {type = "line", custom = false, name = "tabs", params = {"left"}},
+            },
+            section_b = {
+            },
+            section_c = {
+            }
+        },
+        right = {
+            section_a = {
+                    {type = "string", custom = false, name = "date", params = {"%A, %d %B %Y"}},
+            },
+            section_b = {
+                    {type = "string", custom = false, name = "date", params = {"%X"}},
+            },
+            section_c = {
+            }
+        }
+    },
+
+    status_line = {
+        left = {
+            section_a = {
+                    {type = "string", custom = false, name = "tab_mode"},
+            },
+            section_b = {
+                    {type = "string", custom = false, name = "hovered_size"},
+            },
+            section_c = {
+                    {type = "string", custom = false, name = "hovered_path"},
+                    {type = "coloreds", custom = false, name = "count"},
+            }
+        },
+        right = {
+            section_a = {
+                    {type = "string", custom = false, name = "cursor_position"},
+            },
+            section_b = {
+                    {type = "string", custom = false, name = "cursor_percentage"},
+            },
+            section_c = {
+                    {type = "string", custom = false, name = "hovered_file_extension", params = {true}},
+                    {type = "coloreds", custom = false, name = "permissions"},
+            }
+        }
+    },
+})
 
 function Linemode:size_and_mtime()
     local time = math.floor(self._file.cha.mtime or 0)
@@ -25,30 +127,3 @@ function Linemode:size_and_mtime()
         return string.format("%s %s", folder and tostring(#folder.files) or "-", time)
     end
 end
-
-function Status:name()
-    local h = self._tab.current.hovered
-    if not h then
-        return ui.Line {}
-    end
-
-    local linked = ""
-    if h.link_to ~= nil then
-        linked = " -> " .. tostring(h.link_to)
-    end
-    return ui.Span(" " .. h.name .. linked)
-end
-
-Status:children_add(function()
-    local h = cx.active.current.hovered
-    if h == nil or ya.target_family() ~= "unix" then
-        return ""
-    end
-
-    return ui.Line {
-        ui.Span(ya.user_name(h.cha.uid) or tostring(h.cha.uid)):fg("magenta"),
-        ":",
-        ui.Span(ya.group_name(h.cha.gid) or tostring(h.cha.gid)):fg("magenta"),
-        " ",
-    }
-end, 500, Status.RIGHT)
