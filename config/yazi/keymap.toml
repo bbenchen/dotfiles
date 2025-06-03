@@ -4,8 +4,8 @@
 
 [mgr]
 prepend_keymap = [
-  # { on = '!', for = 'unix',    run = 'shell "$SHELL" --block', desc = 'Open $SHELL here'},
-  # { on = '!', for = 'windows', run = 'shell "powershell.exe" --block', desc = 'Open PowerShell here'},
+  { on = '!', for = 'unix',    run = 'shell "$SHELL" --block', desc = 'Open $SHELL here'},
+  { on = '!', for = 'windows', run = 'shell "powershell.exe" --block', desc = 'Open PowerShell here'},
   { on = [ 'c', 'a' ], run = 'plugin ouch zip', desc = 'Compress with ouch'},
   { on = [ 'c', 'C' ], run = 'plugin copy-file-contents', desc = 'Copy contents of file' },
   { on = [ 'c', 'm' ], run = 'plugin chmod', desc = 'Chmod on selected files'},
