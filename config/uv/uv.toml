@@ -1,3 +1,5 @@
+# python-install-mirror = "https://mirrors.ustc.edu.cn/github-release/indygreg/python-build-standalone"
+
 [[index]]
-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+url = "https://repo.huaweicloud.com/repository/pypi/simple"
 default = true
