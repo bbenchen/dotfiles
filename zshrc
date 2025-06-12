@@ -71,6 +71,12 @@ if cmd_exists "brew"; then
     alias bubc='brew upgrade && brew cleanup'
 fi
 
+# uv, python env
+zinit ice id-as as"program" from"gh-r" mv"uv-*/uv -> uv; uv-*/uvx -> uvx" \
+  atclone'./uv generate-shell-completion zsh > _uv; ./uvx --generate-shell-completion zsh > _uvx' \
+  atpull'%atclone' pick"uv"
+zinit light astral-sh/uv
+
 # httpstat
 zinit ice id-as as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
 zinit light b4b4r07/httpstat
@@ -90,7 +96,7 @@ zinit ice id-as as"command" from"gh-r" mv"fd*/fd -> fd" pick"fd"
 zinit light sharkdp/fd
 
 # bat
-zinit ice id-as as"command" from"gh-r" mv"bat*/bat -> bat" pick"bat" \
+zinit ice id-as as"command" from"gh-r" mv"bat-*/bat -> bat;bat-*/autocomplete/bat.zsh -> _bat" pick"bat" \
   atload"alias cat=\"bat -p --wrap character\"
         alias -g -- -h=\"-h 2>&1 | bat --language=help --style=plain\"
         alias -g -- --help=\"--help 2>&1 | bat --language=help --style=plain\""
