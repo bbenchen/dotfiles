@@ -30,7 +30,7 @@ fi
 print_info "installing dotfiles..."
 # common
 ln -snf "$DOTFILES"/aria2 "$HOME"/.aria2
-ln -snf "$DOTFILES"/dir_colors "$HOME"/dir_colors
+ln -snf "$DOTFILES"/dir_colors "$HOME"/.dir_colors
 cp -rf "$DOTFILES"/ssh "$HOME"/.ssh
 cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
 echo "$DOOMD"/bin/pinentry-auto >>"$HOME"/.gnupg/gpg-agent.conf
