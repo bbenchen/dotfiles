@@ -127,6 +127,10 @@ export _ZO_FZF_OPTS="--scheme=path --tiebreak=end,chunk,index \
   --group-directories-first {2} || tree -NC {2} || ls --color=always \
   --group-directories-first {2}) 2>/dev/null | head -200'"
 
+# yzai
+zinit ice id-as as"program" from"gh-r" mv"yazi-*/ya -> ya; yazi-*/yazi -> yazi" pick"yazi"
+zinit light sxyazi/yazi
+
 # Git extras
 # zinit ice id-as wait lucid as"program" pick"$ZPFX/bin/git-*" src"etc/git-extras-completion.zsh" make"PREFIX=$ZPFX" if'(( $+commands[make] ))'
 # zinit light tj/git-extras
