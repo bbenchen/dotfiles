@@ -59,7 +59,8 @@ zinit id-as wait lucid light-mode depth"1" for \
 #
 
 # brew
-if cmd_exists "brew"; then
+# shellcheck disable=2154
+if (( $+commands[brew] )); then
     [[ -z "$HOMEBREW_PREFIX" ]] && HOMEBREW_PREFIX="$(brew --prefix)" && export HOMEBREW_PREFIX
     if [[ -d "$HOMEBREW_PREFIX/share/zsh/site-functions" ]]; then
         fpath+=("$HOMEBREW_PREFIX/share/zsh/site-functions")
@@ -138,11 +139,13 @@ zinit ice id-as as"command" from"gh-r" mv"lsd*/lsd -> lsd" pick"lsd" \
         alias tree='ls --tree'
         unalias la lsa"
 zinit light lsd-rs/lsd
-cmd_exists "dircolors" && test -r "$HOME/.dir_colors" && eval "$(dircolors "$HOME"/.dir_colors)"
+# shellcheck disable=2154
+(( $+commands[dircolors] )) && [[ -r "$HOME/.dir_colors" ]] && eval "$(dircolors "$HOME"/.dir_colors)"
 
 # jenv
 unset JENV_LOADED
-cmd_exists "jenv" && eval "$(jenv init -)"
+# shellcheck disable=2154
+(( $+commands[jenv] )) && eval "$(jenv init -)"
 
 # fzf
 zinit ice id-as from"gh-r" as"program" atload"source <(fzf --zsh)"
@@ -266,21 +269,31 @@ alias goto_dotfiles='cd $DOTFILES'
 alias upgrade_dotfiles='cd $DOTFILES && git pull; cd - >/dev/null'
 alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 
-cmd_exists "nvim" && alias vim="nvim" && alias vi="nvim"
-cmd_exists "fd" && alias find="fd"
-cmd_exists "btm" && alias top="btm"
-cmd_exists "rg" && alias grep="rg"
-cmd_exists "delta" && alias diff="delta"
-cmd_exists "duf" && alias df="duf"
-cmd_exists "dust" && alias du="dust"
-cmd_exists "gping" && alias ping="gping"
-if cmd_exists "bat"; then
+# shellcheck disable=2154
+(( $+commands[nvim] )) && alias vim="nvim" && alias vi="nvim"
+# shellcheck disable=2154
+(( $+commands[fd] )) && alias find="fd"
+# shellcheck disable=2154
+(( $+commands[btm] )) && alias top="btm"
+# shellcheck disable=2154
+(( $+commands[rg] )) && alias grep="rg"
+# shellcheck disable=2154
+(( $+commands[delta] )) && alias diff="delta"
+# shellcheck disable=2154
+(( $+commands[duf] )) && alias df="duf"
+# shellcheck disable=2154
+(( $+commands[dust] )) && alias du="dust"
+# shellcheck disable=2154
+(( $+commands[gping] )) && alias ping="gping"
+# shellcheck disable=2154
+if (( $+commands[bat] )); then
   tailf () {
     tail -f "$*" | bat --paging=never -l log
   }
   alias t="tailf"
 fi
-if cmd_exists "yazi"; then
+# shellcheck disable=2154
+if (( $+commands[yazi] )); then
   yy() {
     local tmp
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
@@ -296,7 +309,8 @@ fi
 if [[ "$(get_os)" == "macos" ]]; then
   alias aria2c="aria2c --file-allocation=none"
 fi
-if cmd_exists "emacsclient"; then
+# shellcheck disable=2154
+if (( $+commands[emacsclient] )); then
   # shellcheck disable=SC2168,SC2207
   local _emacsclient=($(command -v "emacsclient"))
   # shellcheck disable=SC2128
@@ -311,7 +325,8 @@ if cmd_exists "emacsclient"; then
   alias te="$EDITOR -nw"
 fi
 
-if [[ ! -f "/var/run/docker.sock" ]] && cmd_exists "podman"; then
+# shellcheck disable=2154
+if [[ ! -f "/var/run/docker.sock" ]] && (( $+commands[podman] )); then
   if [[ "$(get_os)" == "linux" ]]; then
     DOCKER_HOST=unix://$(podman info --format '{{.Host.RemoteSocket.Path}}') && export DOCKER_HOST
   else
@@ -337,23 +352,24 @@ if [[ -n "$INSIDE_EMACS" ]]; then
   DISABLE_AUTO_TITLE="true"
 
   # VTerm
-  if [[ "$INSIDE_EMACS" = "vterm" ]]; then
-    if [[ -n "$EMACS_VTERM_PATH" ]] \
-      && [[ -f "$EMACS_VTERM_PATH"/etc/emacs-vterm-zsh.sh ]]; then
+  if [[ "$INSIDE_EMACS" == "vterm" ]]; then
+    if [[ -n "$EMACS_VTERM_PATH" && -f "$EMACS_VTERM_PATH"/etc/emacs-vterm-zsh.sh ]]; then
       source "$EMACS_VTERM_PATH"/etc/emacs-vterm-zsh.sh
     fi
-
-    # gpg
-    unset PINENTRY_USER_DATA
-
-    # show system info
-    cmd_exists "fastfetch" && is_gui && fastfetch
+  elif [[ "$INSIDE_EMACS" == *eat ]]; then
+    if [[ -n "$EAT_SHELL_INTEGRATION_DIR" && -f $EAT_SHELL_INTEGRATION_DIR/zsh ]]; then
+      source "$EAT_SHELL_INTEGRATION_DIR/zsh"
+    fi
   fi
-else
-  # show system info
-  cmd_exists "fastfetch" && is_gui && fastfetch
+  # gpg
+  unset PINENTRY_USER_DATA
 fi
 
-if [[ "$(get_os)" != "macos" ]] && cmd_exists "startx" ; then
+# show system info
+# shellcheck disable=2154
+(( $+commands[fastfetch] )) && is_gui && fastfetch
+
+# shellcheck disable=2154
+if [[ "$(get_os)" != "macos" ]] && (( $+commands[startx] )) ; then
   [[ "$(tty)" == "/dev/tty1" ]] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx
 fi
