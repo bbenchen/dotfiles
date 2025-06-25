@@ -67,7 +67,7 @@
 [svn]
     rmdir = true
 [http]
-    proxy = socks5://127.0.0.1:20122
+    proxy = socks5h://127.0.0.1:20122
     sslVerify = false
 [includeIf "os:Darwin"]
   path = ~/.gitconfig_macos
