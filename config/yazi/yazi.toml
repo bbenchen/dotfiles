@@ -128,6 +128,8 @@ prepend_preloaders = [
   # Replace magick, image, video with mediainfo
   { mime = "{audio,video,image}/*", run = "mediainfo" },
   { mime = "application/subrip", run = "mediainfo" },
+  # Adobe Illustrator
+  { mime = "application/postscript", run = "mediainfo" },
 ]
 previewers = [
   { name = "*/", run = "folder" },
@@ -164,6 +166,8 @@ prepend_previewers = [
   # Replace magick, image, video with mediainfo
   { mime = "{audio,video,image}/*", run = "mediainfo"},
   { mime = "application/subrip", run = "mediainfo" },
+  # Adobe Illustrator
+  { mime = "application/postscript", run = "mediainfo" },
   # Archive previewer
   { mime = "application/*zip",            run = "ouch" },
   { mime = "application/x-tar",           run = "ouch" },
