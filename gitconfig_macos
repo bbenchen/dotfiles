@@ -1,5 +1,5 @@
 # -*- mode: gitconfig -*-
 # [gpg]
-# 	program = /opt/homebrew/bin/gpg
+#   program = /opt/homebrew/bin/gpg
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
