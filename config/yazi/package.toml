@@ -50,8 +50,8 @@ hash = "b92e44ad5004f1b45e5c3d717a60ed24"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "bb941c4"
-hash = "956b02fe8213e7b92e21a941b9abe764"
+rev = "0742fff"
+hash = "2bd799b42b8e42b8ef100310be71f8d1"
 
 [[plugin.deps]]
 use = "imsi32/yatline"
