@@ -110,6 +110,10 @@ zinit light eth-p/bat-extras
 zinit ice id-as as"command" from"gh-r" mv"btm -> btm" pick"btm"
 zinit light ClementTsang/bottom
 
+# gdu
+zinit ice id-as as"command" from"gh-r" mv"gdu* -> gdu" pick"gdu"
+zinit light dundee/gdu
+
 # delta git diff
 zinit ice id-as as"command" from"gh-r" mv"delta*/delta -> delta" pick"delta"
 zinit light dandavison/delta
@@ -286,7 +290,7 @@ alias upgrade_oh_my_tmux='cd $HOME/.tmux && git pull; cd - >/dev/null'
 # shellcheck disable=2154
 (( $+commands[duf] )) && alias df="duf"
 # shellcheck disable=2154
-(( $+commands[dust] )) && alias du="dust"
+(( $+commands[gdu] )) && alias du="gdu"
 # shellcheck disable=2154
 (( $+commands[gping] )) && alias ping="gping"
 # shellcheck disable=2154
