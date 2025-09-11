@@ -66,9 +66,6 @@
     extension = svn
 [svn]
     rmdir = true
-[http]
-    proxy = socks5h://127.0.0.1:20122
-    sslVerify = false
 [includeIf "os:Darwin"]
   path = ~/.gitconfig_macos
 [includeIf "os:Linux"]
