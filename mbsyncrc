@@ -21,7 +21,7 @@ MaildirStore qq-local
 Path ~/.mail/qq.com/
 Inbox ~/.mail/qq.com/Inbox
 
-# Connections
+# Channels
 Channel qq-inbox
 Far :qq-remote:"INBOX"
 Near :qq-local:"Inbox"
