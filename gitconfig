@@ -64,6 +64,9 @@
   user = bbenchen
 [magit]
     extension = svn
+[forge]
+    omitExpensive = true
+    graphqlItemLimit = 100
 [svn]
     rmdir = true
 [includeIf "os:Darwin"]
