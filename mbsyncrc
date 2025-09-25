@@ -8,6 +8,7 @@ PassCmd "pass show mail/517926804@qq.com"
 Port 993
 AuthMechs LOGIN
 TLSType IMAPS
+TLSVersions +1.2
 # CertificateFile /etc/ssl/certs/ca-certificates.crt
 CertificateFile /opt/homebrew/etc/ca-certificates/cert.pem  # MacOS
 
@@ -25,6 +26,7 @@ Inbox ~/.mail/qq.com/Inbox
 Channel qq-inbox
 Far :qq-remote:"INBOX"
 Near :qq-local:"Inbox"
+CopyArrivalDate yes
 Create Near
 Expunge Both
 SyncState *
@@ -32,6 +34,7 @@ SyncState *
 Channel qq-drafts
 Far :qq-remote:"Drafts"
 Near :qq-local:"Drafts"
+CopyArrivalDate yes
 Create Near
 Expunge Both
 SyncState *
@@ -39,6 +42,7 @@ SyncState *
 Channel qq-sent
 Far :qq-remote:"Sent Messages"
 Near :qq-local:"Sent"
+CopyArrivalDate yes
 Create Near
 Expunge Both
 SyncState *
@@ -46,6 +50,7 @@ SyncState *
 Channel qq-trash
 Far :qq-remote:"Deleted Messages"
 Near :qq-local:"Trash"
+CopyArrivalDate yes
 Create Near
 Expunge Both
 SyncState *
@@ -56,3 +61,83 @@ Channel qq-inbox
 Channel qq-drafts
 Channel qq-sent
 Channel qq-trash
+
+########################################
+# gmail
+########################################
+IMAPAccount gmail
+Host imap.gmail.com
+User chen.jackson@gmail.com
+PassCmd "pass show mail/chen.jackson@gmail.com"
+Port 993
+AuthMechs LOGIN
+TLSType IMAPS
+TLSVersions +1.2
+# CertificateFile /etc/ssl/certs/ca-certificates.crt
+CertificateFile /opt/homebrew/etc/ca-certificates/cert.pem  # MacOS
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Path ~/.mail/gmail.com/
+Inbox ~/.mail/gmail.com/Inbox
+SubFolders Verbatim
+
+# Channels
+# Channel gmail-all
+# Far :gmail-remote:
+# Near :gmail-local:
+# Patterns *
+# CopyArrivalDate yes
+# Create Both
+# Expunge Both
+# SyncState *
+
+Channel gmail-inbox
+Far :gmail-remote:"INBOX"
+Near :gmail-local:"Inbox"
+CopyArrivalDate yes
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-drafts
+Far :gmail-remote:"[gmail]/草稿"
+Near :gmail-local:"Drafts"
+CopyArrivalDate yes
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-sent
+Far :gmail-remote:"[gmail]/已发邮件"
+Near :gmail-local:"Sent"
+CopyArrivalDate yes
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-trash
+Far :gmail-remote:"[gmail]/已删除邮件"
+Near :gmail-local:"Trash"
+CopyArrivalDate yes
+Create Both
+Expunge Both
+SyncState *
+
+Channel gmail-spam
+Far :gmail-remote:"[gmail]/垃圾邮件"
+Near :gmail-local:"Spam"
+CopyArrivalDate yes
+Create Both
+Expunge Both
+SyncState *
+
+Group gmail
+# Channel gmail-all
+Channel gmail-inbox
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-trash
+Channel gmail-spam
