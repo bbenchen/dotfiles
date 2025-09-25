@@ -122,7 +122,7 @@ Expunge Both
 SyncState *
 
 Channel gmail-drafts
-Far :gmail-remote:"[gmail]/草稿"
+Far :gmail-remote:"[Gmail]/草稿"
 Near :gmail-local:"Drafts"
 CopyArrivalDate yes
 Create Both
@@ -130,7 +130,7 @@ Expunge Both
 SyncState *
 
 Channel gmail-sent
-Far :gmail-remote:"[gmail]/已发邮件"
+Far :gmail-remote:"[Gmail]/已发邮件"
 Near :gmail-local:"Sent"
 CopyArrivalDate yes
 Create Both
@@ -138,7 +138,7 @@ Expunge Both
 SyncState *
 
 Channel gmail-trash
-Far :gmail-remote:"[gmail]/已删除邮件"
+Far :gmail-remote:"[Gmail]/已删除邮件"
 Near :gmail-local:"Trash"
 CopyArrivalDate yes
 Create Both
@@ -146,7 +146,7 @@ Expunge Both
 SyncState *
 
 Channel gmail-spam
-Far :gmail-remote:"[gmail]/垃圾邮件"
+Far :gmail-remote:"[Gmail]/垃圾邮件"
 Near :gmail-local:"Spam"
 CopyArrivalDate yes
 Create Both
