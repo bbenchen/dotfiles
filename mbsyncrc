@@ -23,6 +23,15 @@ Path ~/.mail/qq.com/
 Inbox ~/.mail/qq.com/Inbox
 
 # Channels
+# Channel qq-all
+# Far :qq-remote:
+# Near :qq-local:
+# Patterns *
+# CopyArrivalDate yes
+# Create Both
+# Expunge Both
+# SyncState *
+
 Channel qq-inbox
 Far :qq-remote:"INBOX"
 Near :qq-local:"Inbox"
@@ -55,12 +64,22 @@ Create Near
 Expunge Both
 SyncState *
 
+Channel qq-spam
+Far :qq-remote:"Junk"
+Near :qq-local:"Spam"
+CopyArrivalDate yes
+Create Near
+Expunge Both
+SyncState *
+
 ## Groups
 Group qq
+# Channel qq-all
 Channel qq-inbox
 Channel qq-drafts
 Channel qq-sent
 Channel qq-trash
+Channel qq-spam
 
 ########################################
 # gmail
