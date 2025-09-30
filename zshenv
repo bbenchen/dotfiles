@@ -47,3 +47,6 @@ export GOBIN="$GOPATH/bin"
 
 # lsp
 export LSP_USE_PLISTS=true
+
+# testcontainers
+export TESTCONTAINERS_RYUK_DISABLED=true
