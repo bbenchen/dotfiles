@@ -28,15 +28,15 @@ export PATH="${GOPATH//://bin:}/bin:$PATH"
 
 # other's path for macos
 if [[ $OSTYPE == darwin* ]]; then
+  [[ -d "/opt/homebrew/opt/libpq/bin" ]] && export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
   [[ -d "/opt/homebrew/opt/e2fsprogs/bin" ]] && export PATH="/opt/homebrew/opt/e2fsprogs/bin:$PATH"
   [[ -d "/opt/homebrew/opt/e2fsprogs/sbin" ]] && export PATH="/opt/homebrew/opt/e2fsprogs/sbin:$PATH"
   [[ -d "/opt/homebrew/opt/gnu-indent/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/gnu-tar/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/gnu-sed/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-  [[ -d "/opt/homebrew/opt/findutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+  # [[ -d "/opt/homebrew/opt/findutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/gawk/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-  [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+  # [[ -d "/opt/homebrew/opt/coreutils/libexec/gnubin" ]] && export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
   [[ -d "/opt/homebrew/opt/man-db/libexec/bin" ]] && export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
-  [[ -d "$HOME/Library/Python/3.13/bin" ]] && export PATH="$HOME/Library/Python/3.13/bin:$PATH"
   [[ -d "/Library/TeX/texbin" ]] && export MANPATH="$MANPATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Man"
 fi

@@ -150,11 +150,6 @@ zinit light lsd-rs/lsd
 # shellcheck disable=2154
 (( $+commands[dircolors] )) && [[ -r "$HOME/.dir_colors" ]] && eval "$(dircolors "$HOME"/.dir_colors)"
 
-# jenv
-unset JENV_LOADED
-# shellcheck disable=2154
-(( $+commands[jenv] )) && eval "$(jenv init -)"
-
 # fzf
 zinit ice id-as from"gh-r" as"program" atload"source <(fzf --zsh)"
 zinit light junegunn/fzf
@@ -268,6 +263,17 @@ zinit ice id-as as"command" from"gh-r" \
   atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
   atpull"%atclone" src"init.zsh"
 zinit light starship/starship
+
+# jenv
+unset JENV_LOADED
+# shellcheck disable=2154
+(( $+commands[jenv] )) && eval "$(jenv init -)"
+
+# python venv
+if [[ ! -f "$HOME/.venv/bin/activate" ]]; then
+  uv venv --no-project --seed
+fi
+source "$HOME/.venv/bin/activate"
 
 # Alias
 alias h="history"
