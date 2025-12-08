@@ -383,6 +383,10 @@ tmux_conf_urlscan_options="--compact --dedupe"
 
 # this is the place to override or undo settings
 
+# terminal
+# set -g default-terminal "screen-256color" # colors!
+set -g default-terminal "tmux-256color"
+
 # increase history size
 #set -g history-limit 10000
 
