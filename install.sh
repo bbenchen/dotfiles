@@ -33,7 +33,7 @@ ln -snf "$DOTFILES"/aria2 "$HOME"/.aria2
 ln -snf "$DOTFILES"/dir_colors "$HOME"/.dir_colors
 cp -rf "$DOTFILES"/ssh "$HOME"/.ssh
 cp -rf "$DOTFILES"/gnupg "$HOME"/.gnupg
-echo "$DOOMD"/bin/pinentry-auto >>"$HOME"/.gnupg/gpg-agent.conf
+echo pinentry-program "$DOOMD"/bin/pinentry-auto >>"$HOME"/.gnupg/gpg-agent.conf
 ln -snf "$DOTFILES"/authinfo.gpg "$HOME"/.authinfo.gpg
 ln -snf "$DOTFILES"/mbsyncrc "$HOME"/.mbsyncrc
 ln -snf "$DOTFILES"/msmtprc "$HOME"/.msmtprc
