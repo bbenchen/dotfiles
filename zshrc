@@ -79,7 +79,7 @@ zinit ice id-as as"program" from"gh-r" mv"uv-*/uv -> uv; uv-*/uvx -> uvx" \
 zinit light astral-sh/uv
 
 # httpstat
-zinit ice id-as as"program" cp"httpstat.sh -> httpstat" pick"httpstat"
+zinit ice id-as as"program" cp"httpstat -> httpstat" pick"httpstat"
 zinit light b4b4r07/httpstat
 
 # direnv
