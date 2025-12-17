@@ -1,6 +1,6 @@
 # -*- mode: gitconfig -*-
 [credential]
-    # helper = cache --timeout=3600
-    # helper = store --file ~/.git_credentials
-    # install libsecret
-    helper = /usr/lib/git-core/git-credential-libsecret
+  # helper = cache --timeout=3600
+  # helper = store --file ~/.git_credentials
+  # install libsecret
+  helper = /usr/lib/git-core/git-credential-libsecret
