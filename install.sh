@@ -48,7 +48,7 @@ ln -snf "$DOTFILES"/pydistutils.cfg "$HOME"/.pydistutils.cfg
 if [ ! -d "$HOME/.cargo" ]; then
     mkdir -p "$HOME"/.cargo
 fi
-ln -snf "$DOTFILES"/cargo/config "$HOME"/.cargo/config
+ln -snf "$DOTFILES"/cargo/config.toml "$HOME"/.cargo/config.toml
 mkdir -p "$HOME"/.m2
 cp -rf "$DOTFILES"/m2/* "$HOME"/.m2
 mkdir -p "$HOME"/.sbt
