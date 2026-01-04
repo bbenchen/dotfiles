@@ -387,6 +387,9 @@ tmux_conf_urlscan_options="--compact --dedupe"
 # set -g default-terminal "screen-256color" # colors!
 set -g default-terminal "tmux-256color"
 
+# non-login shell
+set -g default-command "${SHELL}"
+
 # increase history size
 #set -g history-limit 10000
 
