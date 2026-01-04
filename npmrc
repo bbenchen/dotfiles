@@ -1,13 +1,1 @@
 registry=https://registry.npmmirror.com
-disturl=https://cdn.npmmirror.com/binaries/node
-sass_binary_site=https://cdn.npmmirror.com/binaries/node-sass
-swc_binary_site=https://cdn.npmmirror.com/binaries/node-swc
-electron_mirror=https://cdn.npmmirror.com/binaries/electron
-electron_builder_binaries_mirror=https://cdn.npmmirror.com/binaries/electron_builder_binaries
-phantomjs_cdnurl=https://cdn.npmmirror.com/binaries/phantomjs
-chromedriver_cdnurl=https://cdn.npmmirror.com/binaries/chromedriver
-operadriver_cdnurl=https://cdn.npmmirror.com/binaries/operadriver
-puppeteer_download_host=https://cdn.npmmirror.com/binaries/chrome-for-testing
-puppeteer_download_base_url=https://cdn.npmmirror.com/binaries/chrome-for-testing
-selenium_cdnurl=https://cdn.npmmirror.com/binaries/selenium
-node_inspector_cdnurl=https://cdn.npmmirror.com/binaries/node-inspector
