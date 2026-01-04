@@ -306,7 +306,7 @@ if (( $+commands[bat] )); then
 fi
 # shellcheck disable=2154
 if (( $+commands[yazi] )); then
-  yy() {
+  yy () {
     local tmp
     tmp="$(mktemp -t "yazi-cwd.XXXXX")"
     yazi "$@" --cwd-file="$tmp"
