@@ -2,4 +2,4 @@
 # [gpg]
 #   program = /opt/homebrew/bin/gpg
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
