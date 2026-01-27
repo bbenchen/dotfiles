@@ -1,37 +1,37 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "56fdabc96fc1f4d53c96eb884b02a5be"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "75fd60b2df7115e0a6ca31a6a804d320"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "8da0b15a97b5dfd13941d1ecc617ac7c"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "68f7d48"
-hash = "36a484acf6a0a0219c543ccb4cee218f"
+rev = "e07bf41"
+hash = "270915fa8282a19908449530ff66f7e2"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "7cd6b04"
-hash = "98b8276aa076284f5c4a5260cbe08549"
+rev = "ae2a1f1"
+hash = "b2afd25ad3ac851adf2a1b706d1a2add"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
@@ -40,22 +40,22 @@ hash = "c9e628fc0312d198db22ae2fa74883b"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "68f7d48"
-hash = "2dd68af59418b631b9703a03f606b31f"
+rev = "e07bf41"
+hash = "25aee698dd1081001008ce0cb1cc4da3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"
-rev = "68f7d48"
-hash = "a638db397a5a41d3f3a08a7427ccead1"
+rev = "e07bf41"
+hash = "6ce49cf5b4c7c0d9cce8a1062ed478d3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "68f7d48"
-hash = "5cfd9b2bd3f8ec4e3245e3426a967f82"
+rev = "e07bf41"
+hash = "f69e4737c2fb8ceec58a2950faf13c46"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "68f7d48"
+rev = "e07bf41"
 hash = "407d19bc4fb46eff5fa8ff8337644847"
 
 [[plugin.deps]]
@@ -65,8 +65,8 @@ hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "68f7d48"
-hash = "a3564fe0d051557df2a191ca0b212c2d"
+rev = "e07bf41"
+hash = "204d77f3890fc8b0eb1efb081ed400c0"
 
 [flavor]
 deps = []
