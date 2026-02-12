@@ -5,3 +5,4 @@
 
 __pycache__
 *.pyo
+/hammerspoon/default.profraw

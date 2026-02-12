@@ -6,6 +6,8 @@
 
 # These files are binary and should be left untouched
 *.jar binary
+*.gz binary
+*.xz binary
 *.zip binary
 *.png binary
 *.jpg binary
