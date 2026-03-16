@@ -30,13 +30,13 @@ hash = "26db011a778f261d730d4f5f8bf24b3f"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "20ecff6"
-hash = "ad48b4d2fd8f429ce87b0fddf7f34c9"
+rev = "6fbed8d"
+hash = "57ae6b43c477e117802f176683b78e74"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
-rev = "594b8a2"
-hash = "c9e628fc0312d198db22ae2fa74883b"
+rev = "406ce6c"
+hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
