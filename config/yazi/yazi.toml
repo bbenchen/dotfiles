@@ -208,6 +208,7 @@ prepend_previewers = [
   # Sometimes AI file is recognized as "application/pdf". Lmao.
   # In this case use file extension instead:
   { url = "*.{ai,eps,ait}", run = "mediainfo" },
+
   # Archive previewer
   { mime = "application/{*zip,tar,bzip2,7z*,rar,xz,zstd,java-archive}", run = "ouch" },
   # Csv
