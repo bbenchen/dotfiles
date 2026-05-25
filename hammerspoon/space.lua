@@ -32,7 +32,7 @@ local movingWindow = false
 
 -- Constants
 local MOUSE_OFFSET_X = 5
-local MOUSE_OFFSET_Y = 12
+local MOUSE_OFFSET_Y = 18
 local SWITCH_DELAY = 0.2
 local RELEASE_DELAY = 0.5
 
