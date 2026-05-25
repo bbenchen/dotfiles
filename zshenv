@@ -41,7 +41,7 @@ export N_PREFIX="$HOME/.n"
 # golang
 export GO111MODULE=on
 export GOPROXY="https://goproxy.cn,direct"
-export GOPRIVATE="git.iobox.me"
+# export GOPRIVATE="git.iobox.me"
 export GOPATH="$HOME/.go"
 export GOBIN="$GOPATH/bin"
 [[ $OSTYPE == darwin* && -d "/opt/homebrew/opt/go/libexec" ]] && export GOROOT="/opt/homebrew/opt/go/libexec"
