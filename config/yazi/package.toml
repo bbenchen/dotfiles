@@ -1,37 +1,37 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "7b625412411be411153886894d9acaf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-paste"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "3f8d49413bc8691b4c652eb417a20178"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "9c7987da2d2a2120dac33abb64132004"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:chmod"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "f0c8c378184d5f8abd1b095a443d336d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "88e56a64b7ce7c4314427452343fef17"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "aa4804b"
-hash = "fcd5a53aed57cdc8197ae85c13eb8f5b"
+rev = "4f80288"
+hash = "e7b29f50eaf8cfa86ee4b38271efc2d9"
 
 [[plugin.deps]]
 use = "ndtoan96/ouch"
@@ -40,22 +40,22 @@ hash = "f5afc904d5106ee368c8aa2ded43bd74"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "5d5c480"
-hash = "384464b6df8cb807425c521f8cd790f3"
+rev = "c2c16c8"
+hash = "d99cfbc3812e7738505f9e4bedb759cd"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:zoom"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "fa268cb59989a87780605fdcfb8d99a9"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "6b141fbed3c74b45558fbc7088c805ee"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "c887903a63a2ff520081b6d90a4b3392"
 
 [[plugin.deps]]
@@ -65,7 +65,7 @@ hash = "f8530ee84fee95dbcc26bb1d8d8019c7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "5d5c480"
+rev = "c2c16c8"
 hash = "9105494e98299f392aee95340066da9f"
 
 [[plugin.deps]]

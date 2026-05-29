@@ -302,7 +302,7 @@ function M:preload(job)
 				audio_preload_output
 				and audio_preload_output.stderr ~= nil
 				and audio_preload_output.stderr ~= ""
-				and not audio_preload_output.stderr:find("Output file .* does not contain any stream")
+				and not audio_preload_output.stderr:find("Output file.*does not contain any stream")
 			) or audio_preload_err
 		then
 			ya.dbg("mediainfo", audio_preload_err)
