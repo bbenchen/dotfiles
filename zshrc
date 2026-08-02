@@ -84,8 +84,8 @@ zinit light b4b4r07/httpstat
 
 # direnv
 zinit ice id-as from"gh-r" as"program" mv"direnv* -> direnv" \
-  atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
-  pick"direnv" src="zhook.zsh"
+  atclone'chmod +x ./direnv && ./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+  pick"direnv" src"zhook.zsh"
 zinit light direnv/direnv
 
 # ripgrep
