@@ -41,6 +41,7 @@ ln -snf "$DOTFILES"/curlrc "$HOME"/.curlrc
 ln -snf "$DOTFILES"/markdownlintrc "$HOME"/.markdownlintrc
 ln -snf "$DOTFILES"/sqlfluff "$HOME"/.sqlfluff
 ln -snf "$DOTFILES"/npmrc "$HOME"/.npmrc
+ln -snf "$DOTFILES"/bunfig.toml "$HOME"/.bunfig.toml
 ln -snf "$DOTFILES"/vuerc "$HOME"/.vuerc
 ln -snf "$DOTFILES"/gemrc "$HOME"/.gemrc
 ln -snf "$DOTFILES"/config/pip "$HOME"/.config/pip
